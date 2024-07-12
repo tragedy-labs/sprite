@@ -1,0 +1,5 @@
+<div class="toggleButtonGroup padding-h-section flex row" id="searchFilters">
+  {% for filter in site.data.filters %}
+    {% include search/toggle_button.liquid title=filter.title value=filter.value %}
+  {% endfor %}
+</div>

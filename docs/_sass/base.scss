@@ -1,0 +1,61 @@
+@import "./button.scss";
+@import "./borders.scss";
+@import "./toggleButtonGroup.scss";
+@import "./code.scss";
+@import "./colors.scss";
+@import "./container.scss";
+@import "./content.scss";
+@import "./grid.scss";
+@import "./header.scss";
+@import "./links.scss";
+@import "./lists.scss";
+@import "./navigation.scss";
+@import "./parameters.scss";
+@import "./projects.scss";
+@import "./search.scss";
+@import "./styles.scss";
+@import "./tutorialFooter.scss";
+@import "./typography.scss";
+@import "./theme/theme.scss";
+@import "./tutorialHeader.scss";
+@import "./icons.scss";
+
+@import "./radius.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.hero-image {
+  image-rendering: pixelated;
+  border-radius: var(--radius-1);
+  opacity: 1;
+}
+
+html,
+body {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background: var(--background-1);
+  color: var(--foreground-1);
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: var(--background-1);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background-1);
+}
+
+hr {
+  margin: var(--section-padding) 0;
+  border: 0;
+  border-top: 1px solid var(--background-2);
+}

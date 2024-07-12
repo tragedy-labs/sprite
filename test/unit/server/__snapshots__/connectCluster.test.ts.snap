@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteServer.connectCluster() should propagate errors from internal methods 1`] = `[Error: There was an error attempting to connect cluster at: http://localhost:2480]`;

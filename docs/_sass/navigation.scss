@@ -1,0 +1,216 @@
+@import './utilities.scss';
+
+#main_nav {
+  min-width: 320px;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  border-right: 1px solid var(--frame-border-color);
+  box-shadow: var(--box-shadow-1), var(--box-shadow-2);
+  transition: opacity 125ms ease, transform 125ms ease;
+  z-index: 1;
+  opacity: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  top: 0px;
+  bottom: 0px;
+
+  #nav_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.01rem;
+
+    #nav_frame {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      button,
+      a {
+        text-decoration: none;
+
+        .menu-item {
+          line-height: 1.309rem;
+        }
+
+        &:focus {
+          color: var(--nav-focus-color);
+          .menu-item {
+            background: var(--nav-focus-background);
+            &:hover {
+              background: var(--nav-focus-background);
+            }
+            svg {
+              fill: var(--accent-2)
+            }
+
+            .marker {
+              color: var(--accent-2);
+            }
+          }
+          &:hover {
+            background: var(--nav-hover-background);
+          }
+        }
+
+        &:hover {
+          .menu-item {
+            background: var(--nav-hover-background);
+          }
+        }
+      }
+    }
+
+    ul,
+    ol {
+      width: 100%;
+      list-style: none;
+
+      li {
+
+        ul,
+        ol {
+          li {
+            position: relative;
+
+            &:before {
+              width: calc(1.1545rem - 2px);
+              height: calc(100% + 1px);
+              border-left: 2px solid var(--nav-tree-color);
+              border-bottom: 2px solid var(--nav-tree-color);
+              left: calc(0.4635rem + 2px);
+              top: 0px;
+              transform: translateY(-50%);
+              content: '';
+              display: block;
+              position: absolute;
+              z-index: -1;
+            }
+          }
+        }
+
+        ol,
+        ul {
+          .marker {
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--foreground-1);
+            justify-content: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            line-height: 0;
+            margin: 0 var(--space-3) 0 0;
+          }
+        }
+      }
+    }
+
+    footer {
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+      border-top: 1px solid var(--frame-border-color);
+
+      #theme_changer {
+        position: relative;
+        display: inline-block;
+        width: var(--full-line);
+        height: var(--full-line);
+
+        input[type="checkbox"] {
+          width: 0px;
+          height: 0px;
+          opacity: 0;
+        }
+
+        svg {
+          position: absolute;
+          top: 0px;
+        }
+
+        figure {
+          color: var(--accent);
+
+          #dark_icon {
+            display: none;
+          }
+
+          #light_icon {
+            display: block;
+          }
+
+          &:hover {
+            color: var(--accent-2);
+          }
+        }
+
+
+        input[type=checkbox] {
+          &:checked+ {
+            figure {
+
+              #light_icon {
+                display: none;
+              }
+
+              #dark_icon {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  &.open {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.inset-focus-ring {
+  &:focus {
+    outline-offset: -4px;
+    outline: var(--outline);
+  }
+}
+
+
+/* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
+.accordion-panel[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 820px) {
+  #main_nav {
+    width: 37.8%;
+    max-width: 400px;
+    position: relative;
+    left: 0px;
+    backdrop-filter: unset;
+    background: unset;
+    transform: unset;
+    opacity: 1;
+    transition: unset;
+    box-shadow: unset;
+  }
+
+  #nav_button {
+    display: none;
+  }
+}
+
+
+@media (max-width: 1300px) {
+  #main_nav {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.createEdge() should propagate errors from the database 1`] = `[Error: Unable to build CREATE EDGE sql command.]`;

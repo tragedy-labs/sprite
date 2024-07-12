@@ -1,0 +1,26 @@
+#documentHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--frame-border-color);
+  text-shadow: var(--decorative-shadow);
+
+  h1 {
+    margin: unset;
+    padding: var(--space-3) 0;
+    position: relative;
+    z-index: 9;
+    font-family: "Retro Pixel Petty 5X5";
+    a {
+      color: var(--foreground-1);
+      text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 860px) {
+  #documentHeader {
+    // h1 {
+    //   margin: 0 0 0 var(--space-1);
+    // }
+  }
+}

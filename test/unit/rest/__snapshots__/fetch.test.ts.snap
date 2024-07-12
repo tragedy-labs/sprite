@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteBase.fetch() should forward a 500 response to the calling method 1`] = `
+{
+  "json": [Function],
+  "status": 500,
+}
+`;
+
+exports[`SpriteBase.fetch() should forward an unexpected response to the calling method 1`] = `
+{
+  "json": [Function],
+  "status": 999,
+}
+`;
+
+exports[`SpriteBase.fetch() should throw an error for a 403 response 1`] = `[ArcadeFetchError: 403 Forbidden / Invalid Credentials. The server understood the request but refuses to authorize it. If authentication credentials were provided in the request, the server considers them insufficient to grant access.]`;
+
+exports[`SpriteBase.fetch() should throw an error for a 404 response 1`] = `[ArcadeFetchError: 404 Not Found. The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.]`;

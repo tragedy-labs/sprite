@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.createType() should throw an error if it receives an empty string for parameters 1`] = `[Error: Unable to create type: [''], in database: ['Test']]`;
+
+exports[`SqlDialect.createType() should throw an error if it receives no arguments 1`] = `[Error: Unable to create type: ['undefined'], in database: ['Test']]`;
+
+exports[`SqlDialect.createType() should throw an error if the server response result contains an array containing an object that does not contain the created typename 1`] = `[Error: Unable to create type: ['aDocument'], in database: ['Test']]`;
+
+exports[`SqlDialect.createType() should throw an error if the server response result is an empty array, and ifNotExists is not true 1`] = `[Error: Unable to create type: ['aDocument'], in database: ['Test']]`;

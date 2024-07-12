@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Retro Pixel Petty 5X5";
+  src:
+    local("Retro Pixel Petty 5X5"),
+    url("../fonts/retro-pixel-petty-5x5.woff2") format("woff2");
+}
+
+body {
+  font-size: var(--font-size-base);
+  font-family: -apple-system, BlinkMacSystemFont, "Lato", "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 900;
+}
+
+h1,
+h2,
+h3 {
+  font-size: var(--full-line);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.02rem;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+h3 {
+  margin: var(--space-1) 0;
+  font-size: 1.305rem;
+  font-weight: 900;
+
+  em {
+    font-weight: 500;
+    color: var(--title-emphasis-color);
+    font-style: normal;
+  }
+}
+
+h4 {
+  color: var(--foreground-1);
+  font-size: 1.45rem;
+  margin: var(--section-start-padding) 0 0 0;
+}
+
+h5 {
+  font-size: var(--font-size);
+  margin: var(--space-1) 0;
+}
+
+h6 {
+  color: var(--pink);
+  margin: var(--padding-small) 0;
+  text-transform: uppercase;
+}
+
+p {
+  margin: var(--section-padding) 0;
+  line-height: var(--paragraph-line-height);
+}
+
+
+@media (min-width: 680px) {
+  h1 {
+    font-size: 2.0rem;
+  }
+
+  h3 {
+    font-size: 1.95rem;
+  }
+}

@@ -1,0 +1,23 @@
+<div id="searchResults" class="hidden highlight-shadow">
+  <header class="flex col">
+    <div id="searchBox" class="center-items">
+      <input class="button-reset highlight-shadow" type="search" id="searchInput" aria-label="Search" />
+      <label for="searchInput" id="searchLabel">search</label>
+      {%
+      include button/button.liquid
+      icon="icons/close.svg"
+      title="Close Search Dialog"
+      id="close_search_dialog"
+      %}
+    </div>
+    <div class="big-icon padding-h-section padding-v-2 flex row bottom-border content-center-v">
+      <span class="padding-h-3">
+        {% include icons/filter.svg %}
+      </span>
+      {% include search/filters.liquid %}
+    </div>
+  </header>
+  <ul id="resultList">
+    <li class="no-results">No results found</li>
+  </ul>
+</div>

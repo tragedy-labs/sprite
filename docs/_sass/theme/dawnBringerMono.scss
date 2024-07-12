@@ -1,0 +1,141 @@
+.dark {
+  .highlight {
+    background: var(--grey-dark);
+    color: var(--grey-light);
+
+    .hll,
+    .s,
+    .sa,
+    .sb,
+    .sc,
+    .dl,
+    .sd,
+    .s2,
+    .se,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .s1,
+    .ss {
+      color: var(--yellow);
+    }
+
+    .nc {
+      color: var(--cyan);
+    }
+
+    .go {
+      color: var(--grey);
+    }
+
+    .err,
+    .g,
+    .l,
+    .n,
+    .x,
+    .p,
+    .ge,
+    .gr,
+    .gh,
+    .gi,
+    .gp,
+    .gs,
+    .gu,
+    .gt,
+    .ld,
+    .na,
+    .no,
+    .nd,
+    .ni,
+    .ne,
+    .nn,
+    .py,
+    .w,
+    .bp {
+      color: var(--grey-light);
+    }
+
+    .gh,
+    .gi,
+    .gu {
+      font-weight: bold;
+    }
+
+    .ge {
+      text-decoration: underline;
+    }
+
+    .bp {
+      font-style: italic;
+    }
+
+    .c,
+    .ch,
+    .cm,
+    .cpf,
+    .c1,
+    .cs {
+      color: var(--blue);
+    }
+
+    .kd,
+    .kt,
+    .nb,
+    .nl,
+    .nv,
+    .vc,
+    .vg,
+    .vi,
+    .vm {
+      color: var(--pink);
+    }
+
+    .nb,
+    .nl,
+    .nv,
+    .vc,
+    .vg,
+    .vi,
+    .vm {
+      font-style: italic;
+    }
+
+    .nf,
+    .fm {
+      color: var(--green);
+    }
+
+    .k,
+    .o,
+    .cp,
+    .kc,
+    .kn,
+    .kp,
+    .kr,
+    .nt,
+    .ow {
+      color: var(--pink);
+    }
+
+    .k {
+      font-weight: 900;
+    }
+
+
+    .nx,
+    .m,
+    .mb,
+    .mf,
+    .mh,
+    .mi,
+    .mo,
+    .il {
+      color: var(--purple);
+    }
+
+    .gd {
+      color: var(--red);
+    }
+  }
+}

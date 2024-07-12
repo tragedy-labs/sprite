@@ -1,0 +1,14 @@
+footer.tutorial {
+  justify-content: space-between;
+  a {
+    text-decoration: unset;
+  }
+
+  &.nextOnly {
+    justify-content: flex-end;
+  }
+
+  &.prevOnly {
+    justify-content: flex-start;
+  }
+}

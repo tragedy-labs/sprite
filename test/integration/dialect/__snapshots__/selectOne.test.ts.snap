@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.selectOne() should propagate errors from the database 1`] = `[Error: Could not select RID: [SELECT_ONE_INVALID_TYPE], from database SpriteIntegrationTesting.]`;

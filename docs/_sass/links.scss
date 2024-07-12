@@ -1,0 +1,26 @@
+a {
+  outline: none;
+  text-decoration-style: var(--link-decoration-style);
+  text-decoration-thickness: var(--link-decoration-thickness);
+}
+
+.hover-accent-2 {
+  &:hover {
+    color: var(--accent-2);
+  }
+}
+
+#content {
+  a {
+    color: var(--accent-2);
+    &:hover {
+      color: var(--foreground-2);
+    }
+    &:focus {
+      outline: var(--outline);
+      outline-offset: var(--outline-offset);
+      background: var(--background-2);
+      color: var(--foreground-1);
+    }
+  }
+}

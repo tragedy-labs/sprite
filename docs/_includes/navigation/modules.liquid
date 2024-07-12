@@ -1,0 +1,8 @@
+{% for class in site.data.nav.modules %}
+  {%
+    include navigation/list.liquid
+    title=class.name
+    items=class.methods
+    icon='icons/cpu.svg'
+  %}
+{% endfor %}

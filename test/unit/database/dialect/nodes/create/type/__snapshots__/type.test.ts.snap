@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sql > nodes > create > type > type should error if the typename is invalid 1`] = `"Could not generate TYPE node for type: [   ]"`;

@@ -1,0 +1,79 @@
+@mixin highlight-shadow {
+  box-shadow: var(--box-highlight), var(--box-shadow-1), var(--box-shadow-2);
+}
+
+@mixin no-flex-wrap {
+  white-space: nowrap;
+  flex-wrap: none;
+}
+
+@mixin background-2 {
+  background: var(--background-2);
+}
+
+@mixin flex-row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+@mixin background-transition {
+  transition: background var(--transition-speed-1) ease;
+}
+
+@mixin items-center {
+  align-content: center;
+}
+
+@mixin hover-bg {
+  &:hover {
+    background-color: var(--background-3);
+  }
+}
+
+@mixin focus-bg {
+  &:focus {
+    background-color: var(--background-1);
+  }
+}
+
+@mixin focus-ring {
+  &:focus {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+  }
+}
+
+.focus-ring {
+  @include focus-ring;
+}
+
+@mixin bold-text {
+  font-weight: var(--font-weight-bold);
+}
+
+@mixin bold-text {
+  font-weight: var(--font-weight-bold);
+}
+
+@mixin padding-1 {
+  padding: var(--padding-1);
+}
+
+@mixin padding-2 {
+  padding: var(--padding-2);
+}
+
+@mixin padding-3 {
+  padding: var(--padding-3);
+}
+
+@mixin padding-4 {
+  padding: var(--padding-4);
+}

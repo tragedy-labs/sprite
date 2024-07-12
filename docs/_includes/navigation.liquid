@@ -1,0 +1,29 @@
+<nav id="main_nav" class="frosted-glass flex col bold-text">
+  <div id="nav_content">
+    <div id="nav_frame" class="flex col full-width padding-2 scroll-y">
+      <h2 class="padding-v-2 margin-2 foreground-purplegit  bottom-border" id="getting_started_label">Guides</h2>
+      <ul aria-labelledby="getting_started_label">
+        {% include navigation/tutorials.liquid %}
+        <li class="row">
+          <a href="{{ site.baseurl }}/contribute.html" class="foreground-1 full-width">
+            <span
+              class="row menu-item with-icon med-icon padding-v-3 padding-h-2 block radius-1 content-center-v full-width">
+              {% include icons/edit.svg %}Contributing
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <h2 class="padding-v-2 margin-2 foreground-purple bottom-border" id="api_documentation_label">API</h2>
+      <ul aria-labelledby="api_documentation_label">
+        {% include navigation/sprite_server.liquid %}
+        {% include navigation/sprite_database.liquid %}
+        {% include navigation/document_modality.liquid %}
+        {% include navigation/graph_modality.liquid %}
+        {% include navigation/sprite_transaction.liquid %}
+        {% include navigation/types.liquid %}
+      </ul>
+    </div>
+    {% include navigation/footer.liquid %}
+  </div>
+</nav>

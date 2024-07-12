@@ -1,0 +1,5 @@
+# Ignore JavaScript files in the docs directory for language statistics
+docs/**/*.js linguist-vendored
+
+# Ignore the ESLint configuration file
+eslint.config.js linguist-vendored

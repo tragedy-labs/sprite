@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteBase.serverReady() should propagate errors from internal methods 1`] = `[Error: Unable to check the server status.]`;

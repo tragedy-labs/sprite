@@ -1,0 +1,64 @@
+.background-1 {
+  background-color: var(--background-1);
+}
+
+.background-2 {
+  background-color: var(--background-2);
+}
+
+.background-3 {
+  background-color: var(--background-3);
+}
+
+.background-accent {
+  background-color: var(--accent);
+}
+
+
+.foreground-1 {
+  color: var(--foreground-1);
+}
+
+.foreground-2 {
+  color: var(--foreground-2);
+}
+
+.foreground-3 {
+  color: var(--foreground-3);
+}
+
+.foreground-invert-1 {
+  color: var(--background-1);
+}
+
+.foreground-invert-2 {
+  color: var(--background-2);
+}
+
+.foreground-invert-3 {
+  color: var(--background-3);
+}
+
+.foreground-accent {
+  color: var(--accent);
+}
+
+.foreground-purple {
+  color: var(--purple);
+}
+
+.foreground-red {
+  color: var(--red);
+}
+
+.fill-purple {
+  svg {
+    fill: var(--purple);
+  }
+}
+
+.fill-accent {
+  svg {
+    fill: var(--accent);
+  }
+}

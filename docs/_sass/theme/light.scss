@@ -1,0 +1,52 @@
+@import './duskBringerMono.scss';
+
+.light {
+  --background-1: #f9f9f9;
+  --background-2: #dfdfdf;
+  --background-3: #cecece;
+  --background-4: #bdbdbd;
+
+  --foreground-1: #111;
+  --foreground-2: #000;
+  --foreground-3: #222;
+
+  --link-hover: #8d4cd8;
+
+  --title-emphasis-color: var(var(--foreground-primary));
+
+  --nav-focus-background: #dfdfdf;
+  --nav-hover-background: #efefef;
+  --nav-hover-foreground: var(--foreground-2);
+  --nav-focus-hover-background: #dfdfdf;
+  --nav-focus-color: var(--purple);
+  --nav-tree-color: var(--background-3);
+
+  --border-color: rgba(0, 0, 0, 0.2);
+  --button-border-color: rgba(0, 0, 0, 0.1);
+  --button-background-hover: var(--background-3);
+  --button-background-focus: var(--background-4);
+
+  --outline: var(--accent) solid 2px;
+
+  // Code Highlighting
+  --grey: #666;
+  --dark-gray: #555;
+  --code-background: #efefef;
+  --cyan: #0e7294;
+  --pink: #be3858;
+  --orange: #cabd47;
+  --purple: #552e81;
+  --red: #ff5555;
+  --green: #04966f;
+
+  --frosted-background: rgba(230, 230, 220, 0.01);
+  --frosted-background-2: rgba(116, 116, 116, 0.1);
+  --link-underline-color: var(--accent);
+  --accent-2: var(--purple);
+  --accent: #666;
+  --background-selected: rgba(255, 255, 255, 0.1);
+
+  --box-highlight: inset 1px 1px 1px rgba(255, 255, 255, 0.25);
+  --box-shadow-1: 0 3px 6px rgba(0, 0, 0, 0.04);
+  --box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.065);
+}

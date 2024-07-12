@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.deleteOne() should propagate errors from internal method calls 1`] = `[Error: Could not delete record: [#0:0]]`;

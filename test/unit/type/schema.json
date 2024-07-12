@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "aProperty": {
+      "type": "string",
+      "default": "string",
+      "minLength": 6,
+      "maxLength": 8
+    },
+    "bProperty": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

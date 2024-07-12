@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.insertRecord() should propagate errors from from the database 1`] = `[Error: Unable to build SQL command for INSERT INTO [INVALID_TYPE_NAME] in database: [SpriteIntegrationTesting]]`;

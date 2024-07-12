@@ -1,0 +1,36 @@
+@import './utilities.scss';
+
+div.highlight {
+  min-width: 100%;
+  margin: var(--space-1) 0;
+  border-radius: 4px;
+  border: var(--button-border);
+}
+
+pre {
+  padding: var(--space-3);
+  overflow-x: scroll;
+  @include highlight-shadow;
+  border-radius: 4px;
+}
+
+a>code,
+code {
+  font-size: var(--code-font-size);
+  background: var(--background-2);
+  border-radius: var(--border-radius);
+  padding: 0 var(--space-4);
+  border: var(--button-border);
+}
+
+pre>code {
+  padding: unset;
+  border: unset;
+  background: unset;
+}
+
+a>code {
+  &:hover {
+    color: var(--accent);
+  }
+}

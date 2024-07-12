@@ -1,0 +1,46 @@
+.toggleButtonGroup {
+  position: relative;
+  white-space-collapse: collapse;
+  &:hover {
+    background: inherit;
+  }
+
+  input {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    border: unset;
+    display: block;
+    & + label {
+      color: var(--accent);
+    }
+
+    &:checked+label {
+      background: var(--nav-tree-color);
+      color: var(--accent-2);
+    }
+
+    &:focus+label {
+      outline: var(--outline);
+      z-index: 9;
+    }
+  }
+
+  label {
+
+    &:first-of-type {
+      border-top-left-radius: var(--radius-1);
+      border-bottom-left-radius: var(--radius-1);
+      border-right: unset;
+    }
+
+    &:last-of-type {
+      border-left: unset;
+      border-top-right-radius: var(--radius-1);
+      border-bottom-right-radius: var(--radius-1);
+    }
+  }
+}

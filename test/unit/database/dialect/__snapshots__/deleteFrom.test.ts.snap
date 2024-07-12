@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteOperations.deleteOne() should propagate errors from internal methods 1`] = `[Error: Could not delete record of type: ['aDocument'], from database ['Test'], where: ['undefined'].]`;

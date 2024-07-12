@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArcadeParameterValidation.simpleIdentifier() should throw a TypeError if the variable does not match the regex 1`] = `"The supplied argument could not be validated as an identifier for ArcadeDB Sprite currently only allows simple identifiers as described in the documentation: https://docs.arcadedb.com/#SQL-Syntax. The supplied argument was: ["_ _ _ _"], which is of type: [string]."`;
+
+exports[`ArcadeParameterValidation.simpleIdentifier() should throw a TypeError if the variable is not a string 1`] = `"The supplied argument could not be validated as an identifier for ArcadeDB Sprite currently only allows simple identifiers as described in the documentation: https://docs.arcadedb.com/#SQL-Syntax. The supplied argument was: [1], which is of type: [number]."`;

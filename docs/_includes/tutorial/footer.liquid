@@ -1,0 +1,13 @@
+<footer
+  class="tutorial padding-v-1 flex {% unless page.prevUrl %}nextOnly{% endunless %}{% unless page.nextUrl %}prevOnly{% endunless %}">
+  {% if page.prevUrl %}
+  <a href="{{ site.baseurl }}{{ page.prevUrl }}" class="prev button with-icon med-icon radius-1 padding-3 content-center-v"
+    aria-label="Previous: {{ page.prevDesc}}">{% include icons/arrow-left.svg %}Previous<span class="mobile-hidden">: {{
+      page.prevDesc}}</span></a>
+  {% endif %}
+  {% if page.nextUrl %}
+  <a href="{{ site.baseurl }}{{ page.nextUrl }}" class="next button with-icon-right radius-1 padding-3 content-center-v"
+    aria-label="Next: {{ page.nextDesc}}">Next<span class="mobile-hidden">:
+      {{ page.nextDesc}}</span>{% include icons/arrow-right.svg %}</a>
+  {% endif %}
+</footer>

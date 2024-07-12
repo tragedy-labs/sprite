@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SQL > nodes > create > bucket validates the bucket name, erroring if invalid 1`] = `"Could not set BUCKET [bucketName(s)] on the command."`;

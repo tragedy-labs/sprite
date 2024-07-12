@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArcadeParameterValidation.url() should throw an error if the URL is not valid 1`] = `"The supplied argument could not be validated as properly formatted URL. The supplied argument was: ["not a url"], which is of type: [string]."`;

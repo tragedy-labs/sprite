@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteBase.fetchJson() should propagate errors from internal methods 1`] = `[TypeError: fetch failed]`;
+
+exports[`SpriteBase.fetchJson() should throw an ArcadeDatabaseError when it receives an object with an error property 1`] = `[ArcadeDatabaseError: test. test details.]`;

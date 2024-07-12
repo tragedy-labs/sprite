@@ -1,0 +1,54 @@
+@import "./dawnBringerMono.scss";
+
+.dark {
+  --background-1: #111;
+  --background-2: #222;
+  --background-3: #333;
+  --background-4: #333;
+
+  --foreground-1: #efefef;
+  --foreground-2: #e6e6e6;
+  --foreground-3: #93bcf9;
+  --foreground-4: #93bcf9;
+
+  --button-background-hover: #252525;
+  --link-hover: #c18bfa;
+
+  --nav-focus-background: rgba(99, 99, 99, 0.25);
+  --nav-hover-foreground: #fff;
+  --nav-hover-background: rgba(99, 99, 99, 0.1);
+  --nav-focus-color: var(--accent-2);
+  --nav-tree-color: #333;
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --button-border-color: rgba(0, 0, 0, 0.5);
+
+  --outline: var(--accent-2) solid 2px;
+  --title-emphasis-color: var(--foreground-primary);
+
+  // Colors
+  --grey-dark: #171717; // Background
+  --grey: #44475a; // Current Line & Selection
+  --grey-light: #f2eff6; // Foreground
+  --blue: #7f8ad1; // Comment
+  --cyan: #50baec;
+  --green: #8fff9c;
+  --orange: #ffa86d;
+  --pink: #ff6daf;
+  --purple: #b67ef3;
+  --red: #ff5555;
+  --yellow: #ffe192;
+
+  --frosted-background: rgba(17, 17, 17, 0.35);
+  --frosted-background-2: rgba(66, 66, 66, 0.325);
+  --link-underline-color: white;
+
+  --accent: #999;
+  --accent-2: var(--purple);
+
+  --background-selected: rgba(255, 255, 255, 0.1);
+
+  --box-highlight: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
+  --box-shadow-1: 0 3px 6px rgba(0, 0, 0, 0.03);
+  --box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.0375);
+}

@@ -1,0 +1,46 @@
+@import "./light.scss";
+@import "./dark.scss";
+
+body {
+  --font-size-base: 16px;
+  --font-weight-bold: 700;
+  --paragraph-line-height: 1.618;
+  --full-line: 1.612rem;
+  --frosted-backdrop: blur(20px);
+  --section-padding: var(--full-line);
+  --section-start-padding: 3.216rem;
+
+  --button-border: 1px solid var(--button-border-color);
+  --frame-border-color: var(--border-color);
+
+  --border-radius: 4px;
+  --outline-offset: 2px;
+
+  --code-font-size: 0.9rem;
+
+  --link-decoration-style: dotted;
+  --link-decoration-thickness: 1px;
+
+  --nav-button-size: 3.24rem;
+
+  --radius-1: 4px;
+  --transition-speed-1: 125ms;
+
+  --decorative-shadow: 1px 1px 0 var(--background-1), 2px 2px 0 var(--purple);
+    
+  --space-1: 1.618rem;
+  --space-2: 0.809rem;
+  --space-3: 0.621rem;
+  --space-4: 0.3105rem;
+  --space-5: 0.1505rem;
+
+  --space-1-neg: -1.618rem;
+  --space-section: var(--space-3);
+
+  --mobile-break: 820px;
+
+  @media (min-width: 820px) {
+    --space-section: var(--space-1);
+  }
+
+}

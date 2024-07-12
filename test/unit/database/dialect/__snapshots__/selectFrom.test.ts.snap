@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypedOperations.selectFrom() should propagate errors from internal methods calls 1`] = `[Error: Could not execute select command on type:aDocument in database Test]`;

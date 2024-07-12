@@ -1,0 +1,118 @@
+.light {
+  .highlight {
+    .hll {
+      background-color: var(--code-background);
+    }
+
+    background: var(--code-background);
+
+    .c {
+      color: var(--grey);
+      font-style: italic;
+    }
+
+    .err {
+      border: 1px solid var(--red);
+    }
+
+    .k {
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .ch,
+    .cm {
+      color: var(--grey);
+      font-style: italic;
+    }
+
+    .cp {
+      color: var(--grey);
+      font-weight: bold;
+    }
+
+    .cpf,
+    .c1 {
+      color: var(--grey);
+      font-style: italic;
+    }
+
+    .cs {
+      color: var(--grey);
+      font-weight: bold;
+    }
+
+    .kc {
+      font-weight: bold;
+    }
+
+    .kd {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .kn,
+    .kp,
+    .kr,
+    .kt {
+      font-weight: bold;
+    }
+
+    .s {
+      color: var(--dark-grey);
+      font-style: italic;
+    }
+
+    .nb {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .nx {
+      color: var(--cyan);
+    }
+
+    .nc,
+    .no,
+    .nf,
+    .nn,
+    .nv {
+      color: var(--pink);
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .ow {
+      font-weight: bold;
+    }
+
+    .sb,
+    .sc,
+    .sd,
+    .s2,
+    .se,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .s1,
+    .ss {
+      color: var(--dark-grey);
+      font-style: italic;
+    }
+
+    .bp {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .vc,
+    .vg,
+    .vi {
+      color: var(--dark-grey);
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+
+}

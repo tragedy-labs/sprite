@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SqlDialect.selectFrom() should propagate errors from the database 1`] = `[Error: Could not execute select command on type:INVALID_TYPE_NAME in database SpriteIntegrationTesting]`;

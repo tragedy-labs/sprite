@@ -1,0 +1,12 @@
+table {
+  border-collapse: collapse;
+  td {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1.618rem 1.618rem 1.618rem 0;
+    font-family: monospace;
+  }
+  th {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1.618rem 0;
+  }
+}

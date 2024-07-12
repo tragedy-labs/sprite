@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    // Enables allowing default imports from modules that don't have default export.
+    "allowSyntheticDefaultImports": true,
+    // Indicates whether to generate corresponding .d.ts files for the compiled TypeScript files. Disabled in this case.
+    "declaration": true,
+    // Emit design-type metadata for decorated declarations in source files.
+    "emitDecoratorMetadata": true,
+    // Enables experimental support for ES7 decorators.
+    "experimentalDecorators": true,
+    // Sets the ECMAScript target version for the emitted JavaScript code.
+    "target": "ES2022",
+    // Specifies the module system for generated code.
+    "module": "Node16",
+    // Sets the module resolution strategy to Node.js style.
+    "moduleResolution": "Node16",
+    // Specifies the library files to be included in the compilation. ES2022 and DOM are included here.
+    "lib": ["ES2022", "DOM"],
+    // Generates corresponding .map files that provide source mapping for TypeScript to JavaScript.
+    "sourceMap": true,
+    // Sets the output directory for compiled JavaScript files.
+    "outDir": "./dist",
+    // Simplifies the interoperability between CommonJS and ES Modules.
+    "esModuleInterop": true,
+    // Allows importing `.json` files as modules.
+    "resolveJsonModule": true,
+    // Enables strict type checking options.
+    "strict": true,
+    // Skips type checking of declaration files. This might improve build speed.
+    "skipLibCheck": true,
+    // Sets the root directory of input files. All other paths are relative to this.
+    "rootDir": "./",
+    // Provides a base directory for non-relative module names. All paths will be resolved relative to this baseUrl.
+    "baseUrl": "./",
+    "paths": {
+      // Maps the '@/*' import to the 'src/*' directory.
+      "@/*": ["src/*"],
+    }
+  },
+  // Specifies folder patterns to exclude from the compilation.
+  "exclude": [
+    // Excludes 'node_modules' directory.
+    "**/node_modules",
+    // Excludes 'dist' directory.
+    "**/dist",
+    "**/docs"
+  ]
+}

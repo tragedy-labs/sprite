@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArcadeParameterValidation.databaseName() should throw a TypeError if the variable does not match the regex 1`] = `"The supplied argument could not be validated as a properly formatted database name for ArcadeDB. Names with spaces and odd symbols can cause problems. The supplied argument was: ["_ _ _ _"], which is of type: [string]."`;
+
+exports[`ArcadeParameterValidation.databaseName() should throw a TypeError if the variable is not a string 1`] = `"The supplied argument could not be validated as a properly formatted database name for ArcadeDB. Names with spaces and odd symbols can cause problems. The supplied argument was: [1], which is of type: [number]."`;

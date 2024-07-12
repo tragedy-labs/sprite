@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteServer.dropUser should not allow dropped user to check status of database 1`] = `[Error: Unable to check the server status.]`;
+
+exports[`SpriteServer.dropUser should propagate errors from the database 1`] = `[Error: Could not drop user dropUserName.]`;

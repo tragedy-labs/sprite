@@ -1,0 +1,6 @@
+# .npmignore
+node_modules
+test
+docs
+src
+*.log

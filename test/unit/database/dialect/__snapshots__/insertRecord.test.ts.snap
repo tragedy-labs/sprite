@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypedOperations.insertRecord() propagates errors from internal methods 1`] = `[Error: Unable to build SQL command for INSERT INTO [aDocument] in database: [Test]]`;
