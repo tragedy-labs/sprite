@@ -1,10 +1,11 @@
 {
-  "name": "@valence-corp/sprite",
-  "version": "0.0.2",
+  "name": "@tragedy-labs/sprite",
+  "version": "0.0.1",
   "description": "A TypeScript driver for ArcadeDB",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "dev": "nodemon --watch ./ --ext ts --exec 'rimraf ./dist && tsc && node ./dist/index.js'",
     "build": "rimraf ./dist && tsc -p ./tsconfig.build.json",
