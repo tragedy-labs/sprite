@@ -1,5 +1,5 @@
 import data from "/assets/js/searchData.js";
-import serializedIndex from "./assets/js/serialized.js";
+import serializedIndex from "/assets/js/serialized.js";
 //import lunr from "lunr"; // assuming lunr is a separate module
 
 // Constants
