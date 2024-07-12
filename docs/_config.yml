@@ -1,4 +1,3 @@
-baseurl: "/sprite"
 collections:
   SpriteServer:
     output: true
