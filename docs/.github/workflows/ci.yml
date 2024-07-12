@@ -1,0 +1,30 @@
+name: Sprite CI
+run-name: 👾 ${{ github.actor }} is making a commit 🛸
+on: [pull_request, push]
+jobs: 
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      arcade:
+        image: arcadedata/arcadedb:latest
+        ports:
+          - 2480:2480 # host : container port
+        options: --env JAVA_OPTS="-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/valence-corp/sprite/raw/main/test/integration/DefaultDB.zip}"
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install --legacy-peer-deps
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Run integration tests
+        run: npm run test:integration
