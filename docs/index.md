@@ -20,7 +20,7 @@ There are [tutorials]({{site.baseUrl}}tutorials/introduction.html) to introduce 
 
 #### API Documentation
 
-Provides reference for public modules and methods in the library. You can also view the [raw API documentation generated]({{page.baseUrl}}/sprite/api) by TypeDoc. Everything is based on the same documentation that is available in-editor, however the raw documentation might be more complete while the features of the documentation site are begin finished.
+Provides reference for public modules and methods in the library. You can also view the [raw API documentation generated]({{page.baseUrl}}/api) by TypeDoc. Everything is based on the same documentation that is available in-editor, however the raw documentation might be more complete while the features of the documentation site are begin finished.
 
 #### Source Code
 
