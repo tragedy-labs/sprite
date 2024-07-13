@@ -8,7 +8,7 @@ permalink: /DocumentModality/createType.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.createType
+### _DocumentModality_.createType
 
 #### Interface
 

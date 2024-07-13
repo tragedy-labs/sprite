@@ -8,7 +8,7 @@ permalink: /GraphModality/selectFrom.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.selectFrom
+### _GraphModality_.selectFrom
 
 #### Interface
 

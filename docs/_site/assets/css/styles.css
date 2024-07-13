@@ -846,7 +846,7 @@ table th {
 }
 #searchResults #resultList {
   list-style: none;
-  padding: 0 var(--space-section);
+  padding: 0;
   margin: 0;
   overflow-y: auto;
   display: flex;
@@ -854,32 +854,40 @@ table th {
   flex: 1;
 }
 #searchResults #resultList li {
-  padding: var(--space-2) 0;
-  display: flex;
-  flex-direction: row;
   border-bottom: var(--button-border);
 }
 #searchResults #resultList li:focus {
   background: var(--accent);
 }
-#searchResults #resultList li section {
-  overflow: hidden;
-  padding: 0 var(--space-section);
+#searchResults #resultList li a {
+  display: flex;
+  flex-direction: row;
+  color: var(--foreground-1);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-section);
 }
-#searchResults #resultList li section a {
+#searchResults #resultList li a:focus-visible {
+  background: var(--accent);
+  color: var(--background-1);
+}
+#searchResults #resultList li a div {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#searchResults #resultList li a div span {
   font-weight: var(--font-weight-bold);
   font-size: 1.1525rem;
-  color: var(--foreground-1);
   display: block;
-  text-decoration: none;
 }
-#searchResults #resultList li section p {
+#searchResults #resultList li a div p {
   margin: 0;
+  line-height: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#searchResults #resultList li:before {
+#searchResults #resultList li a:before {
   content: " ";
   display: flex;
   background: var(--purple);
@@ -898,22 +906,22 @@ table th {
   margin: 0 var(--space-3) 0 0;
   box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.25), 0 3px 10px rgba(0, 0, 0, 0.0375), 0 6px 15px rgba(0, 0, 0, 0.0625);
 }
-#searchResults #resultList li.interface:before {
+#searchResults #resultList li a.interface:before {
   content: "I";
   display: inline-flex;
   background: linear-gradient(45deg, var(--cyan), var(--purple));
 }
-#searchResults #resultList li.method:before {
+#searchResults #resultList li a.method:before {
   content: "M";
   display: inline-flex;
   background: linear-gradient(45deg, var(--green), var(--orange));
 }
-#searchResults #resultList li.type:before {
+#searchResults #resultList li a.type:before {
   content: "T";
   display: inline-flex;
   background: linear-gradient(45deg, var(--purple), var(--cyan));
 }
-#searchResults #resultList li.class:before {
+#searchResults #resultList li a.class:before {
   content: "C";
   display: inline-flex;
   background: linear-gradient(45deg, var(--pink), var(--purple));

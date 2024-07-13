@@ -8,7 +8,7 @@ permalink: /GraphModality/selectOne.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.selectOne
+### _GraphModality_.selectOne
 
 #### Interface
 

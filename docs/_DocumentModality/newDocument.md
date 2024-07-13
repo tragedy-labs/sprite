@@ -8,7 +8,7 @@ permalink: /DocumentModality/newDocument.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.newDocument
+### _DocumentModality_.newDocument
 
 #### Interface
 

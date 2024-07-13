@@ -8,7 +8,7 @@ permalink: /GraphModality/deleteOne.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.deleteOne
+### _GraphModality_.deleteOne
 
 #### Interface
 

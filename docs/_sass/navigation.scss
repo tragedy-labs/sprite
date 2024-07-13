@@ -134,6 +134,10 @@
           top: 0px;
         }
 
+        input[type="checkbox"]:focus + figure {
+          
+        }
+
         figure {
           color: var(--accent);
 

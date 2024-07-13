@@ -8,7 +8,7 @@ permalink: /GraphModality/transaction.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.transaction
+### _GraphModality_.transaction
 
 #### Interface
 

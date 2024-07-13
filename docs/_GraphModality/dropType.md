@@ -8,7 +8,7 @@ permalink: /GraphModality/dropType.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.dropType
+### _GraphModality_.dropType
 
 #### Interface
 

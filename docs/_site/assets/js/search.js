@@ -1,6 +1,5 @@
-import data from "/sprite/assets/js/searchData.js";
-import serializedIndex from "./serialized.js";
-//import lunr from "lunr"; // assuming lunr is a separate module
+import data from '/assets/js/searchData.js';
+import serializedIndex from '/assets/js/serialized.js';
 
 // Constants
 const MIN_SEARCH_LENGTH = 3;
@@ -10,13 +9,13 @@ const state = {
   filters: {
     class: true,
     method: true,
-    type: true,
+    type: true
   },
   results: {
     filtered: [],
-    full: [],
+    full: []
   },
-  visible: false,
+  visible: false
 };
 
 // Elements for reference
@@ -29,42 +28,49 @@ const elements = {
   backdrop: null,
   filters: null,
   searchLabel: null,
-  close: null,
+  close: null
 };
 
 // Initialize search
 async function initializeSearch() {
-  const root = document.getElementById("search_button");
-  elements.input = document.getElementById("searchInput");
-  elements.resultsBox = document.getElementById("searchResults");
-  elements.resultList = document.getElementById("resultList");
-  elements.numberOfResults = document.getElementById("numberOfResults");
-  elements.numberResultsShowing = document.getElementById("numberResultsShowing");
-  elements.filters = document.getElementById("searchFilters")
-    .getElementsByTagName("input");
-  elements.searchLabel = document.getElementById("searchLabel");
-  elements.close = elements.resultsBox.querySelector("#close_search_dialog");
+  const root = document.getElementById('search_button');
+  elements.input = document.getElementById('searchInput');
+  elements.resultsBox = document.getElementById('searchResults');
+  elements.resultList = document.getElementById('resultList');
+  elements.numberOfResults = document.getElementById('numberOfResults');
+  elements.numberResultsShowing = document.getElementById(
+    'numberResultsShowing'
+  );
+  elements.filters = document
+    .getElementById('searchFilters')
+    .getElementsByTagName('input');
+  elements.searchLabel = document.getElementById('searchLabel');
+  elements.close = elements.resultsBox.querySelector('#close_search_dialog');
 
   // Add event listeners
-  elements.input.addEventListener("input", search);
-  elements.close.addEventListener("click", hideSearchBox);
+  elements.input.addEventListener('input', search);
+  elements.close.addEventListener('click', hideSearchBox);
 
   const openSearch = document.getElementById('search_button');
 
   openSearch.addEventListener('click', showResultsBox);
-  document.addEventListener('keydown', (e)=>{
-    if (e.key === '/') {
-      e.preventDefault();
-      showResultsBox();
-    };
-  }, false);
+  document.addEventListener(
+    'keydown',
+    (e) => {
+      if (e.key === '/') {
+        e.preventDefault();
+        showResultsBox();
+      }
+    },
+    false
+  );
 
   // Load the index
   const index = lunr.Index.load(serializedIndex);
 
   // Initialize search filter toggles
   for (let i = 0; i < elements.filters.length; ++i) {
-    elements.filters[i].addEventListener("change", () => {
+    elements.filters[i].addEventListener('change', () => {
       state.filters[elements.filters[i].value] = elements.filters[i].checked;
       updateResultList();
     });
@@ -72,20 +78,20 @@ async function initializeSearch() {
 
   // Define functions
   function appendBackdrop() {
-    elements.backdrop = document.createElement("div");
-    elements.backdrop.id = "backdrop";
-    elements.backdrop.addEventListener("click", hideSearchBox);
+    elements.backdrop = document.createElement('div');
+    elements.backdrop.id = 'backdrop';
+    elements.backdrop.addEventListener('click', hideSearchBox);
     document.body.appendChild(elements.backdrop);
   }
 
   function removeBackdrop() {
-    elements.backdrop.removeEventListener("click", appendBackdrop);
+    elements.backdrop.removeEventListener('click', appendBackdrop);
     elements.backdrop.remove();
     elements.backdrop = undefined;
   }
 
   function handleKeyboardSelection() {
-    const items = elements.list.querySelectorAll("a");
+    const items = elements.list.querySelectorAll('a');
     if (items.length > 0) {
       if (document.activeElement === elements.input) {
         e.preventDefault();
@@ -107,10 +113,10 @@ async function initializeSearch() {
   }
 
   function checkKeyPress(e) {
-    if (e.key === "Tab") {
+    if (e.key === 'Tab') {
       handleKeyboardSelection(e);
     }
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       hideSearchBox();
     }
   }
@@ -118,49 +124,57 @@ async function initializeSearch() {
   function showResultsBox() {
     appendBackdrop();
     state.visible = true;
-    elements.resultsBox.classList.remove("hidden");
+    elements.resultsBox.classList.remove('hidden');
     elements.input.focus();
-    document.addEventListener("keydown", checkKeyPress);
+    document.addEventListener('keydown', checkKeyPress);
   }
 
   function hideSearchBox() {
     state.visible = false;
-    elements.resultsBox.classList.add("hidden");
-    document.removeEventListener("keydown", checkKeyPress);
+    elements.resultsBox.classList.add('hidden');
+    document.removeEventListener('keydown', checkKeyPress);
     removeBackdrop();
   }
 
   function updateResultList() {
     state.results.filtered = [];
-    elements.resultList.innerHTML = "";
+    elements.resultList.innerHTML = '';
     // elements.numberOfResults.innerHTML = state.results.full.length;
     // elements.numberResultsShowing.innerHTML = state.results.filtered.length;
 
     if (state.results.full.length > 0) {
       state.results.full.forEach((result) => {
         const doc = data.find((doc) => doc.name === result.ref);
-        const type = doc.type === "interface" ? "type" : doc.type;
+        const type = doc.type === 'interface' ? 'type' : doc.type;
         if (state.filters[type]) {
           state.results.filtered.push(result.ref);
-          const section = document.createElement("section");
-          const desc = document.createElement("p");
-          const link = document.createElement("a");
-          const li = document.createElement("li");
-          li.classList.add(doc.type);
+          const div = document.createElement('div');
+          const desc = document.createElement('p');
+          const link = document.createElement('a');
+          const li = document.createElement('li');
+          const span = document.createElement('span');
+          span.textContent = doc.parent ? `${doc.parent}.${doc.name}` : doc.name;
+          link.classList.add(doc.type);
+          link.classList.add('searchResultLink');
 
-          link.href = `/sprite/doc/${doc.name}`;
-          link.className = "searchResultLink";
-          link.addEventListener("click", () => {});
-          link.textContent = doc.parent
-            ? `${doc.parent}.${doc.name}`
-            : doc.name;
+          if (doc.type === 'type' || doc.type === 'interface') {
+            link.href = `/types/${doc.name}.html`;
+          } else {
+            link.href = doc.parent
+              ? `/${doc.parent}/${doc.name}`
+              : `/${doc.name}/constructor.html`;
+          }
+
+          link.addEventListener('click', () => {});
 
           desc.textContent = doc.desc;
 
-          section.appendChild(link);
-          section.appendChild(desc);
+          div.appendChild(span);
+          div.appendChild(desc);
 
-          li.appendChild(section);
+          link.appendChild(div);
+
+          li.appendChild(link);
 
           elements.resultList.appendChild(li);
         }
@@ -179,9 +193,9 @@ async function initializeSearch() {
 
   function search() {
     if (elements.input.value.length > 0) {
-      elements.searchLabel.classList.add("hidden");
+      elements.searchLabel.classList.add('hidden');
     } else {
-      elements.searchLabel.classList.remove("hidden");
+      elements.searchLabel.classList.remove('hidden');
     }
 
     if (elements.input.value.length >= MIN_SEARCH_LENGTH) {
@@ -202,4 +216,4 @@ async function initializeSearch() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", initializeSearch);
+document.addEventListener('DOMContentLoaded', initializeSearch);

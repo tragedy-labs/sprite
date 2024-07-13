@@ -8,7 +8,7 @@ permalink: /DocumentModality/selectOne.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.selectOne
+### _DocumentModality_.selectOne
 
 #### Interface
 

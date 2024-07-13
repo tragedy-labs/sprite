@@ -8,7 +8,7 @@ permalink: /GraphModality/deleteFrom.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.deleteFrom
+### _GraphModality_.deleteFrom
 
 #### Interface
 

@@ -8,7 +8,7 @@ permalink: /DocumentModality/updateOne.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.updateOne
+### _DocumentModality_.updateOne
 
 #### Interface
 

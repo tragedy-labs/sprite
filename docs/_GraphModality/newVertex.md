@@ -8,7 +8,7 @@ permalink: /GraphModality/newVertex.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.newVertex
+### _GraphModality_.newVertex
 
 #### Interface
 

@@ -8,7 +8,7 @@ permalink: /DocumentModality/newTransaction.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.newTransaction
+### _DocumentModality_.newTransaction
 
 #### Interface
 

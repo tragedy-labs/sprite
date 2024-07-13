@@ -8,7 +8,7 @@ permalink: /DocumentModality/dropType.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.dropType
+### _DocumentModality_.dropType
 
 #### Interface
 

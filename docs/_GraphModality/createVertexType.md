@@ -8,7 +8,7 @@ permalink: /GraphModality/createVertexType.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.createVertexType
+### _GraphModality_.createVertexType
 
 #### Interface
 

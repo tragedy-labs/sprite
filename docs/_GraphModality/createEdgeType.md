@@ -8,7 +8,7 @@ permalink: /GraphModality/createEdgeType.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.createEdgeType
+### _GraphModality_.createEdgeType
 
 #### Interface
 

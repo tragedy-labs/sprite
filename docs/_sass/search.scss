@@ -102,7 +102,7 @@
 
   #resultList {
     list-style: none;
-    padding: 0 var(--space-section);
+    padding: 0;
     margin: 0;
     overflow-y: auto;
     display: flex;
@@ -110,83 +110,94 @@
     flex: 1;
 
     li {
-      padding: var(--space-2) 0;
-      display: flex;
-      flex-direction: row;
-
       &:focus {
         background: var(--accent);
       }
 
-      section {
-        overflow: hidden;
-        padding: 0 var(--space-section);
-
-        a {
-          font-weight: var(--font-weight-bold);
-          font-size: 1.1525rem;
-          color: var(--foreground-1);
-          display: block;
-          text-decoration: none;
-        }
-
-        p {
-          margin: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-
-      &:before {
-        content: " ";
+      a {
         display: flex;
-        background: var(--purple);
-        font-size: 0.9rem;
-        height: 2.8rem;
-        width: 2.8rem;
-        min-height: 2.8rem;
-        min-width: 2.8rem;
-        padding-left: 0.125rem;
-        font-family: "Retro Pixel Petty 5X5";
-        color: var(--background-1);
-        border-radius: var(--radius-1);
-        justify-content: center;
-        align-items: center;
-        border: var(--button-border);
-        margin: 0 var(--space-3) 0 0;
-        box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.25), 0 3px 10px rgba(0, 0, 0, 0.0375), 0 6px 15px rgba(0, 0, 0, 0.0625);
-      }
+        flex-direction: row;
+        color: var(--foreground-1);
+        text-decoration: none;
 
-      &.interface {
-        &:before {
-          content: "I";
-          display: inline-flex;
-          background: linear-gradient(45deg, var(--cyan), var(--purple));
+        padding: var(--space-2) var(--space-section);
+
+        &:focus-visible {
+          background: var(--accent);
+          color: var(--background-1);
         }
-      }
 
-      &.method {
-        &:before {
-          content: "M";
-          display: inline-flex;
-          background: linear-gradient(45deg, var(--green), var(--orange));
+        div {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          span {
+            font-weight: var(--font-weight-bold);
+            font-size: 1.1525rem;
+            display: block;
+          }
+  
+          p {
+            margin: 0;
+            line-height: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
         }
-      }
 
-      &.type {
+
+
         &:before {
-          content: "T";
-          display: inline-flex;
-          background: linear-gradient(45deg, var(--purple), var(--cyan));
+          content: " ";
+          display: flex;
+          background: var(--purple);
+          font-size: 0.9rem;
+          height: 2.8rem;
+          width: 2.8rem;
+          min-height: 2.8rem;
+          min-width: 2.8rem;
+          padding-left: 0.125rem;
+          font-family: "Retro Pixel Petty 5X5";
+          color: var(--background-1);
+          border-radius: var(--radius-1);
+          justify-content: center;
+          align-items: center;
+          border: var(--button-border);
+          margin: 0 var(--space-3) 0 0;
+          box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.25), 0 3px 10px rgba(0, 0, 0, 0.0375), 0 6px 15px rgba(0, 0, 0, 0.0625);
         }
-      }
 
-      &.class {
-        &:before {
-          content: "C";
-          display: inline-flex;
-          background: linear-gradient(45deg, var(--pink), var(--purple));
+        &.interface {
+          &:before {
+            content: "I";
+            display: inline-flex;
+            background: linear-gradient(45deg, var(--cyan), var(--purple));
+          }
+        }
+
+        &.method {
+          &:before {
+            content: "M";
+            display: inline-flex;
+            background: linear-gradient(45deg, var(--green), var(--orange));
+          }
+        }
+
+        &.type {
+          &:before {
+            content: "T";
+            display: inline-flex;
+            background: linear-gradient(45deg, var(--purple), var(--cyan));
+          }
+        }
+
+        &.class {
+          &:before {
+            content: "C";
+            display: inline-flex;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+          }
         }
       }
 

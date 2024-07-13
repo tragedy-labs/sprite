@@ -8,7 +8,7 @@ permalink: /GraphModality/newEdge.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.newEdge
+### _GraphModality_.newEdge
 
 #### Interface
 

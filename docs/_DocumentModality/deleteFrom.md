@@ -8,7 +8,7 @@ permalink: /DocumentModality/deleteFrom.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.deleteFrom
+### _DocumentModality_.deleteFrom
 
 #### Interface
 

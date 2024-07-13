@@ -8,7 +8,7 @@ permalink: /DocumentModality/deleteOne.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.deleteOne
+### _DocumentModality_.deleteOne
 
 #### Interface
 

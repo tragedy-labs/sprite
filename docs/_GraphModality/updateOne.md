@@ -8,7 +8,7 @@ permalink: /GraphModality/updateOne.html
 
 ---
 
-### _GraphModality&lt;V, E&gt;_.updateOne
+### _GraphModality_.updateOne
 
 #### Interface
 

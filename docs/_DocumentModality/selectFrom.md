@@ -8,7 +8,7 @@ permalink: /DocumentModality/selectFrom.html
 
 ---
 
-### _DocumentModality&lt;S&gt;_.selectFrom
+### _DocumentModality_.selectFrom
 
 #### Interface
 
