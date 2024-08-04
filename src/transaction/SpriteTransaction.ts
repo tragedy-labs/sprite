@@ -58,7 +58,7 @@ export class SpriteTransaction {
   };
   /**
    * Rollback the transaction.
-   * @returns `true` if the transaction was commited.
+   * @returns `true` if the transaction was rolledback.
    */
   rollback = async () => {
     this._rolledBack = await Database.rollbackTransaction(this._session, this);
@@ -71,13 +71,13 @@ export class SpriteTransaction {
    * @param params
    * @returns
    */
-  crud = async (
+  crud = async <T>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
     params?: Record<string, boolean | string | number>
-  ) => {
+  ): Promise<T> => {
     try {
-      return await Rest.postJson(
+      return await Rest.postJson<T>(
         Routes.COMMAND,
         { language, command, params },
         this._session,

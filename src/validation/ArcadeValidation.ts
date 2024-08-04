@@ -1,4 +1,4 @@
-import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import { SIMPLE } from './regex/SIMPLE.js';
 
 // TODO: Change the name of this to Validate or something like that,

@@ -14,7 +14,7 @@
     "test": "jest ./test --coverage -- --u",
     "test:all": "jest ./test/ --coverage",
     "test:unit": "jest ./test/unit/database/static/exists.test.ts --coverage",
-    "test:integration": "jest ./test/integration",
+    "test:integration": "jest ./test/integration/database/rollbackTransaction.test.ts",
     "lint": "pnpm eslint --fix ./test/ ./src",
     "format": "pnpm prettier --write ./test/ ./src",
     "exec": "pnpm build && node ./dist/index.js"

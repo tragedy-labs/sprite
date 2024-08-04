@@ -245,3 +245,78 @@ export type TypeNames<Schema> = keyof Schema;
 export type WithRid<S, N extends TypeNames<S>> = OmitMeta<S[N]> & {
   '@rid': string;
 };
+
+/**
+ * How the bucket will be selected for a newly created record of this type
+ * @default 'round-robin'
+ */
+export type ArcadeBucketSelectionStrategies =
+  | 'round-robin'
+  | 'thread'
+  | 'partitioned<primary-key>';
+
+/**
+ * A type definition returned by ArcadeDB when a getSchema command
+ * is compeleted.
+ */
+export type ArcadeTypeDefinition = {
+  /** The name of the type */
+  name: string;
+  /** The category of the type (document, vertex, or edge) */
+  type: ArcadeRecordType;
+  /**
+   * The number of records with this type name
+   */
+  records: number;
+  /**
+   * The buckets associated with this type.
+   */
+  buckets: Array<string>;
+  /** How the bucket will be selected for a newly created record of this type */
+  bucketSelectionStrategy: ArcadeBucketSelectionStrategies;
+  /**
+   * Super types associated with this type.
+   */
+  parentTypes: Array<string>;
+  /**
+   * Properties defined for this type.
+   */
+  properties: Array<string>;
+  /** Indexes defined for records of this type */
+  indexes: Array<string>;
+  /** An object for custom user-defined properties for this type */
+  custom: Record<string, unknown>;
+};
+
+/** The response from a `SpriteDatabase.getSchema()` query */
+export type ArcadeGetSchemaResponse = ArcadeTypeDefinition[];
+
+
+
+export type ArcadeSqlExaplantionExecutionPlanStep = {
+  cost: number;
+  description: string;
+  javaType: string;
+  name: string;
+  subSteps: ArcadeSqlExaplantionExecutionPlanStep[];
+  targetNode: string;
+  type: string;
+};
+
+/** SQL Explanation Execution Plan */
+export type ArcadeSqlExplanationExecutionPlan = {
+  type: 'QueryExecutionPlan' | 'DDLExecutionPlan';
+  javaType: string;
+  cost: number;
+  prettyPrint: string;
+  steps: ArcadeSqlExaplantionExecutionPlanStep[];
+};
+
+/**
+ * An object representing the explanation of an
+ * SQL command.
+ */
+export type ArcadeSqlExplanation = {
+  executionPlan: ArcadeSqlExplanationExecutionPlan;
+  executionPlanAsString: string;
+};

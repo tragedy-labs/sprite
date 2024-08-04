@@ -12,7 +12,7 @@ import {
   ISpriteDatabaseExistingSession,
   ISpriteDatabaseNewSession
 } from '../session/DatabaseSession.js';
-import { Server } from '@/server/Server.js';
+import { Server } from '../server/Server.js';
 
 /**
  * Interact with a database, perform queries, issue commands to manage
@@ -139,11 +139,11 @@ class SpriteDatabase {
    *
    * spriteCommandExample();
    */
-  public command = async (
+  public command = async <T = unknown>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
     parameters?: Record<string, any>
-  ) => Database.command(this.session, language, command, parameters);
+  ): Promise<T> => Database.command(this.session, language, command, parameters);
   /**
    * Returns information about query execution planning of a specific statement,
    * without executing the statement itself.
@@ -264,11 +264,11 @@ class SpriteDatabase {
    *
    * spriteQueryExample();
    */
-  public query = async (
+  public query = async <T = unknown>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
     parameters?: ArcadeQueryParameters
-  ) => Database.query(this.session, language, command, parameters);
+  ) => Database.query<T>(this.session, language, command, parameters);
   /**
    * Creates a new transaction and passes it as an argument to a callback which
    * represents the transaction scope. The transaction is committed when the

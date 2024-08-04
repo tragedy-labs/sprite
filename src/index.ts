@@ -2,18 +2,14 @@ import { SpriteDatabase } from './database/SpriteDatabase.js';
 import { Session } from './session/Session.js';
 
 const session = new Session({
-  username: 'admin',
-  password: 'admin',
+  username: 'root',
+  password: 'playwithdata',
   address: 'http://localhost:2480'
 });
 
 const db = new SpriteDatabase({
-  databaseName: 'test',
+  databaseName: 'SpriteIntegrationTesting',
   session
 });
 
-db.transaction(async (tx) => {
-  await tx
-    .crud('sql', `INSERT INTO IClass SET name = :name`, { name: 'jim' })
-    .then(console.log);
-});
+db.explain('SELECT from schema:indexes').then(console.log);

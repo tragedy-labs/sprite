@@ -1,8 +1,8 @@
 import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import { DatabaseSession } from '../session/DatabaseSession.js';
 import { Auth } from './Auth.js';
-import { ServerSession } from '@/session/ServerSession.js';
-import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
+import { ServerSession } from '../session/ServerSession.js';
+import { ArcadeValidation } from '../validation/ArcadeValidation.js';
 
 export enum HeaderKeys {
   ContentType = 'Content-Type',

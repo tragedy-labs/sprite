@@ -16,7 +16,7 @@ import {
   OPEN_DATABASE,
   SHUTDOWN
 } from './commands/index.js';
-import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
+import { ArcadeFetchError } from '../errors/ArcadeFetchError.js';
 
 enum CommandResponse {
   OK = 'ok'

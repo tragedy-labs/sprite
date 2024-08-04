@@ -6,7 +6,8 @@ import {
   SpriteTransaction
 } from '../transaction/SpriteTransaction.js';
 import { DatabaseSession } from '../session/DatabaseSession.js';
-import { HeaderKeys } from '@/rest/SpriteHeaders.js';
+import { HeaderKeys } from '../rest/SpriteHeaders.js';
+import { ArcadeSqlExplanation } from '@/types/database.js';
 
 export enum Dialect {
   SQL = 'sql',
@@ -78,13 +79,13 @@ class Database {
    * @param parameters
    * @returns The result-set of the query.
    */
-  public static query = async (
+  public static query = async <T>(
     session: DatabaseSession,
     language: ArcadeSupportedQueryLanguages,
     command: string,
     parameters?: ArcadeQueryParameters
-  ) =>
-    Rest.postJson(
+  ): Promise<T[]> =>
+    Rest.postJson<T[]>(
       Routes.QUERY,
       { language, command, params: parameters },
       session
@@ -115,9 +116,10 @@ class Database {
   public static explain = async (
     session: DatabaseSession,
     sql: string
-  ): Promise<any> => {
+  ): Promise<ArcadeSqlExplanation> => {
     try {
-      return await this.query(session, Dialect.SQL, EXPLAIN(sql));
+      const result = await this.query<ArcadeSqlExplanation>(session, Dialect.SQL, EXPLAIN(sql));
+      return result[0];
     } catch (error) {
       throw new Error(`Could not retreive explanation for ${sql}.`, {
         cause: error

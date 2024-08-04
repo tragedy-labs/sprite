@@ -1,1 +1,1 @@
-export const RID = '';
+export const RID_REGEX = /^#\d+:\d+$/;
