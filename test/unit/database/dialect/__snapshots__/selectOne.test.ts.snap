@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SqlDialect.selectOne() should propagate errors from internal method calls 1`] = `[Error: Could not select RID: [#0:0], from database Test.]`;

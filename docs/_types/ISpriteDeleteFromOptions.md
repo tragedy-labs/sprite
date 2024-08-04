@@ -11,7 +11,7 @@ permalink: /types/ISpriteDeleteFromOptions.html
 ### ISpriteDeleteFromOptions<br/><S, N extends TypeNames&lt;S&gt;, P>
 
 Options for a `deleteFrom` operation as executed
-via a `SpriteDatabase` modality.
+via a `SpriteDatabase` repository.
 
 #### Definition
 

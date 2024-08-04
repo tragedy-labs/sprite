@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteServer.createUser() should throw an error if no "databases" property is supplied 1`] = `[TypeError: Cannot convert undefined or null to object]`;
-
-exports[`SpriteServer.createUser() should throw an error if no "password" is supplied 1`] = `[Error: Could not create user myUsername. In database(s): myDatabase]`;
-
-exports[`SpriteServer.createUser() should throw an error if no "username" is supplied 1`] = `[Error: Could not create user undefined. In database(s): myDatabase]`;
-
-exports[`SpriteServer.createUser() should throw an error if the password is under 4 characters long 1`] = `[Error: Could not create user myUsername. In database(s): aDatabase]`;

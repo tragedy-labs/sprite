@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.command() should handle a 200 response by returning the data from the response 1`] = `"test"`;
-
-exports[`SpriteDatabase.command() should handle a 400 response by throwing an error 1`] = `[Error: Invalid language or command. Status: 400]`;
-
-exports[`SpriteDatabase.command() should handle a 500 response by throwing an error 1`] = `[ArcadeDatabaseError: Internal error. Database 'Test' is not available.]`;
-
-exports[`SpriteDatabase.command() should handle an unexpected status code by throwing an error 1`] = `[Error: Unknown error. Status: 999, StatusText: non-empty string]`;

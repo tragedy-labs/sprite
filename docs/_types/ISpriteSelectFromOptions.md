@@ -10,7 +10,7 @@ permalink: /types/ISpriteSelectFromOptions.html
 
 ### ISpriteSelectFromOptions<br/><S, N, P>
 
-Options for a `selectFrom` operation, as executed via a `SpriteDatabase` modality.
+Options for a `selectFrom` operation, as executed via a `SpriteDatabase` repository.
 
 #### Definition
 

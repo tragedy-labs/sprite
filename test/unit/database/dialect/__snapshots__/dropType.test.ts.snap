@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`TypedOperations.dropType() should propagate errors from internal methods 1`] = `[Error: Unable to drop type [aDocument] from database [Test]]`;

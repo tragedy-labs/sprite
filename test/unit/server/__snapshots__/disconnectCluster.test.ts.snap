@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteServer.disconnectCluster() should propagate errors from internal methods 1`] = `[Error: There was an error when attempting to disconnect from the cluster.]`;

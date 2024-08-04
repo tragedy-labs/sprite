@@ -1,8 +1,0 @@
-version: '3.8'
-services:
-  arcadedb:
-    image: arcadedata/arcadedb:latest
-    ports:
-      - '2480:2480'
-    environment:
-      - JAVA_OPTS=-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/valence-corp/sprite/raw/main/test/integration/DefaultDB.zip}

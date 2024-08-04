@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Database.query() should handle a 200 response by returning the data from the response 1`] = `"test"`;
+
+exports[`Database.query() should handle a 400 response by throwing an error 1`] = `[TypeError: response.json is not a function]`;
+
+exports[`Database.query() should handle a 500 response by throwing an error 1`] = `[ArcadeDatabaseError: Internal error. Database 'school' is not available.]`;
+
+exports[`Database.query() should handle an unexpected status code by throwing an error 1`] = `[TypeError: response.json is not a function]`;

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.command propagates errors from ArcadeDB 1`] = `[Error: Invalid language or command. Status: 400]`;

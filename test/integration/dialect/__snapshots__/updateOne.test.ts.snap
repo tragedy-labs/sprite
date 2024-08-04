@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SqlDialect.updateOne() should propagate errors from the database 1`] = `[Error: An error occured when attempting to update record @rid: INVALID_RID, in database SpriteIntegrationTesting]`;

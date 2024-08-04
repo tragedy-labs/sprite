@@ -1,35 +1,30 @@
-import { SpriteTransaction } from '../../../src/SpriteTransaction.js';
-import { variables } from '../../variables.js';
-import { client as SpriteDatabase } from '../database/client/testClient.js';
+// Lib
+import { Database } from '@/database/Database.js';
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+
+// Testing
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.commit()', () => {
   it('should send the provided sessionId to SpriteDatabase.commitTransaction()', async () => {
     jest
-      .spyOn(SpriteDatabase, 'commitTransaction')
+      .spyOn(Database, 'commitTransaction')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
-    const transaction = new SpriteTransaction(
-      SpriteDatabase,
-      variables.sessionId
-    );
+    const TRX = new SpriteTransaction(SESSION, variables.sessionId);
 
-    await transaction.commit();
+    await TRX.commit();
 
-    expect(SpriteDatabase.commitTransaction).toHaveBeenCalledWith(
-      variables.sessionId
-    );
+    expect(Database.commitTransaction).toHaveBeenCalledWith(SESSION, TRX);
   });
   it('should update the committed status)', async () => {
     jest
-      .spyOn(SpriteDatabase, 'commitTransaction')
+      .spyOn(Database, 'commitTransaction')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
-    const transaction = new SpriteTransaction(
-      SpriteDatabase,
-      variables.sessionId
-    );
+    const transaction = new SpriteTransaction(SESSION, variables.sessionId);
 
     await transaction.commit();
 

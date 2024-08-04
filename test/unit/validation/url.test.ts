@@ -1,11 +1,11 @@
-import { validation } from './validationInstance.js';
+import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
 
 describe('ArcadeParameterValidation.url()', () => {
   it('should return true if the variable is a string that matches the url regex', () => {
     // Arrange
     const variable = 'https://www.google.com';
     // Act
-    const result = validation.url(variable);
+    const result = ArcadeValidation.url(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -14,6 +14,6 @@ describe('ArcadeParameterValidation.url()', () => {
     const variable = 'not a url';
     // Act
     // Assert
-    expect(() => validation.url(variable)).toThrowErrorMatchingSnapshot();
+    expect(() => ArcadeValidation.url(variable)).toThrowErrorMatchingSnapshot();
   });
 });

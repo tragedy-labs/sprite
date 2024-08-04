@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteDatabase.rollbackTransaction() should error for a non-204 response 1`] = `[Error: Unable to rollback transaction AS-0000000-0000-0000-0000-00000000000]`;
+
+exports[`SpriteDatabase.rollbackTransaction() should propagate errors from internal methods 1`] = `[Error: Unable to rollback transaction undefined]`;
+
+exports[`SpriteDatabase.rollbackTransaction() should propagate errors from the server 1`] = `[Error: Unable to rollback transaction AS-0000000-0000-0000-0000-00000000000]`;

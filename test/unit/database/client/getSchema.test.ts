@@ -1,41 +1,28 @@
-import { client } from './testClient.js';
-import { endpoints } from '../../../../src/endpoints/database.js';
-import { variables, testAuth } from '../../../variables.js';
+// Lib
+import { Database } from '@/database/Database.js';
+
+// Testing
+import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteDatabase.getSchema()', () => {
-  it(`should make a properly formatted POST request to ${endpoints.query}/${variables.databaseName}`, async () => {
-    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      status: 200,
-      json: async () => ({ result: [] })
-    } as Response);
-
-    await client.getSchema();
-
-    expect(global.fetch).toHaveBeenCalledWith(
-      `${variables.address}${endpoints.query}/${variables.databaseName}`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Basic ${testAuth}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          language: 'sql',
-          command: `SELECT FROM schema:types`
-        })
-      }
-    );
+  it('should call the Databasec() method with the given command, and the unique session instance', async () => {
+    // Arrange
+    jest.spyOn(Database, 'getSchema').mockImplementationOnce(async () => null);
+    // Act
+    await SpriteDatabase.getSchema();
+    // Asserts
+    expect(Database.getSchema).toHaveBeenCalledWith(SESSION);
   });
-  it('should propagate errors from the server', async () => {
-    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      status: 500,
-      json: async () => ({
-        error: 'Generic Error For Testing',
-        detail: 'This is just an error for testing purposes',
-        exception: 'com.arcadedb.exception.AnArbitraryException'
-      })
-    } as Response);
 
-    await expect(client.getSchema()).rejects.toMatchSnapshot();
+  it('should return the output of the Database.getSchema() method', async () => {
+    // Arrange
+    jest
+      .spyOn(Database, 'getSchema')
+      .mockImplementationOnce(async () => variables.nonEmptyString);
+    // Act
+    const result = await SpriteDatabase.getSchema();
+    // Asserts
+    expect(result).toBe(variables.nonEmptyString);
   });
 });

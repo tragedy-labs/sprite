@@ -15,7 +15,6 @@ export interface ArcadeFetchErrorDescription {
  *   throw new ArcadeFetchError("It wasn't a 204 or 200", response);
  * }
  */
-
 const details: Record<number, ArcadeFetchErrorDescription> = {
   400: {
     statusText: 'Bad Request',
@@ -35,6 +34,9 @@ const details: Record<number, ArcadeFetchErrorDescription> = {
   }
 };
 
+/**
+ * The error thrown when the fetch() method of the Sprite class encounters an error.
+ */
 export class ArcadeFetchError extends Error {
   detail: string;
   error: string;

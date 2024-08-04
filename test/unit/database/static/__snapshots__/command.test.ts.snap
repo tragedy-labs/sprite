@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Database.command() should handle a 200 response by returning the data from the response 1`] = `"test"`;
+
+exports[`Database.command() should handle a 400 response by throwing an error 1`] = `[Error: Could not perform command on database: Test]`;
+
+exports[`Database.command() should handle a 500 response by throwing an error 1`] = `[Error: Could not perform command on database: Test]`;
+
+exports[`Database.command() should handle an unexpected status code by throwing an error 1`] = `[Error: Could not perform command on database: Test]`;

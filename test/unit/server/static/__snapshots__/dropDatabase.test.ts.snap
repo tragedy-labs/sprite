@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server.dropDatabase() should propagate errors from internal methods 1`] = `[Error: Failed to drop database.]`;

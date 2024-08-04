@@ -153,4 +153,4 @@ In this tutorial, we demonstrated how to work with transactions in Sprite. We co
 
 #### What's Next?
 
-The next section explains the `DocumentModality`, which is an abstraction built over the database driver functionality of `SpriteDatabase`.
+The next section explains the `DocumentRepository`, which is an abstraction built over the database driver functionality of `SpriteDatabase`.

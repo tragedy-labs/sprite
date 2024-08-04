@@ -3,9 +3,9 @@ collections:
     output: true
   SpriteDatabase:
     output: true
-  DocumentModality:
+  DocumentRepository:
     output: true
-  GraphModality:
+  GraphRepository:
     output: true
   SpriteTransaction:
     output: true

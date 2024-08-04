@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Database.exists() should error if it receives a non-boolean result 1`] = `[Error: Encountered an error when checking to see if database "Test" exists]`;
+
+exports[`Database.exists() should error if it recieves a 400 status from the server 1`] = `[Error: Encountered an error when checking to see if database "Test" exists]`;
+
+exports[`Database.exists() should error if it recieves an unexpected status from the server 1`] = `[Error: Encountered an error when checking to see if database "Test" exists]`;

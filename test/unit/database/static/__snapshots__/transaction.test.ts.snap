@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteDatabase.transaction() if an error occurs within the callback it rolls back the transaction 1`] = `"Transaction AS-0000000-0000-0000-0000-00000000000 failed and rollback also failed."`;
+
+exports[`SpriteDatabase.transaction() rollsback the transaction if an error occurs within the error handling 1`] = `"Transaction AS-0000000-0000-0000-0000-00000000000 failed and rollback also failed."`;
+
+exports[`SpriteDatabase.transaction() throws an error if an error occurs within the callback 1`] = `[Error: Transaction AS-0000000-0000-0000-0000-00000000000 failed and rollback also failed.]`;
+
+exports[`SpriteDatabase.transaction() throws an error if the transaction fails to rollback in the error handling 1`] = `"Transaction AS-0000000-0000-0000-0000-00000000000 failed and rollback also failed."`;

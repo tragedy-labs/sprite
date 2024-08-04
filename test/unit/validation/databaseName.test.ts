@@ -1,11 +1,11 @@
-import { validation } from './validationInstance.js';
+import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
 
 describe('ArcadeParameterValidation.databaseName()', () => {
   it('should return true if the variable is a string that matches the database name regex', () => {
     // Arrange
     const variable = 'test';
     // Act
-    const result = validation.databaseName(variable);
+    const result = ArcadeValidation.databaseName(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -15,7 +15,7 @@ describe('ArcadeParameterValidation.databaseName()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.databaseName(variable)
+      ArcadeValidation.databaseName(variable)
     ).toThrowErrorMatchingSnapshot();
   });
   it('should throw a TypeError if the variable does not match the regex', () => {
@@ -24,7 +24,7 @@ describe('ArcadeParameterValidation.databaseName()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.databaseName(variable)
+      ArcadeValidation.databaseName(variable)
     ).toThrowErrorMatchingSnapshot();
   });
 });

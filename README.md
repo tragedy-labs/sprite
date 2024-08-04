@@ -129,9 +129,9 @@ example();
 
 ```
 
-### DocumentModality
+### Documents (DocumentRespository)
 
-There are higher level functions if you want to quickly implement functionality instead of writing your own SQL.
+The `DocumentRepository` handles higher-level functions for document records. The repository itself is generic in implementation, allowing it to manage different types of document records using type parameters. This means that one instance of the repository can handle all records within the document category.
 
 ```ts
 @import { SpriteDatabase } from '@tragedy-labs/sprite';
@@ -149,7 +149,7 @@ type DocumentTypes = {
   }
 };
 
-const client = database.documentModality<DocumentTypes>();
+const client = database.documentRepository<DocumentTypes>();
 
 async function example() {
   try {
@@ -185,7 +185,9 @@ example();
 
 ```
 
-### Working with Graphs
+### Graphs (GraphRepository)
+
+Likewise, you can use a `GraphRepository` to perform operations on `vertex` or `edge` types. Creating a typed instance of the GraphRepository is the same as a DocumentRepository, but it accepts two type parameters, representing `vertex` and `edge` types to be associated with the repository.
 
 ```ts
 @import { SpriteDatabase } from '@tragedy-labs/sprite';
@@ -209,7 +211,7 @@ type EdgeTypes = {
   }
 };
 
-const graph = database.graphModality<VertexTypes, EdgeTypes>();
+const graph = database.graphRepository<VertexTypes, EdgeTypes>();
 
 function example() {
   try {

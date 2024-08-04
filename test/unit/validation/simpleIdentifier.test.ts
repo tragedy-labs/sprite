@@ -1,11 +1,11 @@
-import { validation } from "./validationInstance.js";
+import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
 
 describe('ArcadeParameterValidation.simpleIdentifier()', () => {
   it('should return true if the variable is a string that matches the simple identifier regex', () => {
     // Arrange
     const variable = 'test';
     // Act
-    const result = validation.simpleIdentifier(variable);
+    const result = ArcadeValidation.simpleIdentifier(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -15,7 +15,7 @@ describe('ArcadeParameterValidation.simpleIdentifier()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.simpleIdentifier(variable)
+      ArcadeValidation.simpleIdentifier(variable)
     ).toThrowErrorMatchingSnapshot();
   });
   it('should throw a TypeError if the variable does not match the regex', () => {
@@ -24,7 +24,7 @@ describe('ArcadeParameterValidation.simpleIdentifier()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.simpleIdentifier(variable)
+      ArcadeValidation.simpleIdentifier(variable)
     ).toThrowErrorMatchingSnapshot();
   });
 });

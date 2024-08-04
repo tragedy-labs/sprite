@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArcadeValidation.transaction() should throw a TypeError if the variable is not a string 1`] = `"Recieved an argument that could not be validated as a SpriteTransaction. The supplied argument was: [{}], which is of type: [object]."`;

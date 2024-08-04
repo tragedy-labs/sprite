@@ -8,7 +8,7 @@ prevUrl: /tutorials/createGraph.html
 filename: 7_select.md
 ---
 
-Abstractions for `selectOne` and `selectFrom` exists on `DocumentModality`, and `GraphModality`. You are welcome to write your own queries using the `SpriteDatabase.query` method as well.
+Abstractions for `selectOne` and `selectFrom` exists on `DocumentRepository`, and `GraphRepository`. You are welcome to write your own queries using the `SpriteDatabase.query` method as well.
 
 This tutorial will cover all three of these methods.
 
@@ -94,17 +94,17 @@ async function selectQueryExample() {
 
 #### SpriteDatabase.selectFrom()
 
-If you are working in a modality, there are higher-level methods to make common SQL operations easier. An example would be the `selectFrom` method. They build SQL queries based on the supplied options and return the result.
+If you are working in a repository, there are higher-level methods to make common SQL operations easier. An example would be the `selectFrom` method. They build SQL queries based on the supplied options and return the result.
 
-This example will create a typed modality instance to perform a query.
+This example will create a typed repository instance to perform a query.
 
 ```ts
-const client = db.documentModality<DocumentTypes>();
+const client = db.documentRepository<DocumentTypes>();
 
 async function selectOneExample() {
   try {
     // types are inferred based on the type parameters
-    // supplied to the modality when the client is
+    // supplied to the repository when the client is
     // created.
     const result = await client.selectFrom('aDocument', {
       where: ['aProperty', '==', 'aValue']
@@ -135,7 +135,7 @@ Sometimes only one specific record is needed. It can often be more performant th
 This example is somewhat complicated, because you need to know the `@rid` of the record in order to select one directly. First a record will be created in order to obtain the rid, and then we will query for it to show it is possible. It is a very contrived example.
 
 ```ts
-const client = db.documentModality<DocumentTypes>();
+const client = db.documentRepository<DocumentTypes>();
 
 async function selectOneExample() {
   try {
@@ -180,13 +180,13 @@ async function selectOneExample() {
 
 #### Conclusion
 
-This tutorial has covered performing `select` queries using SQL via the `SpriteDatabase.query` method, and also via the `DocumentModality` using the `selectOne`, and `selectFrom` methods.
+This tutorial has covered performing `select` queries using SQL via the `SpriteDatabase.query` method, and also via the `DocumentRepository` using the `selectOne`, and `selectFrom` methods.
 
 ---
 
 ###### Note
 
-The `selectOne` and `selectFrom` methods are also available on the `GraphModality`.
+The `selectOne` and `selectFrom` methods are also available on the `GraphRepository`.
 
 ---
 
@@ -196,5 +196,5 @@ Go build something, or review the tutorials you might have skipped over. You cou
 
 Some areas of interest not covered by tutorials are:
 
-- DocumentModality.updateOne
-- GraphModality.dropType
+- DocumentRepository.updateOne
+- GraphRepository.dropType

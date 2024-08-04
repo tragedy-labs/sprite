@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SqlDialect.dropType() should drop a type 1`] = `[Error: Internal error. Type with name 'DropTypeTestType' was not found. Status: 500]`;
-
-exports[`SqlDialect.dropType() should propagate errors from the database 1`] = `[Error: Unable to drop type [DROP_TYPE_INVALID_TYPE] from database [SpriteIntegrationTesting]]`;

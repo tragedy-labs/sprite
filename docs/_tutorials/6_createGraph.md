@@ -12,7 +12,7 @@ filename: 6_createGraph.md
 
 #### Introduction
 
-Sprite utilizes the `GraphModality` to create graphs, which consist of vertices (points) and edges connecting them (lines). Both vertices and edges can contain data properties, similar to documents.
+Sprite utilizes the `GraphRepository` to create graphs, which consist of vertices (points) and edges connecting them (lines). Both vertices and edges can contain data properties, similar to documents.
 
 ---
 
@@ -28,7 +28,7 @@ This tutorial will guide you through creating types that define the vertices and
 
 1. [Prerequisites](#prerequisites)
 2. [Setup](#setup)
-3. [Accessing the GraphModality](#accessing-the-graphmodality)
+3. [Accessing the GraphRepository](#accessing-the-graphrepository)
 4. [Create a Transaction](#create-a-transaction)
 5. [Creating Graph Types](#creating-graph-types)
 6. [Create the Vertices](#creating-the-vertices)
@@ -59,9 +59,9 @@ const db = new SpriteDatabase({
 });
 ```
 
-#### Accessing the GraphModality
+#### Accessing the GraphRepository
 
-The `GraphModality` is accessed via the `SpriteDatabase` instance we created. Types are defined in the `ExampleVertexes` and `ExampleEdges` interfaces provided as parameters to the `graphModality` accessor method.
+The `GraphRepository` is accessed via the `SpriteDatabase` instance we created. Types are defined in the `ExampleVertexes` and `ExampleEdges` interfaces provided as parameters to the `graphRepository` accessor method.
 
 Add the following code below the previous section:
 
@@ -80,12 +80,12 @@ interface ExampleEdges {
   };
 }
 
-// Create an instance of the SpriteDatabase.graphModality
+// Create an instance of the SpriteDatabase.graphRepository
 // with the types we wish to access as parameters
-const client = db.graphModality<ExampleVertexes, ExampleEdges>();
+const client = db.graphRepository<ExampleVertexes, ExampleEdges>();
 
 // Create an async function to perform operations on the database
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     // Code from the tutorial will be inserted here
   } catch (error) {
@@ -96,17 +96,17 @@ async function graphModalityExample() {
 }
 
 // Call the example function
-graphModalityExample();
+graphRepositoryExample();
 ```
 
 #### Create a Transaction
 
 ArcadeDB is a transactional database, which is preferred for applications that require a high level of data integrity. All non-idempotent operations (operations that can change the database) must be part of a transaction.
 
-Sprite has various methods for orchestrating transactions, but this tutorial will utilize the `GraphModality.transaction()` method, which reduces boilerplate.
+Sprite has various methods for orchestrating transactions, but this tutorial will utilize the `GraphRepository.transaction()` method, which reduces boilerplate.
 
 ```ts
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     // A transaction is created, its only argument is
     // a callback (which is passed the transaction)
@@ -125,12 +125,12 @@ async function graphModalityExample() {
 
 #### Creating Graph Types
 
-The transaction callback serves as a scope for the transaction, such as the `GraphModality.createVertex` and `GraphModality.createEdge` methods. Prior to creating any records, we will establish the types in the schema using `GraphModality.createVertexType` and `GraphModality.createEdgeType`.
+The transaction callback serves as a scope for the transaction, such as the `GraphRepository.createVertex` and `GraphRepository.createEdge` methods. Prior to creating any records, we will establish the types in the schema using `GraphRepository.createVertexType` and `GraphRepository.createEdgeType`.
 
 The `ifNotExists` option is set to true on the type creation operations. This prevents the database from throwing an error if the types were previously created. This, however, is optional.
 
 ```ts
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     await client.createVertexType('Airport', {
       ifNotExists: true
@@ -157,7 +157,7 @@ The `newVertex` method (and the other record creation methods) allow for the cre
 The result will be returned as an array of the created records. This example destructures the expected results for use in the next step.
 
 ```ts
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     await client.createVertexType('Airport', {
       ifNotExists: true
@@ -191,12 +191,12 @@ async function graphModalityExample() {
 
 #### Creating an Edge
 
-To create an edge, we will use the `GraphModality.newEdge()` method. This example utilizes the `@rid` of the created records, but that is only for brevity. The `GraphModality.newEdge()` method allows for defining edges between records that match "key descriptions", which can result in creating multiple edges between any records that match the provided key/index. See [the API documentation](../GraphModality/newEdge.html) for details.
+To create an edge, we will use the `GraphRepository.newEdge()` method. This example utilizes the `@rid` of the created records, but that is only for brevity. The `GraphRepository.newEdge()` method allows for defining edges between records that match "key descriptions", which can result in creating multiple edges between any records that match the provided key/index. See [the API documentation](../GraphRepository/newEdge.html) for details.
 
 There is also a `console.log` call added to log the records that were created.
 
 ```ts
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     await client.createVertexType('Airport', {
       ifNotExists: true
@@ -275,9 +275,9 @@ interface ExampleEdges {
   };
 }
 
-const client = db.graphModality<ExampleVertexes, ExampleEdges>();
+const client = db.graphRepository<ExampleVertexes, ExampleEdges>();
 
-async function graphModalityExample() {
+async function graphRepositoryExample() {
   try {
     await client.createVertexType("Airport", {
       ifNotExists: true,
@@ -308,7 +308,7 @@ async function graphModalityExample() {
 
 #### Conclusion
 
-This tutorial demonstrated the basics of creating a graph database using Sprite and ArcadeDB, including: accessing the graph modality, defining the types of vertices and edges in the graph, and creating vertices and edges within a transaction.
+This tutorial demonstrated the basics of creating a graph database using Sprite and ArcadeDB, including: accessing the graph repository, defining the types of vertices and edges in the graph, and creating vertices and edges within a transaction.
 
 #### What's Next?
 

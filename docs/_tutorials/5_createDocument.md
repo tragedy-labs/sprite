@@ -15,13 +15,13 @@ Engineers tend to agree that sending a command directly to your database in its 
 
 Sprite has abstractions built over the database driver functionality of the `SpriteDatabase` class, called modalities. They contain typed methods that build SQL queries based on the arguments passed to them. Understand there is a certain level of overhead intrinsic to performing this type of work in JavaScript, and you should consider the best method for your application.
 
-This tutorial will demonstrate the basics of using the `DocumentModality` via the `SpriteDatabase` module to define a document type, and create a document.
+This tutorial will demonstrate the basics of using the `DocumentRepository` via the `SpriteDatabase` module to define a document type, and create a document.
 
 #### Overview
 
 1. [Prerequisites](#prerequisites)
 2. [Instantiating SpriteDatabase](#instantiating-spritedatabase)
-3. [Accessing the DocumentModality](#accessing-the-documentmodality)
+3. [Accessing the DocumentRepository](#accessing-the-documentrepository)
 4. [Transactions](#transactions)
 5. [Creating a database](#creating-a-document)
 6. [Conclusion](#conclusion)
@@ -50,11 +50,11 @@ const db = new SpriteDatabase({
 });
 ```
 
-#### Accessing the DocumentModality
+#### Accessing the DocumentRepository
 
 Add the following code bellow the previous section.
 
-The `DocumentModality` is accessed via the `SpriteDatabase` instance we created. Types are defined in the `ExampleDocument` interface and provided as a parameter to the `documentModality` accessor method.
+The `DocumentRepository` is accessed via the `SpriteDatabase` instance we created. Types are defined in the `ExampleDocument` interface and provided as a parameter to the `documentRepository` accessor method.
 
 ```ts
 
@@ -68,12 +68,12 @@ interface ExampleDocuments {
   };
 }
 
-// create an instance of the SpriteDatbase.documentModality
+// create an instance of the SpriteDatbase.documentRepository
 // with the types we wish to access as a parameter
-const client = db.documentModality<ExampleDocuments>();
+const client = db.documentRepository<ExampleDocuments>();
 
 // create an async function to perform operations on the database
-async function documentModalityExample() {
+async function documentRepositoryExample() {
   try {
     // code from the tutorial will be inserted here
   } catch (error) {
@@ -84,14 +84,14 @@ async function documentModalityExample() {
 }
 
 // call the example function
-documentModalityExample();
+documentRepositoryExample();
 ```
 ---
 
 ###### Note
 
 
-The accessor method returns a [singleton instance](https://en.wikipedia.org/wiki/Singleton_pattern) of `DocumentModality`. The library just uses the accessor method to define types for it, so you can create many typed modalities without any additional runtime overhead.
+The accessor method returns a [singleton instance](https://en.wikipedia.org/wiki/Singleton_pattern) of `DocumentRepository`. The library just uses the accessor method to define types for it, so you can create many typed modalities without any additional runtime overhead.
 
 ---
 
@@ -99,10 +99,10 @@ The accessor method returns a [singleton instance](https://en.wikipedia.org/wiki
 
 ArcadeDB is a transactional database. This is preferred for applications that require a high level of data integrity. [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations must be part of a transaction.
 
-Sprite has various methods for orchestrating transactions, but this tutorial will utilize the `DocumentModality.transaction()` method, which incorporates some abstraction to reduce boilerplate.
+Sprite has various methods for orchestrating transactions, but this tutorial will utilize the `DocumentRepository.transaction()` method, which incorporates some abstraction to reduce boilerplate.
 
 ```ts
-async function documentModalityExample() {
+async function documentRepositoryExample() {
   try {
     // a transaction is created, it's only argument is
     // a callback (which is passed the transaction)
@@ -130,10 +130,10 @@ There is additional information on transactions in the following locations.
 
 #### Creating a Type
 
-A type must be present in the database prior to creating a record of that type. The `DocumentModality.createType()` method is utilized to create a document type called "aDocument". This operation should be awaited to prevent an error with the `newDocument` method that will be added in the next step (as stated, the type must be present in the database to create a record of that type).
+A type must be present in the database prior to creating a record of that type. The `DocumentRepository.createType()` method is utilized to create a document type called "aDocument". This operation should be awaited to prevent an error with the `newDocument` method that will be added in the next step (as stated, the type must be present in the database to create a record of that type).
 
 ```ts
-async function documentModalityExample() {
+async function documentRepositoryExample() {
   try {
     await client.createType("aDocument");
     client.transaction(async (trx) => {
@@ -155,7 +155,7 @@ Insert the `newDocument` method within the scope of the transaction callback, en
 The arguments will be automatially typed as defined in the `ExampleDocuments` interface created earlier (the type name must be on that is included in the `ExampleDocuments` interface, and the `data` property will be typed based on that type name).
 
 ```ts
-async function documentModalityExample() {
+async function documentRepositoryExample() {
   try {
     client.transaction(async (trx) => {
       await client.createType("aDocument", trx);
@@ -201,9 +201,9 @@ interface ExampleDocuments {
   };
 }
 
-const client = db.documentModality<ExampleDocuments>();
+const client = db.documentRepository<ExampleDocuments>();
 
-async function documentModalityExample() {
+async function documentRepositoryExample() {
   try {
     await client.createType("aDocument");
     client.transaction(async (trx) => {
@@ -220,7 +220,7 @@ async function documentModalityExample() {
   }
 }
 
-documentModalityExample();
+documentRepositoryExample();
 ```
 
 #### Conclusion
@@ -231,4 +231,4 @@ You could verify the existence of this document using the [ArcadeDB web interfac
 
 #### What is next?
 
-The next section will demonstrate how to use the `GraphModality` to build a simple graph database.
+The next section will demonstrate how to use the `GraphRepository` to build a simple graph database.
