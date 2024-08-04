@@ -23,7 +23,7 @@ describe('Database.rollbackTransaction', () => {
   });
   afterAll(async () => {
     // Drop the test record type
-    await testClient.command<DropType<typeof typeName>>(
+    const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
       `DROP TYPE ${typeName}`
     );

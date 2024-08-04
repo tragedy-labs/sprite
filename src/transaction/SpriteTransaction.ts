@@ -17,9 +17,6 @@ export type ArcadeTransactionIsolationLevel =
   | 'READ_COMMITTED'
   | 'REPEATABLE_READ';
 
-// TODO: I feel like this can be optimized quite a bit,
-// maybe a similar facade pattern?
-
 /**
  * A transaction in Sprite, contains the transaction id, and methods to
  * commit or rollback the transaction.
@@ -58,7 +55,7 @@ export class SpriteTransaction {
   };
   /**
    * Rollback the transaction.
-   * @returns `true` if the transaction was rolledback.
+   * @returns `true` if the transaction was commited.
    */
   rollback = async () => {
     this._rolledBack = await Database.rollbackTransaction(this._session, this);
@@ -71,13 +68,13 @@ export class SpriteTransaction {
    * @param params
    * @returns
    */
-  crud = async <T>(
+  crud = async (
     language: ArcadeSupportedQueryLanguages,
     command: string,
     params?: Record<string, boolean | string | number>
-  ): Promise<T> => {
+  ) => {
     try {
-      return await Rest.postJson<T>(
+      return await Rest.postJson(
         Routes.COMMAND,
         { language, command, params },
         this._session,
