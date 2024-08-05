@@ -8,7 +8,7 @@ import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 describe('SpriteDatabase.query()', () => {
   it('should call the Database.query() method with the given Dialect, query, parameters, and the unique session instance, a', async () => {
     // Arrange
-    jest.spyOn(Database, 'query').mockImplementationOnce(async () => null);
+    jest.spyOn(Database, 'query').mockImplementationOnce(async () => []);
 
     const PARAMS = {
       test: 'Parameter'
@@ -29,13 +29,13 @@ describe('SpriteDatabase.query()', () => {
     // Arrange
     jest
       .spyOn(Database, 'query')
-      .mockImplementationOnce(async () => variables.nonEmptyString);
+      .mockImplementationOnce(async () => [variables.nonEmptyString]);
     // Act
     const result = await SpriteDatabase.query(
       Dialect.SQL,
       variables.nonEmptyString
     );
     // Asserts
-    expect(result).toBe(variables.nonEmptyString);
+    expect(result).toEqual([variables.nonEmptyString]);
   });
 });

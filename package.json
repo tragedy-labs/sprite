@@ -11,10 +11,10 @@
     "docs:api": "typedoc ./src/api.ts --out ./docs/api --darkHighlightTheme dracula --lightHighlightTheme github-light",
     "docs:json": "typedoc ./src/api.ts --json ./docs/_data/docs.json ",
     "docs:site": "ts-node ./src/dev/*",
-    "test": "jest ./test --coverage -- --u",
+    "test": "jest ./test --coverage",
     "test:all": "jest ./test/ --coverage",
-    "test:unit": "jest ./test/unit/database/static/exists.test.ts --coverage",
-    "test:integration": "jest ./test/integration/transaction",
+    "test:unit": "jest ./test/unit/",
+    "test:integration": "jest ./test/integration/",
     "lint": "pnpm eslint --fix ./test/ ./src",
     "format": "pnpm prettier --write ./test/ ./src",
     "exec": "pnpm build && node ./dist/index.js"

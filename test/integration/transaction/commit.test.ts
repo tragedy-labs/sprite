@@ -11,10 +11,10 @@ import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 // Testing
 import { testClient } from '@test/integration/database/testClient.js';
 
-interface TrxTestType {
+interface TrxClassCommitTestType {
   aValue: string;
 }
-const typeName = 'TrxTestType';
+const typeName = 'TrxClassCommitTestType';
 
 describe('SpriteDatabase.commitTransaction', () => {
   let transaction: SpriteTransaction;
@@ -23,7 +23,7 @@ describe('SpriteDatabase.commitTransaction', () => {
     // Create a new document type before the suite executes
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
 
@@ -36,20 +36,19 @@ describe('SpriteDatabase.commitTransaction', () => {
     // Drop the test record type
     const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
-      `DROP TYPE ${typeName}`
+      `DROP TYPE ${typeName} IF EXISTS`
     );
   });
 
   it('commits a transaction successfully', async () => {
     // Insert a new document within the transaction
-    const [createdRecord] = await transaction.crud<InsertDocument<TrxTestType>>(
-      'sql',
-      `INSERT INTO ${typeName}`
-    );
+    const [createdRecord] = await transaction.crud<
+      InsertDocument<TrxClassCommitTestType>
+    >('sql', `INSERT INTO ${typeName}`);
 
     // Query to check if the document exists before the commit
     const [queriedBeforeCommit] = await testClient.query<
-      ArcadeDocument<TrxTestType>
+      ArcadeDocument<TrxClassCommitTestType>
     >(
       'sql',
       `SELECT FROM ${createdRecord['@type']} WHERE @rid = ${createdRecord['@rid']}`
@@ -60,7 +59,7 @@ describe('SpriteDatabase.commitTransaction', () => {
 
     // Query to check if the document exists after the commit
     const [queriedRecordAfterCommit] = await testClient.query<
-      ArcadeDocument<TrxTestType>
+      ArcadeDocument<TrxClassCommitTestType>
     >(
       'sql',
       `SELECT FROM ${createdRecord['@type']} WHERE @rid = ${createdRecord['@rid']}`

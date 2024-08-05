@@ -10,25 +10,25 @@ import { RID_REGEX } from '@/validation/regex/RID.js';
 // Lib
 import { testClient } from '@test/integration/database/testClient.js';
 
-interface RollbackTrxTextType {
+interface TrxClassRollbackTestType {
   aProperty: string;
 }
 
-const typeName = 'RollbackTrxTestType';
+const typeName = 'TrxClassRollbackTestType';
 
 describe('Database.rollbackTransaction', () => {
   beforeAll(async () => {
     // Create a record type for the test
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
   afterAll(async () => {
     // Drop the test record type
     const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
-      `DROP TYPE ${typeName}`
+      `DROP TYPE ${typeName} IF EXISTS`
     );
   });
   it('rollsback the transaction', async () => {
@@ -36,7 +36,7 @@ describe('Database.rollbackTransaction', () => {
 
     // Insert a new document within the transaction
     const [createdRecord] = await transaction.crud<
-      InsertDocument<RollbackTrxTextType>
+      InsertDocument<TrxClassRollbackTestType>
     >('sql', `INSERT INTO ${typeName}`);
 
     // Rollback the transaction
@@ -44,7 +44,7 @@ describe('Database.rollbackTransaction', () => {
 
     // Query to check if the document exists after the rollback
     const [queriedRecordAfterRollback] = await testClient.query<
-      ArcadeDocument<RollbackTrxTextType>
+      ArcadeDocument<TrxClassRollbackTestType>
     >(
       'sql',
       `SELECT FROM ${createdRecord['@type']} WHERE @rid = ${createdRecord['@rid']}`

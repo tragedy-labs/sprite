@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HttpClient.request should handle a 404 error response 1`] = `[Error: There was a problem fetching from the supplied database server. Check the address and try again.]`;

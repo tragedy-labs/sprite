@@ -23,14 +23,14 @@ describe('Database.rollbackTransaction', () => {
     // Create a record type for the test
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
   afterAll(async () => {
     // Drop the test record type
     const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
-      `DROP TYPE ${typeName}`
+      `DROP TYPE ${typeName} IF EXISTS`
     );
   });
   it('rollsback the transaction', async () => {

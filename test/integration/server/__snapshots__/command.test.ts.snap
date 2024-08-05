@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteServer.command should propagate errors from the database 1`] = `[Error: There was an error when attemping to execute a command on the ArcadeDB Server. See aggregate error for details.]`;

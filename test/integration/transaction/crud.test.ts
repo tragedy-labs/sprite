@@ -14,7 +14,7 @@ import { testClient } from '@test/integration/database/testClient.js';
 interface TrxTestType {
   aValue: string;
 }
-const typeName = 'TrxTestType';
+const typeName = 'TrxCrudTestType';
 
 // TODO: This test is redundant, because CRUD is tested in rollback and commit tests
 // This is a carbon copy of the commit test
@@ -26,7 +26,7 @@ describe('SpriteTransaction.crud', () => {
     // Create a new document type before the suite executes
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
 
@@ -39,7 +39,7 @@ describe('SpriteTransaction.crud', () => {
     // Drop the test record type
     const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
-      `DROP TYPE ${typeName}`
+      `DROP TYPE ${typeName} IF EXISTS`
     );
   });
 
