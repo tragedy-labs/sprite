@@ -457,7 +457,6 @@ a > code:hover {
   flex: 1;
   display: flex;
   max-height: 100%;
-  overflow: scroll;
   transition: opacity 125ms ease;
   flex-direction: column;
   align-content: flex-start;
@@ -1410,6 +1409,36 @@ body {
   body {
     --space-section: var(--space-1);
   }
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: unset;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-button:hover {
+  background-color: #999999;
 }
 
 .tutorialHeader {
