@@ -12,4 +12,4 @@ const db = new SpriteDatabase({
   session
 });
 
-db.explain('SELECT from schema:indexes').then(console.log);
+db.command('sql', 'CREATE DROP TYPE TrxTestType');

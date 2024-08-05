@@ -1,16 +1,11 @@
-// Lib
+import { ArcadeDocument } from 'src/types/queries.js';
+import { RID_REGEX } from '@/validation/regex/RID.js';
+import { testClient } from './testClient.js';
 import {
   CreateDocumentType,
   DropType,
   InsertDocument
-} from '@/types/commands.js';
-import { Database } from '@/database/Database.js';
-import { TestDatabaseSession as SESSION } from '@test/variables.js';
-import { ArcadeDocument } from '@/types/queries.js';
-import { RID_REGEX } from '@/validation/regex/RID.js';
-
-// Testing
-import { testClient } from './testClient.js';
+} from 'src/types/commands.js';
 
 interface RollbackTrxTextType {
   aProperty: string;
@@ -42,10 +37,7 @@ describe('Database.rollbackTransaction', () => {
     >('sql', `INSERT INTO ${typeName}`);
 
     // Rollback the transaction
-    const didRollBack = await Database.rollbackTransaction(
-      SESSION,
-      transaction
-    );
+    const didRollBack = await transaction.rollback();
 
     // Query to check if the document exists after the rollback
     const [queriedRecordAfterRollback] = await testClient.query<
@@ -59,6 +51,8 @@ describe('Database.rollbackTransaction', () => {
     expect(createdRecord['@rid']).toMatch(RID_REGEX);
     expect(queriedRecordAfterRollback).toBe(undefined);
     expect(didRollBack).toBe(true);
-    await expect(transaction.commit()).rejects.toThrow();
+    await expect(
+      transaction.commit()
+    ).rejects.toThrow();
   });
 });

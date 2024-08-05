@@ -1,4 +1,3 @@
-
 import { ArcadeSupportedQueryLanguages } from '@/database/Database.js';
 import { testClient as client } from './testClient.js';
 import { CreateDocumentType, DropType } from '@/types/commands.js';
