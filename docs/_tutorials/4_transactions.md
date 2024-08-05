@@ -12,7 +12,7 @@ filename: 4_transactions.md
 
 ArcadeDB is a transactional database. This is preferred for applications that require a high level of data integrity. CRUD commands are required to be issued as part of a [transaction](https://en.wikipedia.org/wiki/Database_transaction) as a way to ensure [ACID compliance](https://en.wikipedia.org/wiki/ACID).
 
-There are a few different ways to conduct transactions in Sprite. This tutorial will demonstate these methods, and explain why they are implemented as such in Sprite. As a warning, some code here might be daunting at first. It is not super important that you are an SQL expert, as long as you understand the basics of the transaction process.
+There are a two different ways to conduct transactions in Sprite. This tutorial will demonstate these methods.
 
 ---
 
