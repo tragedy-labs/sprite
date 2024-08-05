@@ -10,7 +10,11 @@ import { testClient as client } from './testClient.js';
 describe('SpriteDatabase.getSchema', () => {
   let schema: ArcadeGetSchemaResponse;
   beforeAll(async () => {
+    await client.command('sql', 'CREATE document TYPE GetSchemaTestType');
     schema = await client.getSchema();
+  });
+  afterAll(async () => {
+    await client.command('sql', 'DROP TYPE GetSchemaTestType');
   });
   it('returns the schema of the database as an array', () => {
     expect(Array.isArray(schema)).toBe(true);
