@@ -4,7 +4,6 @@
   "description": "A TypeScript driver for ArcadeDB",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon --watch ./ --ext ts --exec 'rimraf ./dist && tsc && node ./dist/index.js'",
     "build": "rimraf ./dist && tsc -p ./tsconfig.build.json",

@@ -18,8 +18,7 @@ The functionality is divided accross multiple modules to keep the namespace clea
 
 1. [SpriteServer](#spriteserver)
 2. [SpriteDatabase](#spritedatabase)
-3. [Modalities](#modalities)
-4. [What's Next?](#whats-next)
+3. [What's Next?](#whats-next)
 
 #### SpriteServer
 
@@ -38,12 +37,6 @@ The SpriteDatabase module offers methods for performing core database operations
 - Executing queries
 
 This is a database driver for issuing SQL (or commands in another language).
-
-#### Modalities
-
-Higher-level abstractions are provided through two modalities: `DocumentModality` and `GraphModality`. These modules contain methods for performing CRUD operations and queries on specific record types. They build queries for the user, based on options. Modalities are currently exclusively accessed through a `SpriteDatabase` instance.
-
-The modalities' design reduces overhead by instantiating functionality as required, keeping namespaces focused and organized.
 
 #### What's next?
 

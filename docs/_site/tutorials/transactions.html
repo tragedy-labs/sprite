@@ -94,25 +94,9 @@
     </li>
     
     <li>
-      <a href="/tutorials/createDocument.html" class="foreground-1">
-        <span class="row menu-item with-icon padding-v-3 padding-h-2 margin-h-1 block radius-1 content-center-v">
-          <span class="marker flex content-center-v">5</span> Create a Document
-        </span>
-      </a>
-    </li>
-    
-    <li>
-      <a href="/tutorials/createGraph.html" class="foreground-1">
-        <span class="row menu-item with-icon padding-v-3 padding-h-2 margin-h-1 block radius-1 content-center-v">
-          <span class="marker flex content-center-v">6</span> Create a Graph
-        </span>
-      </a>
-    </li>
-    
-    <li>
       <a href="/tutorials/select.html" class="foreground-1">
         <span class="row menu-item with-icon padding-v-3 padding-h-2 margin-h-1 block radius-1 content-center-v">
-          <span class="marker flex content-center-v">7</span> Select Records
+          <span class="marker flex content-center-v">5</span> Select Records
         </span>
       </a>
     </li>
@@ -1180,7 +1164,7 @@
 
           <p>ArcadeDB is a transactional database. This is preferred for applications that require a high level of data integrity. CRUD commands are required to be issued as part of a <a href="https://en.wikipedia.org/wiki/Database_transaction">transaction</a> as a way to ensure <a href="https://en.wikipedia.org/wiki/ACID">ACID compliance</a>.</p>
 
-<p>There are a few different ways to conduct transactions in Sprite. This tutorial will demonstate these methods, and explain why they are implemented as such in Sprite. As a warning, some code here might be daunting at first. It is not super important that you are an SQL expert, as long as you understand the basics of the transaction process. The next tutorial will explain some higher-level methods that might be better for beginners, but this is foundational for using a transactional database.</p>
+<p>There are a few different ways to conduct transactions in Sprite. This tutorial will demonstate these methods, and explain why they are implemented as such in Sprite. As a warning, some code here might be daunting at first. It is not super important that you are an SQL expert, as long as you understand the basics of the transaction process.</p>
 
 <hr />
 
@@ -1198,7 +1182,6 @@
   <li><a href="#manual-transactions">Manual Transactions</a></li>
   <li><a href="#transaction-helper">Transaction Helper</a></li>
   <li><a href="#spritetransaction">SpriteTransaction</a></li>
-  <li><a href="#why">Why?</a></li>
   <li><a href="#conclusion">Conclusion</a></li>
   <li><a href="#next">What is next</a></li>
 </ol>
@@ -1238,14 +1221,12 @@
     <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">CREATE document TYPE aDocument</span><span class="dl">'</span><span class="p">);</span>
 
     <span class="nx">db</span><span class="p">.</span><span class="nf">transaction</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">trx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// the `crud` method is a safety around the `command`</span>
-      <span class="c1">// method, the only difference is that it requires a</span>
-      <span class="c1">// transaction be passed to it as a third argument</span>
-      <span class="c1">// (on `command` it is optional).</span>
-      <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
+      <span class="c1">// the `crud` method only exists on the SpriteTransaction</span>
+      <span class="c1">// class. It is the only method of conduction transactional</span>
+      <span class="c1">// operations in Sprite.</span>
+      <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
         <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-        <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span><span class="p">,</span>
-        <span class="nx">trx</span>
+        <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span>
       <span class="p">);</span>
       <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
       <span class="c1">// {</span>
@@ -1263,7 +1244,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>There is an SQL <code class="language-plaintext highlighter-rouge">crud</code> operation issued within the scope of the transaction callback. This tells the database that we intend to group this operation within the transaction scope. Remember that <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations are transactional in ArcadeDB. Really, the <code class="language-plaintext highlighter-rouge">crud</code> method is just a safety wrapper around the <code class="language-plaintext highlighter-rouge">command</code> method so TypeScript will error if a transaction is not supplied as a third argument.</p>
+<p>There is an SQL <code class="language-plaintext highlighter-rouge">crud</code> operation issued within the scope of the transaction callback. This tells the database that we intend to group this operation within the transaction scope. Remember that <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations are transactional in ArcadeDB.</p>
 
 <p>The transaction executes the callback passed to it, and then automatically commits the transaction. This tells the database that the transaction is closed, and it can execute all operations as a unit of work.</p>
 
@@ -1273,22 +1254,18 @@
 
 <p>It could be necessary to manually orchestrate a transaction for greater control over the process. If something goes wrong before a transaction is committed (a powerloss, user error, or race condition), it might be necessary to rollback a transaction. This can be accomplished by using the <code class="language-plaintext highlighter-rouge">SpriteTransaction.rollback()</code> method.</p>
 
-<p>This example creates a transaction (named <code class="language-plaintext highlighter-rouge">trx</code>). The transaction is again passed as a third argument to the command which is creating a new record, but instead of being commit, we use the <code class="language-plaintext highlighter-rouge">rollback</code> method on the transaction instance, this ensures that the created record was not added to the database, and the transaction is closed.</p>
+<p>This example creates a transaction (named <code class="language-plaintext highlighter-rouge">trx</code>). The transaction’s <code class="language-plaintext highlighter-rouge">crud</code> method is invoked to create a document, finally we use the <code class="language-plaintext highlighter-rouge">rollback</code>, this ensures that the created record was not added to the database, and the transaction is closed.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">manualTransaction</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="c1">// ensure a type exists prior to</span>
     <span class="c1">// attemping to insert a document</span>
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span>
-      <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-      <span class="dl">'</span><span class="s1">CREATE document TYPE aDocument</span><span class="dl">'</span>
-    <span class="p">);</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">CREATE document TYPE aDocument</span><span class="dl">'</span><span class="p">);</span>
 
     <span class="kd">const</span> <span class="nx">trx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">newTransaction</span><span class="p">();</span>
-    <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
       <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-      <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span><span class="p">,</span>
-      <span class="nx">trx</span>
+      <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span>
     <span class="p">);</span>
 
     <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
@@ -1299,9 +1276,8 @@
     <span class="c1">//   aProperty: 'aValue'</span>
     <span class="c1">// }</span>
 
-    <span class="k">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nf">rollback</span><span class="p">();</span>
-    <span class="c1">// await transaction.commit();</span>
-
+    <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">rollback</span><span class="p">();</span>
+    <span class="c1">// await trx.commit();</span>
   <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">There was an error during the example transaction</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
       <span class="na">cause</span><span class="p">:</span> <span class="nx">error</span>
@@ -1312,17 +1288,13 @@
 
 <p>Note that the transaction also has a <code class="language-plaintext highlighter-rouge">commit</code> method, one could use that to commit the transaction instead.</p>
 
-<h4 id="why">Why?</h4>
-
-<p>Some libaries offer a higher level of abstraction over the transaction process. Often this involves creating a new instances of the client tied to a single transaction. This is a nice developer experience, but likely scales poorly as the volume of CRUD operations increases. Sprite holds the opinion that transactions be orchestrated by the developer instead of convenience methods. This allows for greater control and flexibility, while keeping resource consumption to a minimum.</p>
-
 <h4 id="conclusion">Conclusion</h4>
 
-<p>In this tutorial, we demonstrated how to work with transactions in Sprite. We covered manual transactions, transaction helpers, and the reasoning behind manually orchestrating transactions.</p>
+<p>In this tutorial, we demonstrated how to work with transactions in Sprite. We covered both manual transactions, and the transaction helper.</p>
 
 <h4 id="whats-next">What’s Next?</h4>
 
-<p>The next section explains the <code class="language-plaintext highlighter-rouge">DocumentRepository</code>, which is an abstraction built over the database driver functionality of <code class="language-plaintext highlighter-rouge">SpriteDatabase</code>.</p>
+<p>The next section will demonstrate the various method of performing a select query to retrieve records.</p>
 
           <footer
   class="tutorial padding-v-1 flex ">
@@ -1331,9 +1303,9 @@
     aria-label="Previous: Create a Database"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>Previous<span class="mobile-hidden">: Create a Database</span></a>
   
   
-  <a href="/tutorials/createDocument.html" class="next button with-icon-right radius-1 padding-3 content-center-v"
-    aria-label="Next: Create a Document">Next<span class="mobile-hidden">:
-      Create a Document</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg></a>
+  <a href="/tutorials/select.html" class="next button with-icon-right radius-1 padding-3 content-center-v"
+    aria-label="Next: Select">Next<span class="mobile-hidden">:
+      Select</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg></a>
   
 </footer>
         </div>

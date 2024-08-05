@@ -141,7 +141,7 @@ async function createDatabaseExample() {
 You should now have a database on your server called "ExampleDatabase". You can verify the existence of the database using one of the following methods:
 
 - [SpriteServer.listDatabases](../SpriteServer/listDatabases.html)
-- [SpriteServer.databaseExists](../SpriteServer/databaseExists.html)
+- [SpriteDatabase.exists](../SpriteDatabase/exists.html)
 - [ArcadeDB server console](https://docs.arcadedb.com/#Console)
 
 #### What's Next?
