@@ -9,7 +9,7 @@ jobs:
         image: arcadedata/arcadedb:latest
         ports:
           - 2480:2480 # host : container port
-        options: --env JAVA_OPTS="-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/valence-corp/sprite/raw/main/test/integration/DefaultDB.zip}"
+        options: --env JAVA_OPTS="-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/tragedy-labs/sprite/raw/main/test/integration/DefaultDB.zip}"
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
