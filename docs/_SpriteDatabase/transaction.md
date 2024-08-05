@@ -12,13 +12,12 @@ permalink: /SpriteDatabase/transaction.html
 
 #### Interface
 
-(**callback: *SpriteTransactionCallback*, isolationLevel: *ArcadeTransactionIsolationLevel***)
+(**callback: **, isolationLevel: *ArcadeTransactionIsolationLevel***)
 
-Helps to manage a transaction by automatically invoking `newTransaction`,
-and passing the returned `SpriteTransaction` to a callback as an argument,
-to be passed to non-idempotent databases operations in the callback scope.
-`SpriteTransaction.commit()` is called automatically after the callback
-is executed.
+Creates a new transaction and passes it as an argument to a callback which
+represents the transaction scope. The transaction is committed when the
+callback resolves. The transaction can be rolled back by invoking
+`SpriteTransaction.rollback()` within the callback.
 
 #### Example
 

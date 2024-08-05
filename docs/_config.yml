@@ -3,10 +3,6 @@ collections:
     output: true
   SpriteDatabase:
     output: true
-  DocumentRepository:
-    output: true
-  GraphRepository:
-    output: true
   SpriteTransaction:
     output: true
   tutorials:

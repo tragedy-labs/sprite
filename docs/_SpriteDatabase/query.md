@@ -12,7 +12,7 @@ permalink: /SpriteDatabase/query.html
 
 #### Interface
 
-(**language: *ArcadeSupportedQueryLanguages*, command: *string***)
+(**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *ArcadeQueryParameters***)
 
 Executes a query against the target database. This method only executes
 idempotent statements (that cannot change the database), namely `SELECT`

@@ -12,7 +12,11 @@ permalink: /SpriteServer/constructor.html
 
 #### Interface
 
-(**parameters: *ISpriteRestClientConnectionParameters***)
+(**parameters: *ServerSession***)
+
+#### Interface
+
+(**parameters: *ISpriteBaseSession***)
 
 Methods for interact with an ArcadeDB server. Manage databases, users, etc.
 

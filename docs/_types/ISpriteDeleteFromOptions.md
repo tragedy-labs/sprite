@@ -20,7 +20,7 @@ via a `SpriteDatabase` repository.
 
 ---
 
-<h5> return?: <span>BEFORE | COUNT</span></h5>Defines what is returned following the command: the count of the records before (`BEFORE`) or following deletion (`COUNT`).
+<h5> return?: <span>COUNT | BEFORE</span></h5>Defines what is returned following the command: the count of the records before (`BEFORE`) or following deletion (`COUNT`).
 
 
 ---

@@ -12,11 +12,11 @@ permalink: /SpriteDatabase/constructor.html
 
 #### Interface
 
-(**parameters: *ISpriteDatabaseClientParameters***)
+(**params: *ISpriteDatabaseExistingSession***)
 
 #### Interface
 
-(**parameters: *ISpriteDatabaseConnectionParameters***)
+(**params: *ISpriteDatabaseNewSession***)
 
 Interact with a database, perform queries, issue commands to manage
 records, types, and settings.

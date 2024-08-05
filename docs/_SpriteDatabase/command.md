@@ -12,16 +12,13 @@ permalink: /SpriteDatabase/command.html
 
 #### Interface
 
-(**language: *ArcadeSupportedQueryLanguages*, command: *string*, transaction: *SpriteTransaction***)
+(**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *Record&lt;string, any&gt;***)
 
 Executes a command on the target database. This method should only be used
-for non-idempotent statements (that can change the database), such as `INSERT`,
-`CREATE`, and `DELETE`.
+for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.
 
-Commands to perform CRUD operations must have a transaction passed to them,
-otherwise your changes will not be persisted. There is a method with a
-non-optional transaction parameter, `SpriteDatabase.crud()`,
-this is safer way to write your functionality.
+CRUD operations must be part of a transaction, otherwise changes will not persist.
+Use the `SpriteTransaction.crud()` for this purpose.
 
 If you are trying to execute idempotent commands see `SpriteDatabase.query()`.
 

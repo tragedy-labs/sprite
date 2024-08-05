@@ -14,7 +14,7 @@ permalink: /SpriteServer/database.html
 
 (**databaseName: *string***)
 
-Returns an `SpriteDatabase` instance for the supplied `databaseName`,
+Returns a `SpriteDatabase` instance for the supplied `databaseName`,
 using the authorization details of the `SpriteServer` instance.
 
 #### Example
