@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+  <title>Sprite - Contribution Guide</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
   <link rel="stylesheet" href="/assets/css/styles.css" />
@@ -1157,13 +1157,244 @@
 </div>
     <div id="content" class="scroll-y">
       <div>
-        <h3 id="contributing">Contributing</h3>
+        <h3 id="contributing-to-sprite">Contributing to Sprite</h3>
 
 <hr />
 
-<p>Thank you for considering contributing to Sprite! Open-source software thrives thanks to individuals who generously share their time and passion for problem-solving with the community.</p>
+<p>Thank you for considering contributing to Sprite! Open-source software thrives thanks to the generous contributions of individuals like you.</p>
 
-<p>Contribution guide is in the works! Check back soon, or just make a PR in meantime :)</p>
+<h4 id="overview">Overview</h4>
+
+<p>This document is divided into the following sections for your convenience:</p>
+
+<ol>
+  <li><a href="#who-can-help">Who Can Help?</a></li>
+  <li><a href="#technical-description">Technical Description</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#making-changes">Making Changes</a></li>
+  <li><a href="#pull-requests">Pull Requests</a></li>
+</ol>
+
+<h4 id="who-can-help">Who Can Help?</h4>
+
+<hr />
+
+<p>Everyone can contribute! Programmers can assist with bugs, features, and optimization, while front-end developers, designers, and writers can help with the docs.</p>
+
+<h4 id="technical-description">Technical Description</h4>
+
+<hr />
+
+<p>A brief overview of the library:</p>
+
+<p><strong>Lib</strong></p>
+
+<ul>
+  <li>Pure ESM with TypeScript</li>
+  <li>Node.js development environment</li>
+  <li>Jest for testing</li>
+  <li>pnpm as the package manager</li>
+</ul>
+
+<p><strong>Docs</strong></p>
+
+<ul>
+  <li>Jekyll / GitHub Pages</li>
+  <li>CSS: mix of utility classes and custom CSS</li>
+</ul>
+
+<hr />
+
+<h4 id="getting-started">Getting Started</h4>
+
+<hr />
+
+<ol>
+  <li>
+    <p><strong>Fork the Repository</strong></p>
+
+    <p>Fork the repository on GitHub by clicking the “Fork” button in the upper-right corner of the repository page. This will create a copy of the repository in your GitHub account.</p>
+  </li>
+  <li>
+    <p><strong>Clone the Repository</strong></p>
+
+    <p>Clone your forked repository to your local machine:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;your-username&gt;/sprite.git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Install Dependencies</strong></p>
+
+    <p>Navigate to the project root and install dependencies:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>sprite <span class="o">&amp;&amp;</span> pnpm <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Test the Project</strong></p>
+
+    <p>Run the unit tests:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">test</span>:unit
+</code></pre></div>    </div>
+
+    <p>If the tests pass, you’re ready to start contributing.</p>
+  </li>
+</ol>
+
+<h4 id="making-changes">Making Changes</h4>
+
+<hr />
+
+<ol>
+  <li>
+    <p><strong>Create a New Branch</strong></p>
+
+    <p>Create a new branch for your changes:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> my-new-feature
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Make Your Changes</strong></p>
+
+    <p>Make your changes, following coding standards and best practices.</p>
+  </li>
+  <li>
+    <p><strong>Lint and Format</strong></p>
+
+    <p>Format your code with Prettier:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm run format
+</code></pre></div>    </div>
+
+    <p>Lint your code:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm run lint
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Unit Tests</strong></p>
+
+    <p>If your changes add new features, write corresponding unit tests. Unit tests are located in the <code class="language-plaintext highlighter-rouge">test/unit</code> folder and are run with:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">test</span>:unit
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Integration Tests</strong></p>
+
+    <p>Integration tests run in a Docker container to ensure they don’t interfere with local data. Make sure Docker is installed, then run:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up
+</code></pre></div>    </div>
+
+    <p>Once the database is established, run integration tests:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">test</span>:integration
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> Depending on your environment, you may need to run commands with elevated privileges (e.g., <code class="language-plaintext highlighter-rouge">sudo</code>).</p>
+    </blockquote>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="pull-requests">Pull Requests</h3>
+
+<hr />
+
+<p>A pull request (PR) is a request to incorporate your changes into the main repository.</p>
+
+<ol>
+  <li>
+    <p><strong>Push Your Changes</strong></p>
+
+    <p>Push your changes to your forked repository:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin my-new-feature
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Create a Pull Request</strong></p>
+
+    <p>On GitHub, click “New pull request” on your forked repository page.</p>
+  </li>
+  <li>
+    <p><strong>Describe Your Changes</strong></p>
+
+    <p>Provide a detailed description of your changes, including any relevant context.</p>
+  </li>
+</ol>
+
+<h4 id="review-process">Review Process</h4>
+
+<hr />
+
+<ol>
+  <li>
+    <p><strong>Automated Testing</strong></p>
+
+    <p>Your PR will go through automated tests to ensure nothing was broken.</p>
+  </li>
+  <li>
+    <p><strong>Code Review</strong></p>
+
+    <p>After passing tests, a reviewer from Tragedy Labs will review your PR.</p>
+  </li>
+  <li>
+    <p><strong>Address Feedback</strong></p>
+
+    <p>You may receive feedback that needs to be addressed before your PR is merged.</p>
+  </li>
+  <li>
+    <p><strong>Integration</strong></p>
+
+    <p>Once approved, your changes will be merged into the main repository.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="coding-standards">Coding Standards</h3>
+
+<hr />
+
+<ol>
+  <li>
+    <p><strong>Follow TypeScript Best Practices</strong></p>
+
+    <p>Adhere to the official TypeScript documentation and best practices.</p>
+  </li>
+  <li>
+    <p><strong>Use Consistent Coding Style</strong></p>
+
+    <p>Maintain a consistent coding style throughout the project.</p>
+  </li>
+  <li>
+    <p><strong>Write Clean, Readable Code</strong></p>
+
+    <p>Write code that is easy to understand and maintain.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="additional-resources">Additional Resources</h3>
+
+<ul>
+  <li><a href="https://www.typescriptlang.org/docs/">TypeScript Documentation</a></li>
+  <li><a href="https://archive.jestjs.io/docs/en/22.x/getting-started.html">Jest Documentation</a></li>
+</ul>
+
+<hr />
+
+<h3 id="thank-you">Thank You!</h3>
+
+<p>Thank you for contributing to Sprite! Your efforts are greatly appreciated.</p>
 
       </div>
     </div>

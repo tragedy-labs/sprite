@@ -1,5 +1,7 @@
-Here's the edited and formatted document:
-
+---
+layout: default
+title: Sprite - Contribution Guide
+permalink: ./contribute.html
 ---
 
 ### Contributing to Sprite
@@ -199,6 +201,7 @@ A pull request (PR) is a request to incorporate your changes into the main repos
 ### Additional Resources
 
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Jest Documentation](https://archive.jestjs.io/docs/en/22.x/getting-started.html)
 
 ---
 
