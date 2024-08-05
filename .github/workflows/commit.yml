@@ -8,8 +8,7 @@ jobs:
       JAVA_OPTS: >
         -Darcadedb.server.rootPassword=playwithdata
         -Darcadedb.dumpConfigAtStartup=true
-        -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/valence-corp/sprite/raw/main/test/integration/DefaultDB.zip}
-        SPRITE_ARCADE_TEST_DB_ADDRESS: 'http://arcade:2480'
+        -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/tragedy-labs/sprite/raw/main/test/integration/DefaultDB.zip}
     services:
       arcade:
         image: arcadedata/arcadedb:latest
