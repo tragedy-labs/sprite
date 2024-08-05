@@ -68,13 +68,13 @@ export class SpriteTransaction {
    * @param params
    * @returns
    */
-  crud = async (
+  crud = async <T>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
     params?: Record<string, boolean | string | number>
-  ) => {
+  ): Promise<T> => {
     try {
-      return await Rest.postJson(
+      return await Rest.postJson<T>(
         Routes.COMMAND,
         { language, command, params },
         this._session,
