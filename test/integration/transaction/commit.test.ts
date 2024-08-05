@@ -1,15 +1,15 @@
+// Lib
+import { ArcadeDocument } from '@/types/queries.js';
 import {
   CreateDocumentType,
   DropType,
   InsertDocument
 } from '@/types/commands.js';
-import { ArcadeDocument } from '@/types/queries.js';
-
-import { testClient } from './testClient.js';
-import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 import { RID_REGEX } from '@/validation/regex/RID.js';
-import { Database } from '@/database/Database.js';
-import { TestDatabaseSession as SESSION } from '@test/variables.js';
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+
+// Testing
+import { testClient } from '@test/integration/database/testClient.js';
 
 interface TrxTestType {
   aValue: string;
@@ -56,7 +56,7 @@ describe('SpriteDatabase.commitTransaction', () => {
     );
 
     // Commit the transaction
-    await Database.commitTransaction(SESSION, transaction);
+    await transaction.commit();
 
     // Query to check if the document exists after the commit
     const [queriedRecordAfterCommit] = await testClient.query<

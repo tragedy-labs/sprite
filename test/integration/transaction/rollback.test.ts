@@ -1,11 +1,14 @@
-import { ArcadeDocument } from 'src/types/queries.js';
-import { RID_REGEX } from '@/validation/regex/RID.js';
-import { testClient } from './testClient.js';
+// Lib
+import { ArcadeDocument } from '@/types/queries.js';
 import {
   CreateDocumentType,
   DropType,
   InsertDocument
-} from 'src/types/commands.js';
+} from '@/types/commands.js';
+import { RID_REGEX } from '@/validation/regex/RID.js';
+
+// Lib
+import { testClient } from '@test/integration/database/testClient.js';
 
 interface RollbackTrxTextType {
   aProperty: string;
@@ -51,8 +54,6 @@ describe('Database.rollbackTransaction', () => {
     expect(createdRecord['@rid']).toMatch(RID_REGEX);
     expect(queriedRecordAfterRollback).toBe(undefined);
     expect(didRollBack).toBe(true);
-    await expect(
-      transaction.commit()
-    ).rejects.toThrow();
+    await expect(transaction.commit()).rejects.toThrow();
   });
 });
