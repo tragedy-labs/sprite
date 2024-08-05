@@ -1190,11 +1190,7 @@ records, types, and settings.</p>
   <span class="k">try</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">transaction</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">trx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">createType</span><span class="p">(</span><span class="dl">'</span><span class="s1">aDocument</span><span class="dl">'</span><span class="p">,</span> <span class="nx">trx</span><span class="p">);</span>
-      <span class="nx">db</span><span class="p">.</span><span class="nf">createDocument</span><span class="p">(</span><span class="dl">'</span><span class="s1">aDocument</span><span class="dl">'</span><span class="p">,</span> <span class="nx">trx</span><span class="p">,</span> <span class="p">{</span>
-        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">aField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aValue</span><span class="dl">'</span>
-        <span class="p">}</span>
-      <span class="p">})</span>
+      <span class="nx">trx</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span><span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">INSERT INTO aDocument CONTENT { "aField": "aValue" }</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="kd">const</span> <span class="nx">schema</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">getSchema</span><span class="p">();</span>
     <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">schema</span><span class="p">);</span>

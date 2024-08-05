@@ -40,12 +40,8 @@ async function transactionExample() {
       'CREATE document TYPE aType',
     );
     await db.transaction(async (trx) => {
-      db.command<InsertDocument<DocumentType>(
-        'aType',
-        trx,
-        {
-          aProperty: 'aValue'
-        }
+      trx.crud<InsertDocument<DocumentType>(
+        `INSERT INTO aType CONTENT ${JSON.stringify({ "aProperty": "aValue" })}`
       );
     });
   } catch (error) {

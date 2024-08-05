@@ -22,7 +22,7 @@ and `MATCH`.
 `IllegalArgumentException` exception.**
 
 If you are trying to execute
-non-idempotent commands, see the SpriteDatabase.query method.
+non-idempotent commands, see the SpriteDatabase.command method.
 
 ##### Note
 

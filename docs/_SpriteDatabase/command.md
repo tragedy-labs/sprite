@@ -26,43 +26,14 @@ If you are trying to execute idempotent commands see `SpriteDatabase.query()`.
 
 ---
 
-If the command you are issuing is sending JSON data, you must stringify the
-data with `JSON.stringify()`.
-
-```ts
-db.command<InsertDocument<DocumentType>>(
-  'sql',
-  `INSERT INTO DocumentType CONTENT ${JSON.stringify({ aProperty: 'aValue' })}`,
-  trx,
-);
-```
-
----
-
-##### Note
-
----
-
 This package includes type definitions to help you issue commands with typed return values.
-For example: `CreateType`, `DeleteFrom`, `ArcadeDocument`, etc. You can use these
-like so:
 
 ```ts
-db.command<InsertDocument<DocumentType>>(
+db.command<CreateDocumentType>(
   'sql',
-  'INSERT INTO DocumentType',
-  trx
+  'CREATE document TYPE DocumentType'
 );
 ```
-
----
-
-##### Note
-
----
-
-Schema updates (i.e. `CREATE TYPE`, etc) are non-idempotent, but are also non-transactional.
-Therefore, transactions are optional on this method.
 
 ---
 
