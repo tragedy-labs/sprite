@@ -10,3 +10,5 @@ permalink: /SpriteTransaction/rollback.html
 
 ### _SpriteTransaction_.rollback
 
+Rollback the transaction.
+

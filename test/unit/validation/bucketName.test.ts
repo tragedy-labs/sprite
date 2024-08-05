@@ -1,11 +1,11 @@
-import { validation } from "./validationInstance.js";
+import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
 
 describe('ArcadeParameterValidation.bucketName()', () => {
   it('should return true if the variable is a string that matches the bucket name regex', () => {
     // Arrange
     const variable = 'test';
     // Act
-    const result = validation.bucketName(variable);
+    const result = ArcadeValidation.bucketName(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -13,7 +13,7 @@ describe('ArcadeParameterValidation.bucketName()', () => {
     // Arrange
     const variable = ['test', 'bucket1', 'bucket_2'];
     // Act
-    const result = validation.bucketName(variable);
+    const result = ArcadeValidation.bucketName(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -23,7 +23,7 @@ describe('ArcadeParameterValidation.bucketName()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.bucketName(variable)
+      ArcadeValidation.bucketName(variable)
     ).toThrowErrorMatchingSnapshot();
   });
 });

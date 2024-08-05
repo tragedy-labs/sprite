@@ -1,35 +1,30 @@
-import { SpriteTransaction } from '../../../src/SpriteTransaction.js';
-import { variables } from '../../variables.js';
-import { client as SpriteDatabase } from '../database/client/testClient.js';
+// Lib
+import { Database } from '@/database/Database.js';
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+
+// Testing
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.rollback()', () => {
   it('should send the provided sessionId to SpriteDatabase.rollbackTransaction()', async () => {
     jest
-      .spyOn(SpriteDatabase, 'rollbackTransaction')
+      .spyOn(Database, 'rollbackTransaction')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
-    const transaction = new SpriteTransaction(
-      SpriteDatabase,
-      variables.sessionId
-    );
+    const TRX = new SpriteTransaction(SESSION, variables.sessionId);
 
-    await transaction.rollback();
+    await TRX.rollback();
 
-    expect(SpriteDatabase.rollbackTransaction).toHaveBeenCalledWith(
-      variables.sessionId
-    );
+    expect(Database.rollbackTransaction).toHaveBeenCalledWith(SESSION, TRX);
   });
   it('should return the result of SpriteDatabase.rollbackTransaction()', async () => {
     jest
-      .spyOn(SpriteDatabase, 'rollbackTransaction')
+      .spyOn(Database, 'rollbackTransaction')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
-    const transaction = new SpriteTransaction(
-      SpriteDatabase,
-      variables.sessionId
-    );
+    const transaction = new SpriteTransaction(SESSION, variables.sessionId);
 
     const result = await transaction.rollback();
 

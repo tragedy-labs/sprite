@@ -12,5 +12,8 @@ permalink: /SpriteTransaction/constructor.html
 
 #### Interface
 
-(**database: *SpriteDatabase*, transactionId: *string***)
+(**session: *DatabaseSession*, transactionId: *string***)
+
+A transaction in Sprite, contains the transaction id, and methods to
+commit or rollback the transaction.
 

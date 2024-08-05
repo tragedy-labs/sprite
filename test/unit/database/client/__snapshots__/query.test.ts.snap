@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.query() should handle a 200 response by returning the data from the response 1`] = `"test"`;
-
-exports[`SpriteDatabase.query() should handle a 400 response by throwing an error 1`] = `[Error: Invalid language or query. Status: 400]`;
-
-exports[`SpriteDatabase.query() should handle a 500 response by throwing an error 1`] = `[Error: Internal error. Database 'school' is not available. Status: 500]`;
-
-exports[`SpriteDatabase.query() should handle an unexpected status code by throwing an error 1`] = `[Error: Unknown error. Status: 418, StatusText: non-empty string]`;

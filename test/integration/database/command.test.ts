@@ -1,6 +1,6 @@
-import { CreateDocumentType, DropType } from '../../../src/types/commands.js';
-import { ArcadeSupportedQueryLanguages } from '../../../src/types/database.js';
+import { ArcadeSupportedQueryLanguages } from '@/database/Database.js';
 import { testClient as client } from './testClient.js';
+import { CreateDocumentType, DropType } from '@/types/commands.js';
 
 const typeName: string = 'CommandTestType';
 

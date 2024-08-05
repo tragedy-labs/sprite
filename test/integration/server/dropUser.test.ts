@@ -1,10 +1,13 @@
-import { SpriteServer } from '../../../src/SpriteServer.js';
-import { variables } from '../variables.js';
+// Lib
+import { SpriteServer } from '@/server/SpriteServer.js';
+
+// testing
+import { variables } from '@test/variables.js';
 import { testClient } from './testClient.js';
 
 const config = {
   username: 'dropUserName',
-  password: variables.newPassword,
+  password: variables.password,
   databases: {
     [variables.databaseName]: '*'
   }

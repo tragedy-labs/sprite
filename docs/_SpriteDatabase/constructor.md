@@ -12,11 +12,11 @@ permalink: /SpriteDatabase/constructor.html
 
 #### Interface
 
-(**parameters: *ISpriteDatabaseClientParameters***)
+(**params: *ISpriteDatabaseExistingSession***)
 
 #### Interface
 
-(**parameters: *ISpriteDatabaseConnectionParameters***)
+(**params: *ISpriteDatabaseNewSession***)
 
 Interact with a database, perform queries, issue commands to manage
 records, types, and settings.
@@ -42,11 +42,7 @@ async function databaseExample() {
   try {
     await db.transaction(async (trx) => {
       await db.createType('aDocument', trx);
-      db.createDocument('aDocument', trx, {
-        data: {
-          aField: 'aValue'
-        }
-      })
+      trx.crud('sql', 'INSERT INTO aDocument CONTENT { "aField": "aValue" }');
     });
     const schema = await db.getSchema();
     console.log(schema);

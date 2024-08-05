@@ -11,7 +11,7 @@ permalink: /types/ISpriteDeleteFromOptions.html
 ### ISpriteDeleteFromOptions<br/><S, N extends TypeNames&lt;S&gt;, P>
 
 Options for a `deleteFrom` operation as executed
-via a `SpriteDatabase` modality.
+via a `SpriteDatabase` repository.
 
 #### Definition
 
@@ -20,7 +20,7 @@ via a `SpriteDatabase` modality.
 
 ---
 
-<h5> return?: <span>BEFORE | COUNT</span></h5>Defines what is returned following the command: the count of the records before (`BEFORE`) or following deletion (`COUNT`).
+<h5> return?: <span>COUNT | BEFORE</span></h5>Defines what is returned following the command: the count of the records before (`BEFORE`) or following deletion (`COUNT`).
 
 
 ---

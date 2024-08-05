@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.explain() should propagate errors from the server 1`] = `[Error: Could not retreive explanation from the server for .]`;

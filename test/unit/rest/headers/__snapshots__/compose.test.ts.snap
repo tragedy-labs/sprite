@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteHeaders.compose should throw an error if it recieves an invalid transaction 1`] = `"Could not compose REST headers. Typically this is because a valid transaction object was not supplied."`;

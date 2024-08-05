@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.transaction() throws an error if an error occurs within the callback 1`] = `[Error: Could not complete transaction.]`;

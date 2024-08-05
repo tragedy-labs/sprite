@@ -1,5 +1,6 @@
-import { variables } from '../variables.js';
+// Testing
 import { testClient } from './testClient.js';
+import { variables } from '@test/variables.js';
 
 describe('SpriteServer.command', () => {
   it('should execute a command', async () => {

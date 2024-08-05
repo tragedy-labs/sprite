@@ -2,17 +2,19 @@ import {
   CreateDocumentType,
   DropType,
   InsertDocument
-} from 'src/types/commands.js';
-import { SpriteTransaction } from 'src/SpriteTransaction.js';
-import { ArcadeDocument } from 'src/types/queries.js';
+} from '@/types/commands.js';
+import { ArcadeDocument } from '@/types/queries.js';
 
-import { RID_REGEX } from '../regex.js';
 import { testClient } from './testClient.js';
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+import { RID_REGEX } from '@/validation/regex/RID.js';
+import { Database } from '@/database/Database.js';
+import { TestDatabaseSession as SESSION } from '@test/variables.js';
 
-interface TrxTestType {
+interface TrxCommitTestType {
   aValue: string;
 }
-const typeName = 'TrxTestType';
+const typeName = 'TrxCommitTestType';
 
 describe('SpriteDatabase.commitTransaction', () => {
   let transaction: SpriteTransaction;
@@ -21,15 +23,7 @@ describe('SpriteDatabase.commitTransaction', () => {
     // Create a new document type before the suite executes
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
-    );
-  });
-
-  afterAll(async () => {
-    // Drop the document type after the suite executes
-    await testClient.command<DropType<typeof typeName>>(
-      'sql',
-      `DROP TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
 
@@ -38,26 +32,34 @@ describe('SpriteDatabase.commitTransaction', () => {
     transaction = await testClient.newTransaction();
   });
 
+  afterAll(async () => {
+    // Drop the test record type
+    const [thing] = await testClient.command<DropType<typeof typeName>>(
+      'sql',
+      `DROP TYPE ${typeName} IF EXISTS`
+    );
+  });
+
   it('commits a transaction successfully', async () => {
     // Insert a new document within the transaction
-    const [createdRecord] = await testClient.command<
-      InsertDocument<TrxTestType>
-    >('sql', `INSERT INTO ${typeName}`, transaction);
+    const [createdRecord] = await transaction.crud<
+      InsertDocument<TrxCommitTestType>
+    >('sql', `INSERT INTO ${typeName}`);
 
     // Query to check if the document exists before the commit
     const [queriedBeforeCommit] = await testClient.query<
-      ArcadeDocument<TrxTestType>
+      ArcadeDocument<TrxCommitTestType>
     >(
       'sql',
       `SELECT FROM ${createdRecord['@type']} WHERE @rid = ${createdRecord['@rid']}`
     );
 
     // Commit the transaction
-    await transaction.commit();
+    await Database.commitTransaction(SESSION, transaction);
 
     // Query to check if the document exists after the commit
     const [queriedRecordAfterCommit] = await testClient.query<
-      ArcadeDocument<TrxTestType>
+      ArcadeDocument<TrxCommitTestType>
     >(
       'sql',
       `SELECT FROM ${createdRecord['@type']} WHERE @rid = ${createdRecord['@rid']}`
@@ -65,7 +67,7 @@ describe('SpriteDatabase.commitTransaction', () => {
 
     // delete added record for consistancy
 
-    await testClient.command(
+    await transaction.crud(
       'sql',
       `DELETE FROM ${createdRecord['@type']} WHERE @rid == ${createdRecord['@rid']}`
     );

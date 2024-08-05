@@ -1,11 +1,16 @@
-import { ArcadeDocument } from 'src/types/queries.js';
-import { RID_REGEX } from '../regex.js';
-import { testClient } from './testClient.js';
+// Lib
 import {
   CreateDocumentType,
   DropType,
   InsertDocument
-} from 'src/types/commands.js';
+} from '@/types/commands.js';
+import { Database } from '@/database/Database.js';
+import { TestDatabaseSession as SESSION } from '@test/variables.js';
+import { ArcadeDocument } from '@/types/queries.js';
+import { RID_REGEX } from '@/validation/regex/RID.js';
+
+// Testing
+import { testClient } from './testClient.js';
 
 interface RollbackTrxTextType {
   aProperty: string;
@@ -13,31 +18,34 @@ interface RollbackTrxTextType {
 
 const typeName = 'RollbackTrxTestType';
 
-describe('SpriteDatabase.rollbackTransaction', () => {
+describe('Database.rollbackTransaction', () => {
   beforeAll(async () => {
     // Create a record type for the test
     await testClient.command<CreateDocumentType<typeof typeName>>(
       'sql',
-      `CREATE document TYPE ${typeName}`
+      `CREATE document TYPE ${typeName} IF NOT EXISTS`
     );
   });
   afterAll(async () => {
     // Drop the test record type
-    await testClient.command<DropType<typeof typeName>>(
+    const [thing] = await testClient.command<DropType<typeof typeName>>(
       'sql',
-      `DROP TYPE ${typeName}`
+      `DROP TYPE ${typeName} IF EXISTS`
     );
   });
   it('rollsback the transaction', async () => {
     const transaction = await testClient.newTransaction();
 
     // Insert a new document within the transaction
-    const [createdRecord] = await testClient.command<
+    const [createdRecord] = await transaction.crud<
       InsertDocument<RollbackTrxTextType>
-    >('sql', `INSERT INTO ${typeName}`, transaction);
+    >('sql', `INSERT INTO ${typeName}`);
 
     // Rollback the transaction
-    const didRollBack = await testClient.rollbackTransaction(transaction.id);
+    const didRollBack = await Database.rollbackTransaction(
+      SESSION,
+      transaction
+    );
 
     // Query to check if the document exists after the rollback
     const [queriedRecordAfterRollback] = await testClient.query<
@@ -51,8 +59,6 @@ describe('SpriteDatabase.rollbackTransaction', () => {
     expect(createdRecord['@rid']).toMatch(RID_REGEX);
     expect(queriedRecordAfterRollback).toBe(undefined);
     expect(didRollBack).toBe(true);
-    await expect(
-      testClient.commitTransaction(transaction.id)
-    ).rejects.toThrow();
+    await expect(transaction.commit()).rejects.toThrow();
   });
 });

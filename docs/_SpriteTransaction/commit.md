@@ -10,3 +10,5 @@ permalink: /SpriteTransaction/commit.html
 
 ### _SpriteTransaction_.commit
 
+Commit the transaction.
+

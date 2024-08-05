@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpriteServer.createDatabase() should throw an error if "databaseName" is a string containing only whitespace 1`] = `[Error: Failed to create database "   ".]`;
+
+exports[`SpriteServer.createDatabase() should throw an error if "databaseName" is an empty string 1`] = `[Error: Failed to create database "".]`;
+
+exports[`SpriteServer.createDatabase() should throw an error if fetch returns a non "ok" result property in the response object 1`] = `[Error: Failed to create database "SpriteIntegrationTesting".]`;
+
+exports[`SpriteServer.createDatabase() should throw an error if supplied "databaseName" is a number 1`] = `[Error: Failed to create database "9".]`;

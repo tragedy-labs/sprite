@@ -1,13 +1,12 @@
-import { SpriteTransaction } from '../../../src/SpriteTransaction.js';
-import { variables } from '../../variables.js';
-import { client as SpriteDatabase } from '../database/client/testClient.js';
+// Lib
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+
+// Testing
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.committed', () => {
   it('should store the committed status)', async () => {
-    const transaction = new SpriteTransaction(
-      SpriteDatabase,
-      variables.sessionId
-    );
+    const transaction = new SpriteTransaction(SESSION, variables.sessionId);
 
     expect(transaction.committed).toBe(false);
   });

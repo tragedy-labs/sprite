@@ -1,6 +1,7 @@
-import { SpriteTransaction } from '../../../src/SpriteTransaction.js';
-import { TRANSACTION_ID_REGEX } from '../regex.js';
+
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 import { testClient as client } from './testClient.js';
+import {TRANSACTION_ID_REGEX} from '@/validation/regex/TRX.js';
 
 const regex = TRANSACTION_ID_REGEX;
 

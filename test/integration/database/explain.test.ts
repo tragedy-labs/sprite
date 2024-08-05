@@ -1,33 +1,38 @@
-import { ArcadeSqlExplanation } from '../../../src/types/database.js';
+// Lib
+import { ArcadeSqlExplanation } from '@/types/database.js';
+
+// Testing
 import { testClient as client } from './testClient.js';
 
-let result: ArcadeSqlExplanation;
-
-beforeAll(async () => {
-  result = await client.explain('SELECT FROM schema:types');
-  // {
-  //   "executionPlan": {
-  //     "cost": -1,
-  //     "javaType": "com.arcadedb.query.sql.executor.SelectExecutionPlan",
-  //     "prettyPrint": "+ FETCH DATABASE METADATA TYPES",
-  //     "steps": [
-  //       {
-  //         "cost": -1,
-  //         "description": "+ FETCH DATABASE METADATA TYPES",
-  //         "javaType": "com.arcadedb.query.sql.executor.FetchFromSchemaTypesStep",
-  //         "name": "FetchFromSchemaTypesStep",
-  //         "subSteps": [],
-  //         "targetNode": "FetchFromSchemaTypesStep",
-  //         "type": "FetchFromSchemaTypesStep",
-  //       },
-  //     ],
-  //     "type": "QueryExecutionPlan",
-  //   },
-  //   "executionPlanAsString": "+ FETCH DATABASE METADATA TYPES",
-  // }
-});
-
 describe('SpriteDatabase.explain', () => {
+
+  let result: ArcadeSqlExplanation;
+
+  beforeAll(async () => {
+    result = await client.explain('SELECT FROM schema:types')
+    console.log(result);
+    // {
+    //   "executionPlan": {
+    //     "cost": -1,
+    //     "javaType": "com.arcadedb.query.sql.executor.SelectExecutionPlan",
+    //     "prettyPrint": "+ FETCH DATABASE METADATA TYPES",
+    //     "steps": [
+    //       {
+    //         "cost": -1,
+    //         "description": "+ FETCH DATABASE METADATA TYPES",
+    //         "javaType": "com.arcadedb.query.sql.executor.FetchFromSchemaTypesStep",
+    //         "name": "FetchFromSchemaTypesStep",
+    //         "subSteps": [],
+    //         "targetNode": "FetchFromSchemaTypesStep",
+    //         "type": "FetchFromSchemaTypesStep",
+    //       },
+    //     ],
+    //     "type": "QueryExecutionPlan",
+    //   },
+    //   "executionPlanAsString": "+ FETCH DATABASE METADATA TYPES",
+    // }
+  });
+  
   it('matches the explanations snapshot', () => {
     expect(result).toMatchSnapshot();
   });

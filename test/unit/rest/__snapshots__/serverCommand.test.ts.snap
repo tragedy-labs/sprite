@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Sprite.command() should propagate errors from internal methods calls 1`] = `[Error: Encountered an error when sending a command to the server.]`;

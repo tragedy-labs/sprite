@@ -1,41 +1,38 @@
-import { client } from './testClient.js';
-import { endpoints } from '../../../../src/endpoints/database.js';
-import { variables, testAuth } from '../../../variables.js';
+// Lib
+import { Database } from '@/database/Database.js';
+
+// Testing
+import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
+import { ArcadeSqlExplanation } from '@/types/database.js';
 
 describe('SpriteDatabase.explain()', () => {
-  it(`should make a properly formatted POST request to ${endpoints.query}/${variables.databaseName}`, async () => {
-    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      status: 200,
-      json: async () => variables.jsonResponse
-    } as Response);
-    const toExplain = 'SELECT * FROM bucketName';
-    await client.explain(toExplain);
-
-    expect(global.fetch).toHaveBeenCalledWith(
-      `${variables.address}${endpoints.query}/${variables.databaseName}`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Basic ${testAuth}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          language: 'sql',
-          command: `EXPLAIN ${toExplain}`
-        })
-      }
+  it('should call the Databasec() method with the given command, and the unique session instance', async () => {
+    // Arrange
+    jest
+      .spyOn(Database, 'explain')
+      .mockImplementationOnce(
+        async () => ({}) as unknown as ArcadeSqlExplanation
+      );
+    // Act
+    await SpriteDatabase.explain(variables.nonEmptyString);
+    // Asserts
+    expect(Database.explain).toHaveBeenCalledWith(
+      SESSION,
+      variables.nonEmptyString
     );
   });
 
-  it('should propagate errors from the server', async () => {
-    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      status: 500,
-      json: async () => ({
-        error: 'Generic Error For Testing',
-        detail: 'This is just an error for testing purposes',
-        exception: 'com.arcadedb.exception.AnArbitraryException'
-      })
-    } as Response);
-    await expect(client.explain('')).rejects.toMatchSnapshot();
+  it('should return the output of the Database.explain() method', async () => {
+    // Arrange
+    jest
+      .spyOn(Database, 'explain')
+      .mockImplementationOnce(
+        async () => 'test' as unknown as ArcadeSqlExplanation
+      );
+    // Act
+    const result = await SpriteDatabase.explain(variables.nonEmptyString);
+    // Asserts
+    expect(result).toBe('test');
   });
 });

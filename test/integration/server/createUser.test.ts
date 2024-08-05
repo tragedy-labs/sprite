@@ -1,10 +1,13 @@
-import { SpriteServer } from '../../../src/SpriteServer.js';
-import { variables } from '../variables.js';
+// Lib
+import { SpriteServer } from '@/server/SpriteServer.js';
+import { variables } from '@test/variables.js';
+
+// Testing
 import { testClient } from './testClient.js';
 
 const config = {
   username: 'createUsername',
-  password: variables.newPassword,
+  password: variables.password,
   databases: {
     [variables.databaseName]: '*'
   }
@@ -16,7 +19,7 @@ describe('SpriteServer.createUser', () => {
   beforeAll(async () => {
     newUserClient = new SpriteServer({
       username: config.username,
-      password: variables.newPassword,
+      password: variables.password,
       address: 'http://localhost:2480'
     });
 

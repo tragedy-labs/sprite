@@ -12,16 +12,13 @@ permalink: /SpriteDatabase/command.html
 
 #### Interface
 
-(**language: *ArcadeSupportedQueryLanguages*, command: *string*, transaction: *SpriteTransaction***)
+(**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *Record&lt;string, any&gt;***)
 
 Executes a command on the target database. This method should only be used
-for non-idempotent statements (that can change the database), such as `INSERT`,
-`CREATE`, and `DELETE`.
+for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.
 
-Commands to perform CRUD operations must have a transaction passed to them,
-otherwise your changes will not be persisted. There is a method with a
-non-optional transaction parameter, `SpriteDatabase.crud()`,
-this is safer way to write your functionality.
+CRUD operations must be part of a transaction, otherwise changes will not persist.
+Use the `SpriteTransaction.crud()` for this purpose.
 
 If you are trying to execute idempotent commands see `SpriteDatabase.query()`.
 
@@ -29,43 +26,14 @@ If you are trying to execute idempotent commands see `SpriteDatabase.query()`.
 
 ---
 
-If the command you are issuing is sending JSON data, you must stringify the
-data with `JSON.stringify()`.
-
-```ts
-db.command<InsertDocument<DocumentType>>(
-  'sql',
-  `INSERT INTO DocumentType CONTENT ${JSON.stringify({ aProperty: 'aValue' })}`,
-  trx,
-);
-```
-
----
-
-##### Note
-
----
-
 This package includes type definitions to help you issue commands with typed return values.
-For example: `CreateType`, `DeleteFrom`, `ArcadeDocument`, etc. You can use these
-like so:
 
 ```ts
-db.command<InsertDocument<DocumentType>>(
+db.command<CreateDocumentType>(
   'sql',
-  'INSERT INTO DocumentType',
-  trx
+  'CREATE document TYPE DocumentType'
 );
 ```
-
----
-
-##### Note
-
----
-
-Schema updates (i.e. `CREATE TYPE`, etc) are non-idempotent, but are also non-transactional.
-Therefore, transactions are optional on this method.
 
 ---
 

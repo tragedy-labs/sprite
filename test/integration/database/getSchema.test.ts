@@ -1,7 +1,7 @@
-import {
-  ArcadeGetSchemaResponse,
-  ArcadeTypeDefinition
-} from '../../../src/types/database.js';
+// Lib
+import { ArcadeGetSchemaResponse, ArcadeTypeDefinition } from '@/types/database.js';
+
+// Testing 
 import { testClient as client } from './testClient.js';
 
 let schema: ArcadeGetSchemaResponse;
@@ -12,10 +12,11 @@ beforeAll(async () => {
 
 describe('SpriteDatabase.getSchema', () => {
   it('returns the schema of the database as an array', () => {
+    console.log(schema);
     expect(Array.isArray(schema)).toBe(true);
   });
 
-  it('matches the schema snapshot', () => {
+  it('has the expected structure', () => {
     // {
     //   name: 'Whisky',
     //   type: 'vertex',

@@ -35,6 +35,7 @@
     "paths": {
       // Maps the '@/*' import to the 'src/*' directory.
       "@/*": ["src/*"],
+      "@test/*": ["test/*"]
     }
   },
   // Specifies folder patterns to exclude from the compilation.
@@ -43,6 +44,8 @@
     "**/node_modules",
     // Excludes 'dist' directory.
     "**/dist",
-    "**/docs"
+    "**/docs",
+    "**/src_old",
+    "**/test_old"
   ]
 }

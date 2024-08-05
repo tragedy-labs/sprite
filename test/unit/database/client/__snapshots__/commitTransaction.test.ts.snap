@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.commitTransaction() should error for a non-204 response 1`] = `[Error: Unable to commit transaction AS-0000000-0000-0000-0000-00000000000]`;
-
-exports[`SpriteDatabase.commitTransaction() should error if no sessionId is provided 1`] = `[Error: Unable to commit transaction undefined]`;

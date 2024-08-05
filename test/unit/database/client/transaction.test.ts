@@ -1,72 +1,59 @@
-import { client } from './testClient.js';
-import { variables } from '../../../variables.js';
-import { SpriteTransaction } from '@/SpriteTransaction.js';
+// Lib
+import { Database } from '@/database/Database.js';
+
+// Testing
+import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
+import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 
 describe('SpriteDatabase.transaction()', () => {
+  // Arrange
   beforeEach(() => {
     jest
-      .spyOn(client, 'commitTransaction')
-      .mockImplementationOnce(async (): Promise<boolean> => {
-        return true;
-      });
-  });
-  it(`correctly passes isolationLevel argument to SpriteDatabase.newTransaction`, async () => {
-    jest
-      .spyOn(client, 'newTransaction')
-      .mockImplementationOnce(async (): Promise<SpriteTransaction> => {
-        return new SpriteTransaction(client, variables.sessionId);
-      });
-
-    await client.transaction(() => {}, 'REPEATABLE_READ');
-
-    expect(client.newTransaction).toHaveBeenCalledWith('REPEATABLE_READ');
+      .spyOn(Database, 'transaction')
+      .mockImplementationOnce(async () => [true, variables.nonEmptyString]);
   });
 
-  it(`correctly passes a new SpriteTransaction to the callback`, async () => {
-    jest
-      .spyOn(client, 'newTransaction')
-      .mockImplementationOnce(async (): Promise<SpriteTransaction> => {
-        return new SpriteTransaction(client, variables.sessionId);
-      });
-
-    let transaction: SpriteTransaction | undefined = undefined;
-    await client.transaction((trx) => {
-      transaction = trx;
-    });
-
-    expect(transaction).toBeInstanceOf(SpriteTransaction);
+  const CALLBACK = async (trx: SpriteTransaction) => {};
+  it('should call the Database.transaction() with the unique session instance and callback', async () => {
+    // Arrange
+    // Act
+    await SpriteDatabase.transaction(CALLBACK);
+    // Assert
+    // NOTE: `undefined` because isolation level is always forwarded to the static function
+    expect(Database.transaction).toHaveBeenCalledWith(
+      SESSION,
+      CALLBACK,
+      undefined
+    );
   });
 
-  it(`correctly commits the transaction before returning`, async () => {
-    jest
-      .spyOn(client, 'newTransaction')
-      .mockImplementationOnce(async (): Promise<SpriteTransaction> => {
-        return new SpriteTransaction(client, variables.sessionId);
-      });
-
-    const transaction = await client.transaction(() => {});
-    expect(transaction).toBe(true);
+  it('should call the Database.transaction() with READ_COMMITED if supplied as an argument', async () => {
+    // Act
+    await SpriteDatabase.transaction(CALLBACK, 'READ_COMMITTED');
+    // Assert
+    expect(Database.transaction).toHaveBeenCalledWith(
+      SESSION,
+      CALLBACK,
+      'READ_COMMITTED'
+    );
   });
 
-  it(`it executes the callback once`, async () => {
-    jest
-      .spyOn(client, 'newTransaction')
-      .mockImplementationOnce(async (): Promise<SpriteTransaction> => {
-        return new SpriteTransaction(client, variables.sessionId);
-      });
-
-    let count = 0;
-    await client.transaction(() => {
-      ++count;
-    });
-
-    expect(count).toBe(1);
+  it('should call the Database.transaction() with REPEATABLE_READ if supplied as an argument', async () => {
+    // Act
+    await SpriteDatabase.transaction(CALLBACK, 'REPEATABLE_READ');
+    // Assert
+    expect(Database.transaction).toHaveBeenCalledWith(
+      SESSION,
+      CALLBACK,
+      'REPEATABLE_READ'
+    );
   });
 
-  it('throws an error if an error occurs within the callback', async () => {
-    const transactionPromise = client.transaction(() => {
-      throw new Error('Simulated error');
-    });
-    await expect(transactionPromise).rejects.toMatchSnapshot();
+  it('should return the output of the Database.transaction() method', async () => {
+    // Act
+    const result = await SpriteDatabase.transaction(CALLBACK);
+    // Asserts
+    expect(result).toEqual([true, variables.nonEmptyString]);
   });
 });

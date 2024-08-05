@@ -1,5 +1,8 @@
-import { SpriteServer } from '../../../src/SpriteServer.js';
-import { variables } from '../variables.js';
+// Lib
+import { SpriteServer } from '@/server/SpriteServer.js';
+
+// Testing
+import { variables } from '@test/variables.js';
 
 export const testClient = new SpriteServer({
   username: variables.username,

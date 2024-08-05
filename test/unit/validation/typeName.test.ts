@@ -1,11 +1,11 @@
-import { validation } from "./validationInstance.js";
+import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
 
 describe('ArcadeParameterValidation.typeName()', () => {
   it('should return true if the variable is a string that matches the type name regex', () => {
     // Arrange
     const variable = 'test';
     // Act
-    const result = validation.typeName(variable);
+    const result = ArcadeValidation.typeName(variable);
     // Assert
     expect(result).toBe(true);
   });
@@ -15,7 +15,7 @@ describe('ArcadeParameterValidation.typeName()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.typeName(variable)
+      ArcadeValidation.typeName(variable)
     ).toThrowErrorMatchingSnapshot();
   });
   it('should throw a TypeError if the variable does not match the regex', () => {
@@ -24,7 +24,7 @@ describe('ArcadeParameterValidation.typeName()', () => {
     // Act
     // Assert
     expect(() =>
-      validation.typeName(variable)
+      ArcadeValidation.typeName(variable)
     ).toThrowErrorMatchingSnapshot();
   });
 });

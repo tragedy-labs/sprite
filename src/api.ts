@@ -1,7 +1,5 @@
-export { SpriteDatabase } from './SpriteDatabase.js';
-export { SpriteServer } from './SpriteServer.js';
-export { SpriteTransaction } from './SpriteTransaction.js';
-export { DocumentModality } from './modes/DocumentModality.js';
-export { GraphModality } from './modes/GraphModality.js';
+export { SpriteDatabase } from './database/SpriteDatabase.js';
+export { SpriteServer } from './server/SpriteServer.js';
+export { SpriteTransaction } from './transaction/SpriteTransaction.js';
 
 export * from './types/index.js';

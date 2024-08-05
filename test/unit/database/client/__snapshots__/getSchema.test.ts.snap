@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.getSchema() should propagate errors from the server 1`] = `[Error: Could not get schema for database Test]`;

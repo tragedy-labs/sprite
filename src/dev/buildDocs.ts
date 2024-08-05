@@ -274,7 +274,11 @@ class JuniperMarkDownMethodNode extends JuniperMarkDownNode {
       ? `_${this.parentNode.name}&lt;${parentTypes}&gt;_`
       : `_${this.parentNode.name}_`;
 
-    this.markdown.add.heading.h3( node.name === 'constructor' ? this.parentString : `${this.parentString}.${node.name}`);
+    this.markdown.add.heading.h3(
+      node.name === 'constructor'
+        ? this.parentString
+        : `${this.parentString}.${node.name}`
+    );
 
     if (this.node.name === 'constructor') {
       if (this.node.signatures) {

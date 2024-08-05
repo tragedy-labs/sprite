@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SpriteDatabase.updateOne() should propagate errors from internal methods 1`] = `[Error: An error occured when attempting to update record @rid: #0:0, in database Test]`;
