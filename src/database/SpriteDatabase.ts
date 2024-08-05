@@ -39,11 +39,7 @@ import { Server } from '../server/Server.js';
  *   try {
  *     await db.transaction(async (trx) => {
  *       await db.createType('aDocument', trx);
- *       db.createDocument('aDocument', trx, {
- *         data: {
- *           aField: 'aValue'
- *         }
- *       })
+ *       trx.crud('sql', 'INSERT INTO aDocument CONTENT { "aField": "aValue" }');
  *     });
  *     const schema = await db.getSchema();
  *     console.log(schema);
@@ -76,37 +72,16 @@ class SpriteDatabase {
    * If you are trying to execute idempotent commands see {@link SpriteDatabase.query | `SpriteDatabase.query()`}.
    *
    * @note
-   * If the command you are issuing is sending JSON data, you must stringify the
-   * data with {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify | `JSON.stringify()`}.
-   *
-   * ```ts
-   * db.command<InsertDocument<DocumentType>>(
-   *   'sql',
-   *   `INSERT INTO DocumentType CONTENT ${JSON.stringify({ aProperty: 'aValue' })}`,
-   *   trx,
-   * );
-   * ```
-   *
-   * @note
    * This package includes type definitions to help you issue commands with typed return values.
-   * For example: `CreateType`, `DeleteFrom`, `ArcadeDocument`, etc. You can use these
-   * like so:
    *
    * ```ts
-   * db.command<InsertDocument<DocumentType>>(
+   * db.command<CreateDocumentType>(
    *   'sql',
-   *   'INSERT INTO DocumentType',
-   *   trx
+   *   'CREATE document TYPE DocumentType'
    * );
    * ```
-   *
-   * @note
-   * Schema updates (i.e. `CREATE TYPE`, etc) are non-idempotent, but are also non-transactional.
-   * Therefore, transactions are optional on this method.
-   *
    * @param language The language the command is written in.
    * @param command The command to execute in the given language.
-   * @param transaction The transaction to perform this command within.
    * @returns The `result` property of the command response from the server,
    * typically this is an `Array`
    * @throw `Error` when it cannot execute the command.
@@ -143,7 +118,8 @@ class SpriteDatabase {
     language: ArcadeSupportedQueryLanguages,
     command: string,
     parameters?: Record<string, any>
-  ): Promise<T> => Database.command(this.session, language, command, parameters);
+  ): Promise<T> =>
+    Database.command(this.session, language, command, parameters);
   /**
    * Returns information about query execution planning of a specific statement,
    * without executing the statement itself.
@@ -210,7 +186,7 @@ class SpriteDatabase {
    * `IllegalArgumentException` exception.**
    *
    * If you are trying to execute
-   * non-idempotent commands, see the {@link SpriteDatabase.query} method.
+   * non-idempotent commands, see the {@link SpriteDatabase.command} method.
    *
    * @note
    * This library includes type definitions to assist in writing queries with
@@ -300,12 +276,8 @@ class SpriteDatabase {
    *       'CREATE document TYPE aType',
    *     );
    *     await db.transaction(async (trx) => {
-   *       db.command<InsertDocument<DocumentType>(
-   *         'aType',
-   *         trx,
-   *         {
-   *           aProperty: 'aValue'
-   *         }
+   *       trx.crud<InsertDocument<DocumentType>(
+   *         `INSERT INTO aType CONTENT ${JSON.stringify({ "aProperty": "aValue" })}`
    *       );
    *     });
    *   } catch (error) {
@@ -349,15 +321,13 @@ class SpriteDatabase {
    *       'sql',
    *       'CREATE document TYPE aType',
    *     );
-   *     await db.transaction(async (trx) => {
-   *       db.command<InsertDocument<DocumentType>(
-   *         'aType',
-   *         trx,
-   *         {
-   *           aProperty: 'aValue'
-   *         }
-   *       );
-   *     });
+   *
+   *     const trx = await db.newTransaction();
+   *     await trx.crud<InsertDocument<DocumentType>(
+   *       'sql',
+   *       `INSERT INTO aType CONTENT ${JSON.stringify({ "aProperty": "aValue" })}`
+   *     );
+   *     await trx.commit();
    *   } catch (error) {
    *     console.error(error);
    *     // handle error conditions
