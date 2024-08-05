@@ -9,6 +9,7 @@ jobs:
         -Darcadedb.server.rootPassword=playwithdata
         -Darcadedb.dumpConfigAtStartup=true
         -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/valence-corp/sprite/raw/main/test/integration/DefaultDB.zip}
+        SPRITE_ARCADE_TEST_DB_ADDRESS: 'http://arcade:2480'
     services:
       arcade:
         image: arcadedata/arcadedb:latest
@@ -26,17 +27,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm install --legacy-peer-deps
-
-      - name: Wait for ArcadeDB to start
-        run: |
-          for i in {1..10}; do
-            if nc -z localhost 2480; then
-              echo "ArcadeDB is up!"
-              break
-            fi
-            echo "Waiting for ArcadeDB to be ready..."
-            sleep 10
-          done
 
       - name: Run unit tests
         run: npm run test:unit
