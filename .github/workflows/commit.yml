@@ -27,6 +27,17 @@ jobs:
         run: |
           npm install --legacy-peer-deps
 
+      - name: Wait for ArcadeDB to start
+        run: |
+          for i in {1..10}; do
+            if nc -z localhost 2480; then
+              echo "ArcadeDB is up!"
+              break
+            fi
+            echo "Waiting for ArcadeDB to be ready..."
+            sleep 10
+          done
+
       - name: Run unit tests
         run: npm run test:unit
 
