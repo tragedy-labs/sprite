@@ -28,7 +28,7 @@ jobs:
           npm install --legacy-peer-deps
 
       - name: Run unit tests
-        run: npm test:unit
+        run: npm run test:unit
 
       - name: Run integration tests
-        run: npm test:integration
+        run: npm run test:integration
