@@ -66,7 +66,8 @@ async function transactionHelperExample() {
       // operations in Sprite.
       const [record] = await trx.crud(
         'sql',
-        `INSERT INTO aDocument CONTENT ${JSON.stringify(data)}`
+        `INSERT INTO aDocument SET aProperty = :aProperty`,
+        { aProperty: 'aValue' }
       );
       console.log(record);
       // {
@@ -106,7 +107,8 @@ async function manualTransaction() {
     const trx = await db.newTransaction();
     const [record] = await trx.crud(
       'sql',
-      `INSERT INTO aDocument CONTENT ${JSON.stringify(data)}`
+      `INSERT INTO aDocument SET aProperty = :aProperty`,
+      { aProperty: 'aValue' }
     );
 
     console.log(record);
