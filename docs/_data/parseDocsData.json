@@ -1,183 +1,5 @@
 [
   {
-    "parent": "DocumentModality",
-    "name": "constructor",
-    "desc": "undefined",
-    "type": "function"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "_database",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "_sql",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "createType",
-    "desc": "Create a new document type in the schema.",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "deleteFrom",
-    "desc": "Delete records of a certain type, target specific records\nusing the  `where`  property of the options argument.",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "deleteOne",
-    "desc": "Delete a specific record by providing the  `rid`",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "dropType",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "newDocument",
-    "desc": "Insert a new document into the database.",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "newTransaction",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "selectFrom",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "selectOne",
-    "desc": "Select a specific record by providing the  `rid`",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "transaction",
-    "desc": "Helps to manage a transaction, by automatically invoking  `newTransation` ,\nand passing the returned  `SpriteTransaction`  to a callback as an argument,\nto be passed to non-idempotent databases operations.",
-    "type": "method"
-  },
-  {
-    "parent": "DocumentModality",
-    "name": "updateOne",
-    "desc": "Update one record in the database, by providing an RID.",
-    "type": "method"
-  },
-  {
-    "name": "DocumentModality",
-    "desc": "Handles the operations related to document records in the database.\nIt wraps the methods of the SpriteOperations class with types.",
-    "type": "class"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "constructor",
-    "desc": "undefined",
-    "type": "function"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "_database",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "_sql",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "createEdgeType",
-    "desc": "Create a new edge type.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "createVertexType",
-    "desc": "Create a new vertex type.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "deleteFrom",
-    "desc": "Delete records of a certain type, target specific records\nusing the  `where`  property of the options argument.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "deleteOne",
-    "desc": "Delete a specific record by providing the  `rid`",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "dropType",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "newEdge",
-    "desc": "Insert a new edge into the database.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "newTransaction",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "newVertex",
-    "desc": "Insert a new vertex into the database.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "selectFrom",
-    "desc": "undefined",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "selectOne",
-    "desc": "Select a specific record by providing the  `rid`",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "transaction",
-    "desc": "Helps to manage a transaction, by automatically invoking  `newTransation` ,\nand passing the returned  `SpriteTransaction`  to a callback as an argument,\nto be passed to non-idempotent databases operations.",
-    "type": "method"
-  },
-  {
-    "parent": "GraphModality",
-    "name": "updateOne",
-    "desc": "Update one record in the database, by providing an RID.",
-    "type": "method"
-  },
-  {
-    "name": "GraphModality",
-    "desc": "A window to a specific graph set.\nMandatory type parameters for the graph elements to target.",
-    "type": "class"
-  },
-  {
     "parent": "SpriteDatabase",
     "name": "constructor",
     "desc": "undefined",
@@ -185,68 +7,26 @@
   },
   {
     "parent": "SpriteDatabase",
-    "name": "_client",
+    "name": "session",
     "desc": "undefined",
     "type": "property"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "_documentModality",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "_graphModality",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "_name",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "_sql",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "name",
-    "desc": "undefined",
-    "type": "enum"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "sql",
-    "desc": "undefined",
-    "type": "enum"
-  },
-  {
-    "parent": "SpriteDatabase",
-    "name": "_endpoint",
-    "desc": "Helper function for building enpoints",
-    "type": "method"
   },
   {
     "parent": "SpriteDatabase",
     "name": "command",
-    "desc": "Executes a command on the target database. This method only executes\nnon-idempotent statements (that can change the database), such as  `INSERT` ,\n `CREATE` , and  `DELETE` . The execution of idempotent commands will throw an\n `IllegalArgumentException`  exception. If you are trying to execute\nidempotent commands, see the  `SpriteDatabase.query()`  method.",
+    "desc": "Executes a command on the target database. This method should only be used\nfor non-transactional, non-idempotent statements such as:  `CREATE` ,  `ALTER` , or  `DROP` .\n\nCRUD operations must be part of a transaction, otherwise changes will not persist.\nUse the  `SpriteTransaction.crud()`  for this purpose.\n\nIf you are trying to execute idempotent commands see  `SpriteDatabase.query()` .",
     "type": "method"
   },
   {
     "parent": "SpriteDatabase",
-    "name": "commitTransaction",
-    "desc": "Commits a transaction on the server, provided a transaction id.\nProvide the id obtained from the transaction returned from invoking\n `SpriteDatabase.newTransaction()` .",
+    "name": "create",
+    "desc": "Create a new database on the server.",
     "type": "method"
   },
   {
     "parent": "SpriteDatabase",
-    "name": "documentModality",
-    "desc": "Returns a modality for working with document records within the database.",
+    "name": "exists",
+    "desc": "Check to see if this database exists on the server\n(i.e. the database was created).",
     "type": "method"
   },
   {
@@ -263,26 +43,20 @@
   },
   {
     "parent": "SpriteDatabase",
-    "name": "graphModality",
-    "desc": "Returns a modality for working with graph records within the database.",
-    "type": "method"
-  },
-  {
-    "parent": "SpriteDatabase",
     "name": "newTransaction",
-    "desc": "Begins a transaction on the server, managed as a session.",
+    "desc": "Creates and returns a new  SpriteTransaction .\nOperations requiring the transaction should be executed using\nthe  `crud()`  method on the returned object. The\ntransaction can be committed using the  `commit()`  method, and\nrolled-back by invoking  `rollback()` .",
     "type": "method"
   },
   {
     "parent": "SpriteDatabase",
     "name": "query",
-    "desc": "Executes a query against the target database. This method only executes\nidempotent statements (that cannot change the database), namely  `SELECT` \nand  `MATCH` . The execution of non-idempotent commands will throw an\n `IllegalArgumentException`  exception. If you are trying to execute\nnon-idempotent commands, see the  `SpriteDatabase.command()`  method.",
+    "desc": "Executes a query against the target database. This method only executes\nidempotent statements (that cannot change the database), namely  `SELECT` \nand  `MATCH` .\n\n**The execution of non-idempotent commands will throw an\n `IllegalArgumentException`  exception.**\n\nIf you are trying to execute\nnon-idempotent commands, see the  SpriteDatabase.command  method.",
     "type": "method"
   },
   {
     "parent": "SpriteDatabase",
-    "name": "rollbackTransaction",
-    "desc": "Rolls back a transaction on the server. Provide the session id obtained with the  `SpriteDatabase.newTransaction()`  method.",
+    "name": "transaction",
+    "desc": "Creates a new transaction and passes it as an argument to a callback which\nrepresents the transaction scope. The transaction is committed when the\ncallback resolves. The transaction can be rolled back by invoking\n `SpriteTransaction.rollback()`  within the callback.",
     "type": "method"
   },
   {
@@ -298,32 +72,20 @@
   },
   {
     "parent": "SpriteServer",
-    "name": "_client",
+    "name": "_session",
     "desc": "undefined",
     "type": "property"
-  },
-  {
-    "parent": "SpriteServer",
-    "name": "_validate",
-    "desc": "undefined",
-    "type": "property"
-  },
-  {
-    "parent": "SpriteServer",
-    "name": "_booleanCommand",
-    "desc": "Internal method for sending commands to the server in which a JSON response\ncontaining an  `ok`  value in the  `result`  property is expected.  `ok`  is then\nreturned as a simple boolean ( `true` ) value",
-    "type": "method"
   },
   {
     "parent": "SpriteServer",
     "name": "closeDatabase",
-    "desc": "Close a database",
+    "desc": "When you close a database in ArcadeDB, it:\n1. Frees up resources on the server: The database instance is released, and the associated resources, such as memory, threads, and file handles, are returned to the system. This helps to reduce the server's memory footprint and free up resources for other tasks.\n2. Releases it from RAM: The database instance is removed from the server's RAM, which means that the database's metadata, schema, and cached data are no longer stored in memory. This helps to reduce memory usage.\n3. Prevents further operations: Once the database is closed, users can no longer perform operations on the database, such as executing queries, creating new records, or modifying existing data. The database is effectively \"offline\" until it's reopened.",
     "type": "method"
   },
   {
     "parent": "SpriteServer",
     "name": "command",
-    "desc": "A method for sending commands (as strings) to the server.",
+    "desc": "Sends a command to the ArcadeDB server and returns the response.\n\nThis method provides a way to execute arbitrary commands on the server, such as creating databases, executing queries, or performing administrative tasks.",
     "type": "method"
   },
   {
@@ -347,13 +109,7 @@
   {
     "parent": "SpriteServer",
     "name": "database",
-    "desc": "Returns an SpriteDatabase client for the supplied  `databaseName` ,\nusing the authorization details of the  `SpriteServer`  client.",
-    "type": "method"
-  },
-  {
-    "parent": "SpriteServer",
-    "name": "databaseExists",
-    "desc": "Check to see if a database exists.",
+    "desc": "Returns a  `SpriteDatabase`  instance for the supplied  `databaseName` ,\nusing the authorization details of the  `SpriteServer`  instance.",
     "type": "method"
   },
   {
@@ -395,7 +151,7 @@
   {
     "parent": "SpriteServer",
     "name": "openDatabase",
-    "desc": "Open a database",
+    "desc": "When you \"open\" a database in ArcadeDB, it means you're creating an instance of the database in memory, allocating resources, and making the database available for operations. Here's what happens when you open a database:\n\n1. Create a new database instance: A new database instance is created in memory, which includes the database's metadata, schema, and cached data. This instance is used to manage the database's resources and provide access to the data.\n2. Allocate resources: The database instance allocates the necessary resources, such as memory, threads, and file handles, to support the database's operations. This ensures that the database has the necessary resources to handle incoming requests.\n3. Load database metadata and schema: The database's metadata and schema are loaded into memory, which includes information about the database's structure, indexes, and relationships.\n4. Connect to the underlying storage: The database instance establishes a connection to the underlying storage, such as disk storage, to access the database files.\n5. Make the database available for operations: The database is now available for users to perform operations, such as executing queries, creating new records, or modifying existing data.",
     "type": "method"
   },
   {
@@ -435,7 +191,13 @@
   },
   {
     "parent": "SpriteTransaction",
-    "name": "database",
+    "name": "_rolledBack",
+    "desc": "undefined",
+    "type": "property"
+  },
+  {
+    "parent": "SpriteTransaction",
+    "name": "_session",
     "desc": "undefined",
     "type": "property"
   },
@@ -453,34 +215,76 @@
   },
   {
     "parent": "SpriteTransaction",
-    "name": "commit",
+    "name": "rolledBack",
     "desc": "undefined",
+    "type": "enum"
+  },
+  {
+    "parent": "SpriteTransaction",
+    "name": "commit",
+    "desc": "Commit the transaction.",
+    "type": "method"
+  },
+  {
+    "parent": "SpriteTransaction",
+    "name": "crud",
+    "desc": "",
     "type": "method"
   },
   {
     "parent": "SpriteTransaction",
     "name": "rollback",
-    "desc": "undefined",
+    "desc": "Rollback the transaction.",
     "type": "method"
   },
   {
     "name": "SpriteTransaction",
-    "desc": "undefined",
+    "desc": "A transaction in Sprite, contains the transaction id, and methods to\ncommit or rollback the transaction.",
     "type": "class"
   },
   {
-    "name": "ArcadeCommandResponse",
-    "desc": "The object returned from the server following a successfully command",
+    "name": "AlterBucket",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `ALTER BUCKET`  command",
     "type": "interface"
   },
   {
-    "name": "ISpriteConnection",
-    "desc": "Stores the details of the server connection for use in\nfetch requests with the ArcadeDB Server.",
+    "name": "AlterType",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `ALTER TYPE`  command",
     "type": "interface"
   },
   {
-    "name": "ISpriteCreateArcadeUser",
-    "desc": "undefined",
+    "name": "CreateBucket",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `CREATE BUCKET`  command",
+    "type": "interface"
+  },
+  {
+    "name": "CreateDocumentType",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `CREATE document TYPE <Name>`  command",
+    "type": "interface"
+  },
+  {
+    "name": "CreateEdgeType",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `CREATE edge TYPE <Name>`  command",
+    "type": "interface"
+  },
+  {
+    "name": "CreateVertexType",
+    "desc": "An array, which contain an object returned from\nArcadeDB for a  `CREATE vertex TYPE <Name>`  command",
+    "type": "interface"
+  },
+  {
+    "name": "DropBucket",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `DROP BUCKET`  command",
+    "type": "interface"
+  },
+  {
+    "name": "DropType",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `DROP document TYPE <Name>`  command",
+    "type": "interface"
+  },
+  {
+    "name": "EdgeRecordMeta",
+    "desc": "The metadata for an Edge record in\nArcadeDB",
     "type": "interface"
   },
   {
@@ -489,18 +293,8 @@
     "type": "interface"
   },
   {
-    "name": "ISpriteDatabaseClientParameters",
-    "desc": "The parameters used to create a  `SpriteDatabase` \nintance when there is an existing instance of a\n `SpriteRestClient` , such as when intantiated\nfrom a method in the  `SpriteServer`  class",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteDatabaseConnectionParameters",
-    "desc": "The parameters necessary to perform opertations\non a target ArcadeDB database.",
-    "type": "interface"
-  },
-  {
     "name": "ISpriteDeleteFromOptions",
-    "desc": "Options for a  `deleteFrom`  operation as executed \nvia a  `SpriteDatabase`  modality.",
+    "desc": "Options for a  `deleteFrom`  operation as executed\nvia a  `SpriteDatabase`  repository.",
     "type": "interface"
   },
   {
@@ -524,13 +318,18 @@
     "type": "interface"
   },
   {
-    "name": "ISpriteRestClientConnectionParameters",
-    "desc": "The parameters required to connect to the ArcadeDB server.",
+    "name": "ISpriteSelectFromOptions",
+    "desc": "Options for a  `selectFrom`  operation, as executed via a  `SpriteDatabase`  repository.",
     "type": "interface"
   },
   {
-    "name": "ISpriteSelectFromOptions",
-    "desc": "Options for a  `selectFrom`  operation, as executed via a  `SpriteDatabase`  modality.",
+    "name": "InsertDocument",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `INSERT INTO <document-type>` \ncommand",
+    "type": "interface"
+  },
+  {
+    "name": "InsertVertex",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `INSERT INTO <vertex-type>` \ncommand",
     "type": "interface"
   },
   {
@@ -554,13 +353,23 @@
     "type": "type"
   },
   {
-    "name": "ArcadeGetSchemaResponse",
-    "desc": "The response from a  `SpriteDatabase.getSchema()`  query",
+    "name": "ArcadeDocument",
+    "desc": "The  `DOCUMENT`  record of a certain type, with ArcadeDB meta\nattached.",
     "type": "type"
   },
   {
-    "name": "ArcadeQueryResponse",
-    "desc": "The object returned from the server following a successfully query",
+    "name": "ArcadeDropTypeResponse",
+    "desc": "Result from the ArcadeDB server for a  `DROP TYPE`  command",
+    "type": "type"
+  },
+  {
+    "name": "ArcadeEdge",
+    "desc": "The  `EDGE`  record of a certain type, with ArcadeDB meta\nattached.",
+    "type": "type"
+  },
+  {
+    "name": "ArcadeGetSchemaResponse",
+    "desc": "The response from a  `SpriteDatabase.getSchema()`  query",
     "type": "type"
   },
   {
@@ -574,38 +383,13 @@
     "type": "type"
   },
   {
-    "name": "ArcadeServerBasicInformation",
-    "desc": "The metadata returned from the server on every operation.",
-    "type": "type"
-  },
-  {
-    "name": "ArcadeServerClusterInformation",
+    "name": "ArcadeSelectTimeoutStrategy",
     "desc": "undefined",
     "type": "type"
   },
   {
-    "name": "ArcadeServerDefaultInformation",
+    "name": "ArcadeSqlExaplantionExecutionPlanStep",
     "desc": "undefined",
-    "type": "type"
-  },
-  {
-    "name": "ArcadeServerInfoMetrics",
-    "desc": "undefined",
-    "type": "type"
-  },
-  {
-    "name": "ArcadeServerInfoSetting",
-    "desc": "undefined",
-    "type": "type"
-  },
-  {
-    "name": "ArcadeServerInformation",
-    "desc": "undefined",
-    "type": "type"
-  },
-  {
-    "name": "ArcadeServerInformationLevel",
-    "desc": "The level of detail that should be returned for a\n `SpriteServer.getInformation()`  request",
     "type": "type"
   },
   {
@@ -619,11 +403,6 @@
     "type": "type"
   },
   {
-    "name": "ArcadeSupportedQueryLanguages",
-    "desc": "The Query languages supported by ArcadeDB, supplied as a parameter\nto  `SpriteDatabase.query()`  and  `SpriteDatabase.command()`",
-    "type": "type"
-  },
-  {
     "name": "ArcadeTypeDefinition",
     "desc": "A type definition returned by ArcadeDB when a getSchema command\nis compeleted.",
     "type": "type"
@@ -634,23 +413,28 @@
     "type": "type"
   },
   {
-    "name": "AsArcadeEdges",
-    "desc": "Adds ArcadeDB record metadata to the types\ndefined in the schema.",
+    "name": "ArcadeVertex",
+    "desc": "The  `VERTEX`  record of a certain type, with ArcadeDB meta\nattached.",
     "type": "type"
   },
   {
-    "name": "AsArcadeRecords",
-    "desc": "Adds ArcadeDB record metadata to the types\ndefined in the schema. Used for Document\nand Vertex records.",
+    "name": "CreateEdge",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `CREATE EDGE <edge-type>`  command",
+    "type": "type"
+  },
+  {
+    "name": "CreateVertex",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `CREATE VERTEX <vertex-type>`  command",
+    "type": "type"
+  },
+  {
+    "name": "DeleteFrom",
+    "desc": "An array, which contains an object returned from\nArcadeDB for a  `DELETE FROM`  command. The object\ncontains one property,  `count`  which is an\ninteger",
     "type": "type"
   },
   {
     "name": "DeleteFromCount",
     "desc": "The object returned in the response of a  `DELETE` \ncommand.",
-    "type": "type"
-  },
-  {
-    "name": "EdgeRecordMeta",
-    "desc": "The metadata for an Edge record in \nArcadeDB",
     "type": "type"
   },
   {
@@ -660,22 +444,12 @@
   },
   {
     "name": "RecordMeta",
-    "desc": "The base metadata for record in \nArcadeDB.",
+    "desc": "The base metadata for record in\nArcadeDB.",
     "type": "type"
   },
   {
     "name": "RecordOperationResponse",
     "desc": "The object returned as a receipt of a successfully executed\noperation.",
-    "type": "type"
-  },
-  {
-    "name": "SpriteArcadeServerEvent",
-    "desc": "Describes an event on the ArcadeDB server",
-    "type": "type"
-  },
-  {
-    "name": "SpriteArcadeServerEvents",
-    "desc": "The ArcadeDB Server Events Log",
     "type": "type"
   },
   {
@@ -689,11 +463,6 @@
     "type": "type"
   },
   {
-    "name": "SpriteTransactionCallback",
-    "desc": "A callback which contains the operations to be conducted within a transaction",
-    "type": "type"
-  },
-  {
     "name": "SpriteWhereClause",
     "desc": "An array with three items used to describe a  `where`  statement.",
     "type": "type"
@@ -701,6 +470,11 @@
   {
     "name": "TypeNames",
     "desc": "The TypeNames in a supplied schema.",
+    "type": "type"
+  },
+  {
+    "name": "ValidSuperTypeKey",
+    "desc": "undefined",
     "type": "type"
   },
   {
