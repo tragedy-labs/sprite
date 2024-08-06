@@ -1,5 +1,5 @@
 // Lib
-import { SpriteDatabase } from '@/database/SpriteDatabase.js'; 
+import { SpriteDatabase } from '@/database/SpriteDatabase.js';
 
 // Testing
 import { variables } from '@test/variables.js';

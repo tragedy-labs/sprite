@@ -291,8 +291,6 @@ export type ArcadeTypeDefinition = {
 /** The response from a `SpriteDatabase.getSchema()` query */
 export type ArcadeGetSchemaResponse = ArcadeTypeDefinition[];
 
-
-
 export type ArcadeSqlExaplantionExecutionPlanStep = {
   cost: number;
   description: string;

@@ -118,7 +118,11 @@ class Database {
     sql: string
   ): Promise<ArcadeSqlExplanation> => {
     try {
-      const result = await this.query<ArcadeSqlExplanation>(session, Dialect.SQL, EXPLAIN(sql));
+      const result = await this.query<ArcadeSqlExplanation>(
+        session,
+        Dialect.SQL,
+        EXPLAIN(sql)
+      );
       return result[0];
     } catch (error) {
       throw new Error(`Could not retreive explanation for ${sql}.`, {
