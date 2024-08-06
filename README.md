@@ -36,7 +36,10 @@ async function example() {
     console.log(db.name);
     // 'aDatabase'
 
-    await db.command('sql', 'CREATE document TYPE aType');
+    const result = await db.command(
+      'sql',
+      'CREATE document TYPE aType'
+    );
     console.log(result);
     // [
     //   {
@@ -92,7 +95,6 @@ async function example() {
       'sql',
       'CREATE document TYPE aType'
     );
-
     console.log(created);
     // [
     //   {

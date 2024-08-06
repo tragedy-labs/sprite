@@ -51,15 +51,37 @@ import { Server } from '../server/Server.js';
  * databaseExample();
  */
 class SpriteDatabase {
-  private session: DatabaseSession;
-
+  private _session: DatabaseSession;
   constructor(params: ISpriteDatabaseExistingSession);
   constructor(params: ISpriteDatabaseNewSession);
   constructor(
     params: ISpriteDatabaseExistingSession | ISpriteDatabaseNewSession
   ) {
-    this.session = new DatabaseSession(params);
+    this._session = new DatabaseSession(params);
   }
+  /**
+   * Set the credentials that the database client should use
+   * when interacting with the ArcadeDB server.
+   * @param username The username to authenticate with.
+   * @param password The password to authenticate with.
+   * @returns `true` if the credentials were set.
+   * @throws `Error` if the credentials could not be set.
+   */
+  public setCredentials = (username: string, password: string) => {
+    try {
+      this._session = new DatabaseSession({
+        username,
+        password,
+        address: this._session.address,
+        databaseName: this._session.databaseName
+      });
+      return true;
+    } catch (error) {
+      throw new Error('Could not attach new session to database client', {
+        cause: error
+      });
+    }
+  };
   /**
    * Executes a command on the target database. This method should only be used
    * for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.
@@ -117,7 +139,7 @@ class SpriteDatabase {
     command: string,
     parameters?: Record<string, unknown>
   ): Promise<T> =>
-    Database.command(this.session, language, command, parameters);
+    Database.command(this._session, language, command, parameters);
   /**
    * Returns information about query execution planning of a specific statement,
    * without executing the statement itself.
@@ -155,7 +177,7 @@ class SpriteDatabase {
    *
    * spriteExplainExample();
    */
-  public explain = async (sql: string) => Database.explain(this.session, sql);
+  public explain = async (sql: string) => Database.explain(this._session, sql);
   /**
    * Return the current schema.
    * @returns An array of objects describing the schema.
@@ -174,7 +196,7 @@ class SpriteDatabase {
    *
    * getSchemaExample();
    */
-  public getSchema = async () => Database.getSchema(this.session);
+  public getSchema = async () => Database.getSchema(this._session);
   /**
    * Executes a query against the target database. This method only executes
    * idempotent statements (that cannot change the database), namely `SELECT`
@@ -242,7 +264,7 @@ class SpriteDatabase {
     language: ArcadeSupportedQueryLanguages,
     command: string,
     parameters?: ArcadeQueryParameters
-  ) => Database.query<T>(this.session, language, command, parameters);
+  ) => Database.query<T>(this._session, language, command, parameters);
   /**
    * Creates a new transaction and passes it as an argument to a callback which
    * represents the transaction scope. The transaction is committed when the
@@ -291,7 +313,7 @@ class SpriteDatabase {
   public transaction = async <T>(
     callback: (trx: SpriteTransaction) => Promise<T>,
     isolationLevel?: ArcadeTransactionIsolationLevel
-  ) => Database.transaction<T>(this.session, callback, isolationLevel);
+  ) => Database.transaction<T>(this._session, callback, isolationLevel);
   /**
    * Creates and returns a new {@link SpriteTransaction}.
    * Operations requiring the transaction should be executed using
@@ -340,7 +362,7 @@ class SpriteDatabase {
   public newTransaction = async (
     isolationLevel?: ArcadeTransactionIsolationLevel
   ): Promise<SpriteTransaction> =>
-    Database.beginTransaction(this.session, isolationLevel);
+    Database.beginTransaction(this._session, isolationLevel);
   /**
    * Check to see if this database exists on the server
    * (i.e. the database was created).
@@ -361,7 +383,7 @@ class SpriteDatabase {
    * databaseExistsExample();
    */
   public exists = async () =>
-    Database.exists(this.session, this.session.databaseName);
+    Database.exists(this._session, this._session.databaseName);
   /**
    * Create a new database on the server.
    * @returns `true` if the database was created.
@@ -384,7 +406,7 @@ class SpriteDatabase {
    * createDatabaseExample();
    */
   public create = async () =>
-    Server.createDatabase(this.session, this.session.databaseName);
+    Server.createDatabase(this._session, this._session.databaseName);
 }
 
 export { SpriteDatabase };
