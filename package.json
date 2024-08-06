@@ -5,6 +5,11 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "type": "module",
+  "homepage": "https://sprite.tragedy.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tragedy-labs/sprite.git"
+  },
   "scripts": {
     "dev": "nodemon --watch ./ --ext ts --exec 'rimraf ./dist && tsc && node ./dist/index.js'",
     "build": "rimraf ./dist && tsc -p ./tsconfig.build.json",
