@@ -3,6 +3,7 @@ import { Dialect } from '@/database/Database.js';
 import { Routes } from '@/database/routes.js';
 import { Rest } from '@/rest/Rest.js';
 import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
 import {
@@ -25,7 +26,9 @@ describe('SpriteTransaction.crud()', () => {
     const PARAMS = { test: 'Params' };
 
     // Act
-    const result = await TRX.crud(
+    const result = await Transaction.crud(
+      SESSION,
+      TRX,
       Dialect.SQL,
       variables.nonEmptyString,
       PARAMS
