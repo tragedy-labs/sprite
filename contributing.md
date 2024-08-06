@@ -18,7 +18,7 @@ This document is divided into the following sections for your convenience:
 
 ---
 
-Everyone can contribute! Programmers can assist with bugs, features, and optimization, while front-end developers, designers, and writers can help with the docs.
+Everyone can contribute! Engineers can assist with bugs, features, and optimization. Designers, and writers can help with the docs.
 
 #### Technical Description
 

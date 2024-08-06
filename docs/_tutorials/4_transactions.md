@@ -14,13 +14,7 @@ ArcadeDB is a transactional database. This is preferred for applications that re
 
 There are a two different ways to conduct transactions in Sprite. This tutorial will demonstate these methods.
 
----
-
-###### Note:
-
-You don't need to run this code; it will be put into practice in the next tutorial.
-
----
+> **Note:** You don't need to run this code; it will be put into practice in the next tutorial.
 
 #### Overview
 

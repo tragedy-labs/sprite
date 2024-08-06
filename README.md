@@ -46,10 +46,14 @@ async function example() {
     // ]
 
     // CRUD must be transactional
+    // Parameterized commands are used to prevent
+    // SQL injection, parameters are passed in an
+    // object as the third argument
     db.transaction(async (trx) => {
       const doc = trx.crud(
         'sql',
-        `INSERT INTO aType CONTENT ${JSON.stringify{ aProperty: 'aValue' }}`
+        `INSERT INTO aType SET aProperty = :aValue`,
+        { aValue: 1 }
       );
     });
   } catch (error) {
@@ -102,10 +106,14 @@ async function example() {
     // [...]
 
     // CRUD must be part of a transaction
+    // Parameterized commands are used to prevent
+    // SQL injection, parameters are passed in an
+    // object as the third argument.
     db.transaction(async (trx) => {
-      await trx.crud<InsertDocument<ExampleDoc>>(
+      await trx.crud(
         'sql',
-        `INSERT INTO aType CONTENT ${JSON.stringify{ aProperty: 'aValue' }}`,
+        `INSERT INTO aType SET aProperty = :aValue`,
+        { aValue: 1 }
       );
     });
 
