@@ -1,6 +1,5 @@
 // Lib
 import { Server } from '@/server/Server.js';
-import { ServerSession } from '@/session/ServerSession.js';
 
 // Test
 import { client as SpriteServer } from './testClient.js';
@@ -26,9 +25,7 @@ describe('SpriteServer.serverReady()', () => {
 
   it('should return the output of the Server.serverReady() method', async () => {
     // Arrange
-    const spy = jest
-      .spyOn(Server, 'serverReady')
-      .mockImplementationOnce(async () => true);
+    jest.spyOn(Server, 'serverReady').mockImplementationOnce(async () => true);
     // Act
     const result = await SpriteServer.serverReady();
     // Asserts

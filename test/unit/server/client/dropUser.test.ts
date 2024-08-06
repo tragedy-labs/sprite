@@ -3,11 +3,7 @@ import { Server } from '@/server/Server.js';
 
 // Test
 import { client as SpriteServer } from './testClient.js';
-import {
-  CREATE_USER_PARAMS,
-  TestServerSession as SESSION,
-  variables
-} from '@test/variables.js';
+import { TestServerSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteServer.dropUser()', () => {
   beforeEach(() => {
@@ -31,9 +27,7 @@ describe('SpriteServer.dropUser()', () => {
 
   it('should return the output of the Server.dropUser() method', async () => {
     // Arrange
-    const spy = jest
-      .spyOn(Server, 'dropUser')
-      .mockImplementationOnce(async () => true);
+    jest.spyOn(Server, 'dropUser').mockImplementationOnce(async () => true);
     // Act
     const result = await SpriteServer.dropUser(variables.username);
     // Asserts

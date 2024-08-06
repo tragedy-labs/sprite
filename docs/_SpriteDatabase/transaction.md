@@ -41,7 +41,9 @@ async function transactionExample() {
     );
     await db.transaction(async (trx) => {
       trx.crud<InsertDocument<DocumentType>(
-        `INSERT INTO aType CONTENT ${JSON.stringify({ "aProperty": "aValue" })}`
+        'sql',
+        'INSERT INTO aType SET aProperty = :aProperty',
+        { aProperty: 'aValue' }
       );
     });
   } catch (error) {

@@ -55,7 +55,7 @@ describe('SpriteServer.getInformation()', () => {
 
   it('should return the output of the Server.getInformation() method', async () => {
     // Arrange
-    const spy = jest
+    jest
       .spyOn(Server, 'getInformation')
       .mockImplementationOnce(
         async () =>

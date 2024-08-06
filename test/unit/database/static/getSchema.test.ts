@@ -5,7 +5,6 @@ import { Routes } from '@/database/routes.js';
 // Testing
 import {
   variables,
-  testAuth,
   TestDatabaseSession as SESSION,
   headers
 } from '@test/variables.js';

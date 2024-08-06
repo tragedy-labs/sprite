@@ -1,13 +1,14 @@
 import { Routes } from './routes.js';
 import { EXPLAIN, SELECT_SCHEMA } from './commands/index.js';
 import { Rest } from '../rest/Rest.js';
-import {
-  ArcadeTransactionIsolationLevel,
-  SpriteTransaction
-} from '../transaction/SpriteTransaction.js';
+import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import { DatabaseSession } from '../session/DatabaseSession.js';
 import { HeaderKeys } from '../rest/SpriteHeaders.js';
-import { ArcadeSqlExplanation } from '@/types/database.js';
+import {
+  ArcadeGetSchemaResponse,
+  ArcadeSqlExplanation
+} from '@/types/database.js';
+import { ArcadeTransactionIsolationLevel } from '@/transaction/Transaction.js';
 
 export enum Dialect {
   SQL = 'sql',
@@ -22,7 +23,7 @@ export type ArcadeQueryParameters = Record<string, boolean | string | number>;
 
 export type ArcadeCommand =
   | string
-  | { command: string; params: Record<string, any> };
+  | { command: string; params: Record<string, unknown> };
 
 /**
  * The Query languages supported by ArcadeDB, supplied as a parameter
@@ -52,7 +53,7 @@ class Database {
     session: DatabaseSession,
     language: ArcadeSupportedQueryLanguages,
     command: ArcadeCommand,
-    parameters?: Record<string, any>
+    parameters?: Record<string, unknown>
   ): Promise<T> => {
     try {
       return await Rest.postJson(
@@ -95,7 +96,9 @@ class Database {
    * @param session The {@link DatabaseSession `DatabaseSession`} to target for the schema.
    * @returns The schema of the database.
    */
-  public static getSchema = async (session: DatabaseSession): Promise<any> => {
+  public static getSchema = async (
+    session: DatabaseSession
+  ): Promise<ArcadeGetSchemaResponse> => {
     try {
       return await this.query(session, Dialect.SQL, SELECT_SCHEMA);
     } catch (error) {

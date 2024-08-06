@@ -52,7 +52,7 @@ async function example() {
     db.transaction(async (trx) => {
       const doc = trx.crud(
         'sql',
-        `INSERT INTO aType SET aProperty = :aValue`,
+        'INSERT INTO aType SET aProperty = :aValue',
         { aValue: 1 }
       );
     });
@@ -112,7 +112,7 @@ async function example() {
     db.transaction(async (trx) => {
       await trx.crud(
         'sql',
-        `INSERT INTO aType SET aProperty = :aValue`,
+        'INSERT INTO aType SET aProperty = :aValue',
         { aValue: 1 }
       );
     });

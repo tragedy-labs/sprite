@@ -68,7 +68,7 @@ async function transactionHelperExample() {
       // Using parameterized commands to prevent SQL injection
       const [record] = await trx.crud(
         'sql',
-        `INSERT INTO aDocument SET aProperty = :aProperty`,
+        'INSERT INTO aDocument SET aProperty = :aProperty',
         { aProperty: 'aValue' }
       );
       console.log(record);
@@ -110,7 +110,7 @@ async function manualTransaction() {
     // Using parameterized commands to prevent SQL injection
     const [record] = await trx.crud(
       'sql',
-      `INSERT INTO aDocument SET aProperty = :aProperty`,
+      'INSERT INTO aDocument SET aProperty = :aProperty',
       { aProperty: 'aValue' }
     );
 

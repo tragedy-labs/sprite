@@ -115,7 +115,7 @@ class SpriteDatabase {
   public command = async <T = unknown>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
-    parameters?: Record<string, any>
+    parameters?: Record<string, unknown>
   ): Promise<T> =>
     Database.command(this.session, language, command, parameters);
   /**
@@ -337,9 +337,10 @@ class SpriteDatabase {
    *
    * transactionExample();
    */
-  public newTransaction = async <T>(
+  public newTransaction = async (
     isolationLevel?: ArcadeTransactionIsolationLevel
-  ) => Database.beginTransaction(this.session, isolationLevel);
+  ): Promise<SpriteTransaction> =>
+    Database.beginTransaction(this.session, isolationLevel);
   /**
    * Check to see if this database exists on the server
    * (i.e. the database was created).

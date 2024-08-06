@@ -25,9 +25,7 @@ describe('SpriteServer.dropDatabase()', () => {
 
   it('should return the output of the Server.dropDatabase() method', async () => {
     // Arrange
-    const spy = jest
-      .spyOn(Server, 'dropDatabase')
-      .mockImplementationOnce(async () => true);
+    jest.spyOn(Server, 'dropDatabase').mockImplementationOnce(async () => true);
     // Act
     const result = await SpriteServer.dropDatabase(variables.databaseName);
     // Asserts

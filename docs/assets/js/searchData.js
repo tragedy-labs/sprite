@@ -228,7 +228,7 @@ export default [
   {
     parent: 'SpriteTransaction',
     name: 'crud',
-    desc: '',
+    desc: 'Perform a CRUD operation in the transaction.',
     type: 'method'
   },
   {

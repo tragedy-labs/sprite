@@ -3,20 +3,7 @@ import {
   ArcadeSupportedQueryLanguages,
   Database
 } from '../database/Database.js';
-import { Rest } from '../rest/Rest.js';
-import { Routes } from '../database/routes.js';
 import { Transaction } from './Transaction.js';
-
-/**
- * isolationLevel is the isolation level for the current transaction,
- * either `READ_COMMITTED` or `REPEATABLE_READ`. For details on what
- * isolation level dictates about the transaction, see the [ArcadeDB
- * documentation](https://docs.arcadedb.com/#HTTP-Begin)
- * @default READ_COMMITTED
- */
-export type ArcadeTransactionIsolationLevel =
-  | 'READ_COMMITTED'
-  | 'REPEATABLE_READ';
 
 /**
  * A transaction in Sprite, contains the transaction id, and methods to

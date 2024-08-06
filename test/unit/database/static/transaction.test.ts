@@ -20,11 +20,7 @@ describe('SpriteDatabase.transaction()', () => {
         return new SpriteTransaction(SESSION, variables.sessionId);
       });
 
-    await Database.transaction(
-      SESSION,
-      async (trx: SpriteTransaction) => {},
-      'REPEATABLE_READ'
-    );
+    await Database.transaction(SESSION, async () => {}, 'REPEATABLE_READ');
 
     expect(Database.beginTransaction).toHaveBeenCalledWith(
       SESSION,
@@ -56,10 +52,7 @@ describe('SpriteDatabase.transaction()', () => {
         return new SpriteTransaction(SESSION, variables.sessionId);
       });
 
-    const [commited] = await Database.transaction(
-      SESSION,
-      async (trx: SpriteTransaction) => {}
-    );
+    const [commited] = await Database.transaction(SESSION, async () => {});
     expect(commited).toBe(true);
   });
 
@@ -71,7 +64,7 @@ describe('SpriteDatabase.transaction()', () => {
       });
 
     let count = 0;
-    await Database.transaction(SESSION, async (trx: SpriteTransaction) => {
+    await Database.transaction(SESSION, async () => {
       ++count;
     });
 
@@ -118,7 +111,7 @@ describe('SpriteDatabase.transaction()', () => {
       });
 
     await expect(
-      Database.transaction(SESSION, async (trx: SpriteTransaction) => {
+      Database.transaction(SESSION, async () => {
         throw new Error('Simulated error');
       })
     ).rejects.toThrowErrorMatchingSnapshot();
@@ -130,12 +123,9 @@ describe('SpriteDatabase.transaction()', () => {
       .mockImplementationOnce(async (): Promise<SpriteTransaction> => {
         return new SpriteTransaction(SESSION, variables.sessionId);
       });
-    const transactionPromise = Database.transaction(
-      SESSION,
-      (trx: SpriteTransaction) => {
-        throw new Error('Simulated error');
-      }
-    );
+    const transactionPromise = Database.transaction(SESSION, () => {
+      throw new Error('Simulated error');
+    });
     await expect(transactionPromise).rejects.toMatchSnapshot();
   });
 
@@ -180,7 +170,7 @@ describe('SpriteDatabase.transaction()', () => {
       });
 
     await expect(
-      Database.transaction(SESSION, async (trx: SpriteTransaction) => {
+      Database.transaction(SESSION, async () => {
         throw new Error('Simulated error');
       })
     ).rejects.toThrowErrorMatchingSnapshot();

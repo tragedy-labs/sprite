@@ -1192,7 +1192,8 @@ rolled-back by invoking <code class="language-plaintext highlighter-rouge">rollb
     <span class="kd">const</span> <span class="nx">trx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">newTransaction</span><span class="p">();</span>
     <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nx">crud</span><span class="o">&lt;</span><span class="nx">InsertDocument</span><span class="o">&lt;</span><span class="nx">DocumentType</span><span class="o">&gt;</span><span class="p">(</span>
       <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-      <span class="s2">`INSERT INTO aType CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">({</span> <span class="dl">"</span><span class="s2">aProperty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">aValue</span><span class="dl">"</span> <span class="p">})}</span><span class="s2">`</span>
+      <span class="dl">'</span><span class="s1">INSERT INTO aType SET aProperty = :aProperty</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">{</span> <span class="na">aProperty</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aValue</span><span class="dl">'</span> <span class="p">}</span>
     <span class="p">);</span>
     <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">commit</span><span class="p">();</span>
   <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>

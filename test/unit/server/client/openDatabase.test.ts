@@ -25,9 +25,7 @@ describe('SpriteServer.openDatabase()', () => {
 
   it('should return the output of the Server.openDatabase() method', async () => {
     // Arrange
-    const spy = jest
-      .spyOn(Server, 'openDatabase')
-      .mockImplementationOnce(async () => true);
+    jest.spyOn(Server, 'openDatabase').mockImplementationOnce(async () => true);
     // Act
     const result = await SpriteServer.openDatabase(variables.databaseName);
     // Asserts

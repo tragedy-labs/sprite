@@ -1219,11 +1219,14 @@
 
     <span class="nx">db</span><span class="p">.</span><span class="nf">transaction</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">trx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="c1">// the `crud` method only exists on the SpriteTransaction</span>
-      <span class="c1">// class. It is the only method of conduction transactional</span>
-      <span class="c1">// operations in Sprite.</span>
+      <span class="c1">// class. It is the only method of conducting transactional</span>
+      <span class="c1">// operations (CRUD) in Sprite.</span>
+
+      <span class="c1">// Using parameterized commands to prevent SQL injection</span>
       <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
         <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-        <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span>
+        <span class="dl">'</span><span class="s1">INSERT INTO aDocument SET aProperty = :aProperty</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">{</span> <span class="na">aProperty</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aValue</span><span class="dl">'</span> <span class="p">}</span>
       <span class="p">);</span>
       <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
       <span class="c1">// {</span>
@@ -1258,11 +1261,13 @@
     <span class="c1">// ensure a type exists prior to</span>
     <span class="c1">// attemping to insert a document</span>
     <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">CREATE document TYPE aDocument</span><span class="dl">'</span><span class="p">);</span>
-
     <span class="kd">const</span> <span class="nx">trx</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">newTransaction</span><span class="p">();</span>
+
+    <span class="c1">// Using parameterized commands to prevent SQL injection</span>
     <span class="kd">const</span> <span class="p">[</span><span class="nx">record</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">trx</span><span class="p">.</span><span class="nf">crud</span><span class="p">(</span>
       <span class="dl">'</span><span class="s1">sql</span><span class="dl">'</span><span class="p">,</span>
-      <span class="s2">`INSERT INTO aDocument CONTENT </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)}</span><span class="s2">`</span>
+      <span class="dl">'</span><span class="s1">INSERT INTO aDocument SET aProperty = :aProperty</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">{</span> <span class="na">aProperty</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aValue</span><span class="dl">'</span> <span class="p">}</span>
     <span class="p">);</span>
 
     <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>

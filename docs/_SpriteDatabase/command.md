@@ -12,7 +12,7 @@ permalink: /SpriteDatabase/command.html
 
 #### Interface
 
-(**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *Record&lt;string, any&gt;***)
+(**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *Record&lt;string, unknown&gt;***)
 
 Executes a command on the target database. This method should only be used
 for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.

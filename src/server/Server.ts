@@ -493,9 +493,10 @@ class Server {
       );
 
       switch (response.status) {
-        case 200:
+        case 200: {
           const jsonResponse = await response.json();
           return jsonResponse.result;
+        }
         case 403:
         case 404:
         case 500:

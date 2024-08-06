@@ -25,7 +25,7 @@ describe('SpriteServer.disconnectCluster()', () => {
 
   it('should return the output of the Server.disconnectCluster() method', async () => {
     // Arrange
-    const spy = jest
+    jest
       .spyOn(Server, 'disconnectCluster')
       .mockImplementationOnce(async () => true);
     // Act

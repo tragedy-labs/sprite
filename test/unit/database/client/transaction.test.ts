@@ -4,7 +4,6 @@ import { Database } from '@/database/Database.js';
 // Testing
 import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
 import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
-import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 
 describe('SpriteDatabase.transaction()', () => {
   // Arrange
@@ -14,7 +13,7 @@ describe('SpriteDatabase.transaction()', () => {
       .mockImplementationOnce(async () => [true, variables.nonEmptyString]);
   });
 
-  const CALLBACK = async (trx: SpriteTransaction) => {};
+  const CALLBACK = async () => {};
   it('should call the Database.transaction() with the unique session instance and callback', async () => {
     // Arrange
     // Act
