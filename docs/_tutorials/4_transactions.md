@@ -62,8 +62,10 @@ async function transactionHelperExample() {
 
     db.transaction(async (trx) => {
       // the `crud` method only exists on the SpriteTransaction
-      // class. It is the only method of conduction transactional
-      // operations in Sprite.
+      // class. It is the only method of conducting transactional
+      // operations (CRUD) in Sprite.
+
+      // Using parameterized commands to prevent SQL injection
       const [record] = await trx.crud(
         'sql',
         `INSERT INTO aDocument SET aProperty = :aProperty`,
@@ -103,8 +105,9 @@ async function manualTransaction() {
     // ensure a type exists prior to
     // attemping to insert a document
     await db.command('sql', 'CREATE document TYPE aDocument');
-
     const trx = await db.newTransaction();
+
+    // Using parameterized commands to prevent SQL injection
     const [record] = await trx.crud(
       'sql',
       `INSERT INTO aDocument SET aProperty = :aProperty`,
