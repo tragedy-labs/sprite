@@ -1,6 +1,6 @@
 {
   "name": "@tragedy-labs/sprite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A TypeScript driver for ArcadeDB",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -19,7 +19,29 @@
     "format": "pnpm prettier --write ./test/ ./src",
     "exec": "pnpm build && node ./dist/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "database",
+    "driver",
+    "arcadedb",
+    "orientdb",
+    "multi-modal",
+    "graph-database",
+    "graph",
+    "document-store",
+    "document-database",
+    "crud",
+    "client",
+    "sql",
+    "nosql",
+    "typescript-driver",
+    "arcadedb-driver",
+    "sprite",
+    "transaction",
+    "transactional",
+    "api",
+    "rest-api"
+  ],
   "author": "Austin Pittman",
   "license": "MIT",
   "devDependencies": {
