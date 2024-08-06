@@ -5,6 +5,7 @@ import {
 } from '../database/Database.js';
 import { Rest } from '../rest/Rest.js';
 import { Routes } from '../database/routes.js';
+import { Transaction } from './Transaction.js';
 
 /**
  * isolationLevel is the isolation level for the current transaction,
@@ -62,28 +63,16 @@ export class SpriteTransaction {
     return this.rolledBack;
   };
   /**
-   *
-   * @param language
-   * @param command
-   * @param params
+   * Perform a CRUD operation in the transaction.
+   * @param language the query language to use
+   * @param command the command to execute
+   * @param params the (optional) parameters to pass to the command
    * @returns
    */
   crud = async <T>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
-    params?: Record<string, boolean | string | number>
-  ): Promise<T> => {
-    try {
-      return await Rest.postJson<T>(
-        Routes.COMMAND,
-        { language, command, params },
-        this._session,
-        this
-      );
-    } catch (error) {
-      throw new Error(`Could not perform CRUD operation ${command}`, {
-        cause: error
-      });
-    }
-  };
+    parameters?: Record<string, boolean | string | number>
+  ): Promise<T> =>
+    Transaction.crud<T>(this._session, this, language, command, parameters);
 }
