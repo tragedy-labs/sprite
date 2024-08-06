@@ -1,8 +1,5 @@
 import { DatabaseSession } from '../session/DatabaseSession.js';
-import {
-  ArcadeSupportedQueryLanguages,
-  Database
-} from '../database/Database.js';
+import { ArcadeSupportedQueryLanguages } from '../database/Database.js';
 import { Rest } from '../rest/Rest.js';
 import { Routes } from '../database/routes.js';
 import { SpriteTransaction } from './SpriteTransaction.js';
