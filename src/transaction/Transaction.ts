@@ -19,10 +19,7 @@ export type ArcadeTransactionIsolationLevel =
   | 'REPEATABLE_READ';
 
 /**
- * A transaction in Sprite, contains the transaction id, and methods to
- * commit or rollback the transaction.
- * @param session the `DatabaseSession` the transaction is taking place of
- * @param transactionId the id of the transaction
+ * Static class for performing operations on or in a transaction.
  */
 export class Transaction {
   /**
