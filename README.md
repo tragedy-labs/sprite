@@ -1,5 +1,7 @@
 # Sprite
 
+![example event parameter](https://github.com/tragedy-labs/sprite/actions/workflows/commit.yml/badge.svg?event=push)
+
 Sprite is a TypeScript driver for ArcadeDB.
 
 [Read the documentation](https://sprite.tragedy.dev), or see the examples below.

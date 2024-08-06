@@ -1,4 +1,4 @@
-name: Sprite CI
+name: Tests
 run-name: 👾 ${{ github.actor }} is making a commit 🛸
 on: [pull_request, push]
 jobs:
