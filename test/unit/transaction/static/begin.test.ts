@@ -1,6 +1,5 @@
 // Lib
 import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
-import { Database } from '@/database/Database.js';
 import { Routes } from '@/database/routes.js';
 
 // Testing
@@ -10,6 +9,7 @@ import {
   testAuth,
   variables
 } from '@test/variables.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 const ENDPOINT = `${variables.address}${variables.apiRoute}${Routes.BEGIN}/${variables.databaseName}`;
 
@@ -21,7 +21,7 @@ describe('Database.beginTransaction()', () => {
         'arcadedb-session-id': variables.sessionId
       })
     } as Response);
-    await Database.beginTransaction(SESSION);
+    await Transaction.begin(SESSION);
 
     const REQUEST_INIT: RequestInit = {
       method: 'POST',
@@ -42,7 +42,7 @@ describe('Database.beginTransaction()', () => {
         'arcadedb-session-id': variables.sessionId
       })
     } as Response);
-    await Database.beginTransaction(SESSION, 'REPEATABLE_READ');
+    await Transaction.begin(SESSION, 'REPEATABLE_READ');
 
     const REQUEST_INIT: RequestInit = {
       method: 'POST',
@@ -65,7 +65,7 @@ describe('Database.beginTransaction()', () => {
         'arcadedb-session-id': variables.sessionId
       })
     } as Response);
-    const trx = await Database.beginTransaction(SESSION);
+    const trx = await Transaction.begin(SESSION);
 
     expect(trx).toBeInstanceOf(SpriteTransaction);
   });
@@ -74,7 +74,7 @@ describe('Database.beginTransaction()', () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       status: 205
     } as Response);
-    await expect(Database.beginTransaction(SESSION)).rejects.toMatchSnapshot();
+    await expect(Transaction.begin(SESSION)).rejects.toMatchSnapshot();
   });
 
   it('should propagate errors from internal methods', async () => {
@@ -82,14 +82,14 @@ describe('Database.beginTransaction()', () => {
       .spyOn(global, 'fetch')
       .mockRejectedValueOnce(new TypeError('fetch failed'));
 
-    await expect(Database.beginTransaction(SESSION)).rejects.toMatchSnapshot();
+    await expect(Transaction.begin(SESSION)).rejects.toMatchSnapshot();
   });
 
   it('should error if the headers do not contain an arcadedb-session-id', async () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       status: 204
     } as Response);
-    const trxPromise = Database.beginTransaction(SESSION);
+    const trxPromise = Transaction.begin(SESSION);
     await expect(trxPromise).rejects.toMatchSnapshot();
   });
 });
