@@ -97,10 +97,10 @@ class SpriteDatabase {
    * ```ts
    * db.command<CreateDocumentType>(
    *   'sql',
-   *   'CREATE document TYPE DocumentType'
+   *   'CREATE document TYPE aType'
    * );
    * ```
-   * @param language The language the command is written in.
+   * @param language The language the command being sent is written in.
    * @param command The command to execute in the given language.
    * @returns The `result` property of the command response from the server,
    * typically this is an `Array`

@@ -67,7 +67,7 @@ async function selectQueryExample() {
 
     // ArcadeDocument accepts a type parameter,
     // the resultant type will be the type defined
-    // earlies, with ArcadeDB meta added to provide
+    // earlier, with ArcadeDB meta added to provide
     // an accurate type for the result set
 
     console.log(result);
