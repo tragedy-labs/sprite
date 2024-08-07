@@ -1,18 +1,11 @@
 // Lib
 import { Dialect } from '@/database/Database.js';
-import { Routes } from '@/database/routes.js';
 import { Rest } from '@/rest/Rest.js';
 import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
-import {
-  TestDatabaseSession as SESSION,
-  headersWithTransaction as headers,
-  variables
-} from '@test/variables.js';
-
-const ENDPOINT = `${variables.address}${variables.apiRoute}${Routes.COMMAND}/${variables.databaseName}`;
+import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.crud()', () => {
   it(`should call Transaction.crud with session, transaction, language, command, and parameters`, async () => {
