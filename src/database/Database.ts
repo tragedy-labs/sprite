@@ -1,14 +1,15 @@
 import { Routes } from './routes.js';
 import { EXPLAIN, SELECT_SCHEMA } from './commands/index.js';
 import { Rest } from '../rest/Rest.js';
-import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
-import { DatabaseSession } from '../session/DatabaseSession.js';
-import { HeaderKeys } from '../rest/SpriteHeaders.js';
+import {
+  DatabaseSession,
+  ISpriteDatabaseExistingSession,
+  ISpriteDatabaseNewSession
+} from '../session/DatabaseSession.js';
 import {
   ArcadeGetSchemaResponse,
   ArcadeSqlExplanation
 } from '@/types/database.js';
-import { ArcadeTransactionIsolationLevel } from '@/transaction/Transaction.js';
 
 export enum Dialect {
   SQL = 'sql',
@@ -41,6 +42,22 @@ export type ArcadeSupportedQueryLanguages =
  * Static methods for common database operations.
  */
 class Database {
+  /**
+   * Set the credentials that the database client should use
+   * when interacting with the ArcadeDB server.
+   * @param username The username to authenticate with.
+   * @param password The password to authenticate with.
+   * @returns `true` if the credentials were set.
+   * @throws `Error` if the credentials could not be set.
+   */
+  public static createSession = (
+    params: ISpriteDatabaseExistingSession | ISpriteDatabaseNewSession
+  ) => {
+    // TODO: I don't think this even has an error case
+    // it probably should throw an error if something
+    // goes wrong.
+    return new DatabaseSession(params);
+  };
   /**
    * Static method to execute a command on the database.s
    * @param session The {@link DatabaseSession `DatabaseSession`} to execute the command on.

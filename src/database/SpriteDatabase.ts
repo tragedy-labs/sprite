@@ -60,7 +60,7 @@ class SpriteDatabase {
   constructor(
     params: ISpriteDatabaseExistingSession | ISpriteDatabaseNewSession
   ) {
-    this._session = new DatabaseSession(params);
+    this._session = Database.createSession(params);
   }
   /**
    * Set the credentials that the database client should use
@@ -71,22 +71,12 @@ class SpriteDatabase {
    * @throws `Error` if the credentials could not be set.
    */
   public setCredentials = (username: string, password: string) => {
-    try {
-      this._session = new DatabaseSession({
-        username,
-        password,
-        address: this._session.address,
-        databaseName: this._session.databaseName
-      });
-      return true;
-    } catch (error) {
-      throw new Error(
-        'Could not associate credentials to the database client',
-        {
-          cause: error
-        }
-      );
-    }
+    this._session = Database.createSession({
+      username,
+      password,
+      address: this._session.address,
+      databaseName: this._session.databaseName
+    });
   };
   /**
    * Executes a command on the target database. This method should only be used
