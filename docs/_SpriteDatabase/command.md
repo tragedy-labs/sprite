@@ -15,27 +15,22 @@ permalink: /SpriteDatabase/command.html
 (**language: *ArcadeSupportedQueryLanguages*, command: *string*, parameters: *Record&lt;string, unknown&gt;***)
 
 Executes a command on the target database. This method should only be used
-for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.
+for non-transactional, non-idempotent statements such as `CREATE`, `ALTER`, or `DROP`.
 
-CRUD operations must be part of a transaction, otherwise changes will not persist.
-Use the `SpriteTransaction.crud()` for this purpose.
+CRUD operations must be part of a transaction; otherwise, changes will not persist.
+Use the `SpriteTransaction.crud()` method for this purpose.
 
-If you are trying to execute idempotent commands see `SpriteDatabase.query()`.
+If you need to execute idempotent commands, see `SpriteDatabase.query()`.
 
-##### Note
-
----
-
-This package includes type definitions to help you issue commands with typed return values.
+> ###### Note: 
+> This package includes type definitions to help you issue commands with typed return values.
 
 ```ts
 db.command<CreateDocumentType>(
   'sql',
-  'CREATE document TYPE DocumentType'
+  'CREATE DOCUMENT TYPE aType'
 );
 ```
-
----
 
 #### Example
 
@@ -51,7 +46,7 @@ async function spriteCommandExample() {
   try {
     const result = await db.command<CreateDocumentType>(
       'sql',
-      'CREATE document TYPE aType',
+      'CREATE DOCUMENT TYPE aType',
     );
     console.log(result);
     // [ { operation: 'create document type', typeName: 'aType' } ]
@@ -60,7 +55,7 @@ async function spriteCommandExample() {
     // handle error conditions
     console.error(error);
   }
-};
+}
 
 spriteCommandExample();
 ```

@@ -7,14 +7,14 @@
   },
   {
     "parent": "SpriteDatabase",
-    "name": "session",
+    "name": "_session",
     "desc": "undefined",
     "type": "property"
   },
   {
     "parent": "SpriteDatabase",
     "name": "command",
-    "desc": "Executes a command on the target database. This method should only be used\nfor non-transactional, non-idempotent statements such as:  `CREATE` ,  `ALTER` , or  `DROP` .\n\nCRUD operations must be part of a transaction, otherwise changes will not persist.\nUse the  `SpriteTransaction.crud()`  for this purpose.\n\nIf you are trying to execute idempotent commands see  `SpriteDatabase.query()` .",
+    "desc": "Executes a command on the target database. This method should only be used\nfor non-transactional, non-idempotent statements such as  `CREATE` ,  `ALTER` , or  `DROP` .\n\nCRUD operations must be part of a transaction; otherwise, changes will not persist.\nUse the  `SpriteTransaction.crud()`  method for this purpose.\n\nIf you need to execute idempotent commands, see  `SpriteDatabase.query()` .",
     "type": "method"
   },
   {
@@ -55,13 +55,19 @@
   },
   {
     "parent": "SpriteDatabase",
+    "name": "setCredentials",
+    "desc": "Set the credentials that the database client should use\nwhen interacting with the ArcadeDB server.",
+    "type": "method"
+  },
+  {
+    "parent": "SpriteDatabase",
     "name": "transaction",
     "desc": "Creates a new transaction and passes it as an argument to a callback which\nrepresents the transaction scope. The transaction is committed when the\ncallback resolves. The transaction can be rolled back by invoking\n `SpriteTransaction.rollback()`  within the callback.",
     "type": "method"
   },
   {
     "name": "SpriteDatabase",
-    "desc": "Interact with a database, perform queries, issue commands to manage\nrecords, types, and settings.",
+    "desc": "Interacts with a database, performing queries and issuing commands to manage\nrecords, types, and settings.",
     "type": "class"
   },
   {
@@ -288,41 +294,6 @@
     "type": "interface"
   },
   {
-    "name": "ISpriteCreateTypeOptions",
-    "desc": "Options to create a new type with.",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteDeleteFromOptions",
-    "desc": "Options for a  `deleteFrom`  operation as executed\nvia a  `SpriteDatabase`  repository.",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteDropTypeOptions",
-    "desc": "Options for a database.dropType() command",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteEdgeOptions",
-    "desc": "Options associated with creating a new edge.",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteIndexdescriptor",
-    "desc": "undefined",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteInsertRecordOptions",
-    "desc": "Options to insert a new record with",
-    "type": "interface"
-  },
-  {
-    "name": "ISpriteSelectFromOptions",
-    "desc": "Options for a  `selectFrom`  operation, as executed via a  `SpriteDatabase`  repository.",
-    "type": "interface"
-  },
-  {
     "name": "InsertDocument",
     "desc": "An array, which contains an object returned from\nArcadeDB for a  `INSERT INTO <document-type>` \ncommand",
     "type": "interface"
@@ -453,21 +424,6 @@
     "type": "type"
   },
   {
-    "name": "SpriteEdgeVertexDescriptor",
-    "desc": "Describes a  `to`  or  `from`  point of an edge, either as a string (the record's  `@rid` ),\nor, by providing an object which describes an index of a vertex to use a\n `to` / `from`  point (i.e.  `{type: 'user', key: 'name', value: 'Jeremiah'}` )",
-    "type": "type"
-  },
-  {
-    "name": "SpriteOperators",
-    "desc": "Operators for a  `WHERE`  sql statement",
-    "type": "type"
-  },
-  {
-    "name": "SpriteWhereClause",
-    "desc": "An array with three items used to describe a  `where`  statement.",
-    "type": "type"
-  },
-  {
     "name": "TypeNames",
     "desc": "The TypeNames in a supplied schema.",
     "type": "type"
@@ -481,10 +437,5 @@
     "name": "WithRid",
     "desc": "A base type, with an  `@rid`  property added.",
     "type": "type"
-  },
-  {
-    "name": "COMPARISON_OPERATORS",
-    "desc": "undefined",
-    "type": "unknown"
   }
 ]

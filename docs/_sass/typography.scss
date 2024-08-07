@@ -74,6 +74,10 @@ p {
   line-height: var(--paragraph-line-height);
 }
 
+blockquote>p {
+  margin: var(--space-4) 0;
+}
+
 
 @media (min-width: 680px) {
   h1 {

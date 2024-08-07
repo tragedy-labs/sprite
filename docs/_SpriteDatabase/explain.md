@@ -1,16 +1,18 @@
 ---
+
 layout: default
 
 title: explain
 
 permalink: /SpriteDatabase/explain.html
+
 ---
 
 ### _SpriteDatabase_.explain
 
 #### Interface
 
-(**sql: _string_**)
+(**sql: *string***)
 
 Returns information about query execution planning of a specific statement,
 without executing the statement itself.
@@ -27,7 +29,7 @@ const db = new SpriteDatabase({
 
 async function spriteExplainExample() {
   try {
-    const explanation = await db.explain('SELECT FROM schema:types');
+    const explanation = await db.explain("SELECT FROM schema:types");
     console.log(explanation);
     // {
     //   executionPlan: {
@@ -44,7 +46,8 @@ async function spriteExplainExample() {
     console.error(error);
     // handle error conditions
   }
-}
+};
 
 spriteExplainExample();
 ```
+

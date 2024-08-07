@@ -24,11 +24,8 @@ and `MATCH`.
 If you are trying to execute
 non-idempotent commands, see the SpriteDatabase.command method.
 
-##### Note
-
----
-
-This library includes type definitions to assist in writing queries with
+> ###### Note: 
+> This library includes type definitions to assist in writing queries with
 typed return values. For example: `ArcadeDocument`, `ArcadeEdge`, etc.
 You can use these like so:
 
@@ -38,8 +35,6 @@ const result = await db.query<ArcadeDocument<DocumentType>>(
  'SELECT * FROM aType WHERE aProperty == "aValue"'
 );
 ```
-
----
 
 #### Example
 
