@@ -1,6 +1,6 @@
 // Lib
-import { Database } from '@/database/Database.js';
 import { Routes } from '@/database/routes.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
 import {
@@ -12,12 +12,12 @@ import {
 
 const ENDPOINT = `${variables.address}${variables.apiRoute}${Routes.ROLLBACK}/${variables.databaseName}`;
 
-describe('SpriteDatabase.rollbackTransaction()', () => {
+describe('SpriteTransaction.rollback()', () => {
   it(`should make a properly formatted POST request to ${ENDPOINT}`, async () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       status: 204
     } as Response);
-    await Database.rollbackTransaction(SESSION, TRX);
+    await Transaction.rollback(SESSION, TRX);
 
     // TODO: I don't like using a null body
     const REQUEST_INIT: RequestInit = {
@@ -33,9 +33,7 @@ describe('SpriteDatabase.rollbackTransaction()', () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       status: 205
     } as Response);
-    await expect(
-      Database.rollbackTransaction(SESSION, TRX)
-    ).rejects.toMatchSnapshot();
+    await expect(Transaction.rollback(SESSION, TRX)).rejects.toMatchSnapshot();
   });
   it('should propagate errors from the server', async () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
@@ -46,9 +44,7 @@ describe('SpriteDatabase.rollbackTransaction()', () => {
         exception: 'com.arcadedb.exception.AnArbitraryException'
       })
     } as Response);
-    await expect(
-      Database.rollbackTransaction(SESSION, TRX)
-    ).rejects.toMatchSnapshot();
+    await expect(Transaction.rollback(SESSION, TRX)).rejects.toMatchSnapshot();
   });
   it('should propagate errors from internal methods', async () => {
     jest
@@ -56,7 +52,7 @@ describe('SpriteDatabase.rollbackTransaction()', () => {
       .mockRejectedValueOnce(new Error('Generic Error For Testing'));
     await expect(
       // @ts-expect-error - testing error
-      Database.rollbackTransaction(SESSION, '')
+      Transaction.rollback(SESSION, '')
     ).rejects.toMatchSnapshot();
   });
 });
