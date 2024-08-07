@@ -1,6 +1,6 @@
 {
   "name": "@tragedy-labs/sprite",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A TypeScript driver for ArcadeDB",
   "homepage": "https://sprite.tragedy.dev",
   "repository": {
