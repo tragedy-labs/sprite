@@ -1,4 +1,7 @@
-import { ArcadeTransactionIsolationLevel } from '@/transaction/Transaction.js';
+import {
+  ArcadeTransactionIsolationLevel,
+  Transaction
+} from '@/transaction/Transaction.js';
 import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import {
   ArcadeQueryParameters,
@@ -13,10 +16,10 @@ import {
 import { Server } from '../server/Server.js';
 
 /**
- * Interact with a database, perform queries, issue commands to manage
+ * Interacts with a database, performing queries and issuing commands to manage
  * records, types, and settings.
- * @param parameters The fields necessary to perform operations on a specific database.
- * @returns an instance of SpriteDatabase
+ * @param parameters The fields necessary to connect to and interact with a specific database.
+ * @returns An instance of SpriteDatabase.
  * @example
  *
  * const db = new SpriteDatabase({
@@ -33,7 +36,7 @@ import { Server } from '../server/Server.js';
  * }
  *
  * async function databaseExample() {
- *  const client = db.documents<DocumentTypes>();
+ *   const client = db.documents<DocumentTypes>();
  *   try {
  *     await db.transaction(async (trx) => {
  *       await db.createType('aDocument', trx);
@@ -43,7 +46,7 @@ import { Server } from '../server/Server.js';
  *     console.log(schema);
  *     // [...]
  *   } catch (error) {
- *     console.log(error);
+ *     console.error(error);
  *     // handle error conditions
  *   }
  * }
@@ -77,19 +80,22 @@ class SpriteDatabase {
       });
       return true;
     } catch (error) {
-      throw new Error('Could not attach new session to database client', {
-        cause: error
-      });
+      throw new Error(
+        'Could not associate credentials to the database client',
+        {
+          cause: error
+        }
+      );
     }
   };
   /**
    * Executes a command on the target database. This method should only be used
-   * for non-transactional, non-idempotent statements such as: `CREATE`, `ALTER`, or `DROP`.
+   * for non-transactional, non-idempotent statements such as `CREATE`, `ALTER`, or `DROP`.
    *
-   * CRUD operations must be part of a transaction, otherwise changes will not persist.
-   * Use the {@link SpriteTransaction.crud | `SpriteTransaction.crud()`} for this purpose.
+   * CRUD operations must be part of a transaction; otherwise, changes will not persist.
+   * Use the {@link SpriteTransaction.crud | `SpriteTransaction.crud()`} method for this purpose.
    *
-   * If you are trying to execute idempotent commands see {@link SpriteDatabase.query | `SpriteDatabase.query()`}.
+   * If you need to execute idempotent commands, see {@link SpriteDatabase.query | `SpriteDatabase.query()`}.
    *
    * @note
    * This package includes type definitions to help you issue commands with typed return values.
@@ -97,14 +103,14 @@ class SpriteDatabase {
    * ```ts
    * db.command<CreateDocumentType>(
    *   'sql',
-   *   'CREATE document TYPE aType'
+   *   'CREATE DOCUMENT TYPE aType'
    * );
    * ```
-   * @param language The language the command being sent is written in.
+   * @param language The language in which the command is written (e.g. SQL).
    * @param command The command to execute in the given language.
    * @returns The `result` property of the command response from the server,
-   * typically this is an `Array`
-   * @throw `Error` when it cannot execute the command.
+   * typically an `Array`.
+   * @throws `Error` if the command cannot be executed.
    * @see
    * {@link SpriteDatabase.query | `SpriteDatabase.query()`}\
    * {@link SpriteDatabase.transaction | `SpriteDatabase.transaction()`}
@@ -121,7 +127,7 @@ class SpriteDatabase {
    *   try {
    *     const result = await db.command<CreateDocumentType>(
    *       'sql',
-   *       'CREATE document TYPE aType',
+   *       'CREATE DOCUMENT TYPE aType',
    *     );
    *     console.log(result);
    *     // [ { operation: 'create document type', typeName: 'aType' } ]
@@ -130,7 +136,7 @@ class SpriteDatabase {
    *     // handle error conditions
    *     console.error(error);
    *   }
-   * };
+   * }
    *
    * spriteCommandExample();
    */
@@ -313,7 +319,7 @@ class SpriteDatabase {
   public transaction = async <T>(
     callback: (trx: SpriteTransaction) => Promise<T>,
     isolationLevel?: ArcadeTransactionIsolationLevel
-  ) => Database.transaction<T>(this._session, callback, isolationLevel);
+  ) => Transaction.manage<T>(this._session, callback, isolationLevel);
   /**
    * Creates and returns a new {@link SpriteTransaction}.
    * Operations requiring the transaction should be executed using
@@ -362,7 +368,7 @@ class SpriteDatabase {
   public newTransaction = async (
     isolationLevel?: ArcadeTransactionIsolationLevel
   ): Promise<SpriteTransaction> =>
-    Database.beginTransaction(this._session, isolationLevel);
+    Transaction.begin(this._session, isolationLevel);
   /**
    * Check to see if this database exists on the server
    * (i.e. the database was created).
