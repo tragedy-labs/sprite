@@ -51,7 +51,7 @@ export class SpriteTransaction {
    * @param language the query language to use
    * @param command the command to execute
    * @param params the (optional) parameters to pass to the command
-   * @returns
+   * @returns the result of the CRUD operation
    */
   crud = async <T>(
     language: ArcadeSupportedQueryLanguages,
