@@ -1,8 +1,5 @@
 import { DatabaseSession } from '../session/DatabaseSession.js';
-import {
-  ArcadeSupportedQueryLanguages,
-  Database
-} from '../database/Database.js';
+import { ArcadeSupportedQueryLanguages } from '../database/Database.js';
 import { Transaction } from './Transaction.js';
 
 /**
