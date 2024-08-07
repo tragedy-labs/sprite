@@ -1,7 +1,7 @@
 import {
   ArcadeTransactionIsolationLevel,
   Transaction
-} from '@/transaction/Transaction.js';
+} from '../transaction/Transaction.js';
 import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import {
   ArcadeQueryParameters,

@@ -3,7 +3,7 @@ import { ArcadeSupportedQueryLanguages } from '../database/Database.js';
 import { Rest } from '../rest/Rest.js';
 import { Routes } from '../database/routes.js';
 import { SpriteTransaction } from './SpriteTransaction.js';
-import { HeaderKeys } from '@/rest/SpriteHeaders.js';
+import { HeaderKeys } from '../rest/SpriteHeaders.js';
 
 /**
  * isolationLevel is the isolation level for the current transaction,

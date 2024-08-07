@@ -9,7 +9,7 @@ import {
 import {
   ArcadeGetSchemaResponse,
   ArcadeSqlExplanation
-} from '@/types/database.js';
+} from '../types/database.js';
 
 export enum Dialect {
   SQL = 'sql',
