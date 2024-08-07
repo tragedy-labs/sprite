@@ -38,7 +38,7 @@ export class SpriteTransaction {
    * @returns `true` if the transaction was commited.
    */
   commit = async () => {
-    this._committed = await Database.commitTransaction(this._session, this);
+    this._committed = await Transaction.commit(this._session, this);
     return this.committed;
   };
   /**
@@ -46,7 +46,7 @@ export class SpriteTransaction {
    * @returns `true` if the transaction was commited.
    */
   rollback = async () => {
-    this._rolledBack = await Database.rollbackTransaction(this._session, this);
+    this._rolledBack = await Transaction.rollback(this._session, this);
     return this.rolledBack;
   };
   /**

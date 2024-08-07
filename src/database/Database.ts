@@ -134,36 +134,6 @@ class Database {
     }
   };
   /**
-   * Static method to rollback a transaction.
-   * @param session The {@link DatabaseSession `DatabaseSession`} to rollback the transaction on.
-   * @param transaction The id of the transaction to rollback.
-   * @returns `true` if the transaction was rolled back.
-   */
-  public static rollbackTransaction = async (
-    session: DatabaseSession,
-    transaction: SpriteTransaction
-  ) => {
-    try {
-      const result = await Rest.post(
-        Routes.ROLLBACK,
-        null,
-        session,
-        transaction
-      );
-      if (result.status === 204) {
-        return true;
-      } else {
-        throw new Error(
-          `Unexpected response from the server when attemping to rollback transaction ${transaction.id}`
-        );
-      }
-    } catch (error) {
-      throw new Error(`Unable to rollback transaction ${transaction.id}`, {
-        cause: error
-      });
-    }
-  };
-  /**
    * Check to see if the database exists.
    * @param session The session to use to check for the database.
    * @param databaseName The name of the database to check for existence.

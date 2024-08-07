@@ -89,6 +89,36 @@ export class Transaction {
     }
   };
   /**
+   * Static method to rollback a transaction.
+   * @param session The {@link DatabaseSession `DatabaseSession`} to rollback the transaction on.
+   * @param transaction The id of the transaction to rollback.
+   * @returns `true` if the transaction was rolled back.
+   */
+  public static rollback = async (
+    session: DatabaseSession,
+    transaction: SpriteTransaction
+  ) => {
+    try {
+      const result = await Rest.post(
+        Routes.ROLLBACK,
+        null,
+        session,
+        transaction
+      );
+      if (result.status === 204) {
+        return true;
+      } else {
+        throw new Error(
+          `Unexpected response from the server when attemping to rollback transaction ${transaction.id}`
+        );
+      }
+    } catch (error) {
+      throw new Error(`Unable to rollback transaction ${transaction.id}`, {
+        cause: error
+      });
+    }
+  };
+  /**
    * Static method to manage a transaction within the scope.
    * @param session The {@link DatabaseSession `DatabaseSession`} to execute the transaction on.
    * @param callback The callback to execute within transaction context.
