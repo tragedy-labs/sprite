@@ -1,14 +1,14 @@
 // Lib
-import { Database } from '@/database/Database.js';
 import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
 import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.rollback()', () => {
-  it('should send the provided sessionId to SpriteDatabase.rollbackTransaction()', async () => {
+  it('should send the provided sessionId to Transaction.rollback()', async () => {
     jest
-      .spyOn(Database, 'rollbackTransaction')
+      .spyOn(Transaction, 'rollback')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
@@ -16,11 +16,11 @@ describe('SpriteTransaction.rollback()', () => {
 
     await TRX.rollback();
 
-    expect(Database.rollbackTransaction).toHaveBeenCalledWith(SESSION, TRX);
+    expect(Transaction.rollback).toHaveBeenCalledWith(SESSION, TRX);
   });
-  it('should return the result of SpriteDatabase.rollbackTransaction()', async () => {
+  it('should return the result of Transaction.rollback()', async () => {
     jest
-      .spyOn(Database, 'rollbackTransaction')
+      .spyOn(Transaction, 'rollback')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });

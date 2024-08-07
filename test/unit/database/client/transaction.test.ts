@@ -1,5 +1,5 @@
 // Lib
-import { Database } from '@/database/Database.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
 import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
@@ -9,7 +9,7 @@ describe('SpriteDatabase.transaction()', () => {
   // Arrange
   beforeEach(() => {
     jest
-      .spyOn(Database, 'transaction')
+      .spyOn(Transaction, 'manage')
       .mockImplementationOnce(async () => [true, variables.nonEmptyString]);
   });
 
@@ -20,7 +20,7 @@ describe('SpriteDatabase.transaction()', () => {
     await SpriteDatabase.transaction(CALLBACK);
     // Assert
     // NOTE: `undefined` because isolation level is always forwarded to the static function
-    expect(Database.transaction).toHaveBeenCalledWith(
+    expect(Transaction.manage).toHaveBeenCalledWith(
       SESSION,
       CALLBACK,
       undefined
@@ -31,7 +31,7 @@ describe('SpriteDatabase.transaction()', () => {
     // Act
     await SpriteDatabase.transaction(CALLBACK, 'READ_COMMITTED');
     // Assert
-    expect(Database.transaction).toHaveBeenCalledWith(
+    expect(Transaction.manage).toHaveBeenCalledWith(
       SESSION,
       CALLBACK,
       'READ_COMMITTED'
@@ -42,7 +42,7 @@ describe('SpriteDatabase.transaction()', () => {
     // Act
     await SpriteDatabase.transaction(CALLBACK, 'REPEATABLE_READ');
     // Assert
-    expect(Database.transaction).toHaveBeenCalledWith(
+    expect(Transaction.manage).toHaveBeenCalledWith(
       SESSION,
       CALLBACK,
       'REPEATABLE_READ'

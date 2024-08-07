@@ -1,14 +1,14 @@
 // Lib
-import { Database } from '@/database/Database.js';
 import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 // Testing
 import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
 
 describe('SpriteTransaction.commit()', () => {
-  it('should send the provided sessionId to SpriteDatabase.commitTransaction()', async () => {
+  it('should send the provided sessionId to Transaction.commit()', async () => {
     jest
-      .spyOn(Database, 'commitTransaction')
+      .spyOn(Transaction, 'commit')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
@@ -16,11 +16,11 @@ describe('SpriteTransaction.commit()', () => {
 
     await TRX.commit();
 
-    expect(Database.commitTransaction).toHaveBeenCalledWith(SESSION, TRX);
+    expect(Transaction.commit).toHaveBeenCalledWith(SESSION, TRX);
   });
   it('should update the committed status)', async () => {
     jest
-      .spyOn(Database, 'commitTransaction')
+      .spyOn(Transaction, 'commit')
       .mockImplementationOnce(async (): Promise<boolean> => {
         return true;
       });
