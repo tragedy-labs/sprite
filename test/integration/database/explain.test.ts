@@ -5,11 +5,10 @@ import { ArcadeSqlExplanation } from '@/types/database.js';
 import { testClient as client } from './testClient.js';
 
 describe('SpriteDatabase.explain', () => {
-
   let result: ArcadeSqlExplanation;
 
   beforeAll(async () => {
-    result = await client.explain('SELECT FROM schema:types')
+    result = await client.explain('SELECT FROM schema:types');
     console.log(result);
     // {
     //   "executionPlan": {
@@ -32,7 +31,7 @@ describe('SpriteDatabase.explain', () => {
     //   "executionPlanAsString": "+ FETCH DATABASE METADATA TYPES",
     // }
   });
-  
+
   it('matches the explanations snapshot', () => {
     expect(result).toMatchSnapshot();
   });
