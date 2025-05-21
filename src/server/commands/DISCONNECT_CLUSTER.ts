@@ -1,1 +1,1 @@
-export const DISCONNECT_CLUSTER = 'DISCONNECT CLUSTER';
+export const DISCONNECT_CLUSTER = 'disconnect cluster';
