@@ -18,7 +18,7 @@ describe('SpriteServer.dropUser()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `DROP USER ${variables.username}`
+        command: `drop user ${variables.username}`
       }),
       keepalive: true
     };
