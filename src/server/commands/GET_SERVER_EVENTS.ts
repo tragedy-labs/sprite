@@ -1,1 +1,1 @@
-export const GET_SERVER_EVENTS = 'GET SERVER EVENTS';
+export const GET_SERVER_EVENTS = 'get server events';
