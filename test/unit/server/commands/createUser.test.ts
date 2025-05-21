@@ -9,7 +9,7 @@ describe('CREATE_USER', () => {
       password: CREATE_USER_PARAMS.password,
       databases: CREATE_USER_PARAMS.databases
     };
-    const expected = `CREATE USER ${JSON.stringify(USER_DETAILS)}`;
+    const expected = `create user ${JSON.stringify(USER_DETAILS)}`;
     // Act
     const result = CREATE_USER(USER_DETAILS);
     // Assert

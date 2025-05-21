@@ -5,4 +5,4 @@ export interface IArcadeCreateUser {
 }
 
 export const CREATE_USER = (userDetails: IArcadeCreateUser) =>
-  `CREATE USER ${JSON.stringify(userDetails)}`;
+  `create user ${JSON.stringify(userDetails)}`;
