@@ -19,7 +19,7 @@ describe('Server.createUser()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `CREATE USER ${JSON.stringify({
+        command: `create user ${JSON.stringify({
           // ArcadeDB expects 'name' to be a property
           // Sprite uses 'username' as a convention
           // this is why there is a difference between
