@@ -18,7 +18,7 @@ describe('Server.closeDatabase()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `CLOSE DATABASE ${variables.databaseName}`
+        command: `close database ${variables.databaseName}`
       }),
       keepalive: true
     };
