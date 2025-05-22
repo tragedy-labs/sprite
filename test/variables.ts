@@ -8,7 +8,7 @@ config();
  * Contains all the variables that used for testing
  */
 export const variables = {
-  databaseName: 'SpriteIntegrationTesting',
+  databaseName: 'Imported',
   user: 'Test',
   username: process.env.SPRITE_ARCADE_TEST_DB_USERNAME || 'root',
   password: process.env.SPRITE_ARCADE_TEST_DB_PASSWORD || 'playwithdata',
