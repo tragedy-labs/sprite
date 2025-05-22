@@ -4,11 +4,12 @@ import { Database } from '@/database/Database.js';
 // Testing
 import { SPRITE_DATABASE as SpriteDatabase } from './testClient.js';
 import { TestDatabaseSession as SESSION, variables } from '@test/variables.js';
+import { ArcadeGetSchemaResponse } from '@/api.js';
 
 describe('SpriteDatabase.getSchema()', () => {
   it('should call the Databasec() method with the given command, and the unique session instance', async () => {
     // Arrange
-    jest.spyOn(Database, 'getSchema').mockImplementationOnce(async () => null);
+    jest.spyOn(Database, 'getSchema').mockImplementationOnce(async () => []);
     // Act
     await SpriteDatabase.getSchema();
     // Asserts
@@ -19,10 +20,13 @@ describe('SpriteDatabase.getSchema()', () => {
     // Arrange
     jest
       .spyOn(Database, 'getSchema')
-      .mockImplementationOnce(async () => variables.nonEmptyString);
+      .mockImplementationOnce(
+        async () =>
+          [variables.nonEmptyString] as unknown as ArcadeGetSchemaResponse
+      );
     // Act
     const result = await SpriteDatabase.getSchema();
     // Asserts
-    expect(result).toBe(variables.nonEmptyString);
+    expect(result).toEqual([variables.nonEmptyString]);
   });
 });

@@ -25,7 +25,7 @@ describe('SpriteServer.listDatabases()', () => {
 
   it('should return the output of the Server.listDatabases() method', async () => {
     // Arrange
-    const spy = jest
+    jest
       .spyOn(Server, 'listDatabases')
       .mockImplementationOnce(async () => [variables.databaseName]);
     // Act

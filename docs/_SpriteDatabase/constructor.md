@@ -18,7 +18,7 @@ permalink: /SpriteDatabase/constructor.html
 
 (**params: *ISpriteDatabaseNewSession***)
 
-Interact with a database, perform queries, issue commands to manage
+Interacts with a database, performing queries and issuing commands to manage
 records, types, and settings.
 
 #### Example
@@ -38,7 +38,7 @@ type DocumentTypes = {
 }
 
 async function databaseExample() {
- const client = db.documents<DocumentTypes>();
+  const client = db.documents<DocumentTypes>();
   try {
     await db.transaction(async (trx) => {
       await db.createType('aDocument', trx);
@@ -48,7 +48,7 @@ async function databaseExample() {
     console.log(schema);
     // [...]
   } catch (error) {
-    console.log(error);
+    console.error(error);
     // handle error conditions
   }
 }

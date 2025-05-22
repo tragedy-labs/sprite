@@ -5,8 +5,7 @@ import { Server } from '@/server/Server.js';
 import { client as SpriteServer } from './testClient.js';
 import {
   CREATE_USER_PARAMS,
-  TestServerSession as SESSION,
-  variables
+  TestServerSession as SESSION
 } from '@test/variables.js';
 
 describe('SpriteServer.createUser()', () => {

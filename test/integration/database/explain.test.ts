@@ -9,7 +9,6 @@ describe('SpriteDatabase.explain', () => {
 
   beforeAll(async () => {
     result = await client.explain('SELECT FROM schema:types');
-    console.log(result);
     // {
     //   "executionPlan": {
     //     "cost": -1,

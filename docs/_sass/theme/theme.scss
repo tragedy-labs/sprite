@@ -27,7 +27,7 @@ body {
   --transition-speed-1: 125ms;
 
   --decorative-shadow: 1px 1px 0 var(--background-1), 2px 2px 0 var(--purple);
-    
+
   --space-1: 1.618rem;
   --space-2: 0.809rem;
   --space-3: 0.621rem;
@@ -43,4 +43,34 @@ body {
     --space-section: var(--space-1);
   }
 
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: unset;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-button:hover {
+  background-color: #999999;
 }

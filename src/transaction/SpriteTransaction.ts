@@ -1,21 +1,6 @@
 import { DatabaseSession } from '../session/DatabaseSession.js';
-import {
-  ArcadeSupportedQueryLanguages,
-  Database
-} from '../database/Database.js';
-import { Rest } from '../rest/Rest.js';
-import { Routes } from '../database/routes.js';
-
-/**
- * isolationLevel is the isolation level for the current transaction,
- * either `READ_COMMITTED` or `REPEATABLE_READ`. For details on what
- * isolation level dictates about the transaction, see the [ArcadeDB
- * documentation](https://docs.arcadedb.com/#HTTP-Begin)
- * @default READ_COMMITTED
- */
-export type ArcadeTransactionIsolationLevel =
-  | 'READ_COMMITTED'
-  | 'REPEATABLE_READ';
+import { ArcadeSupportedQueryLanguages } from '../database/Database.js';
+import { Transaction } from './Transaction.js';
 
 /**
  * A transaction in Sprite, contains the transaction id, and methods to
@@ -50,7 +35,7 @@ export class SpriteTransaction {
    * @returns `true` if the transaction was commited.
    */
   commit = async () => {
-    this._committed = await Database.commitTransaction(this._session, this);
+    this._committed = await Transaction.commit(this._session, this);
     return this.committed;
   };
   /**
@@ -58,32 +43,20 @@ export class SpriteTransaction {
    * @returns `true` if the transaction was commited.
    */
   rollback = async () => {
-    this._rolledBack = await Database.rollbackTransaction(this._session, this);
+    this._rolledBack = await Transaction.rollback(this._session, this);
     return this.rolledBack;
   };
   /**
-   *
-   * @param language
-   * @param command
-   * @param params
-   * @returns
+   * Perform a CRUD operation in the transaction.
+   * @param language the query language to use
+   * @param command the command to execute
+   * @param params the (optional) parameters to pass to the command
+   * @returns the result of the CRUD operation
    */
   crud = async <T>(
     language: ArcadeSupportedQueryLanguages,
     command: string,
-    params?: Record<string, boolean | string | number>
-  ): Promise<T> => {
-    try {
-      return await Rest.postJson<T>(
-        Routes.COMMAND,
-        { language, command, params },
-        this._session,
-        this
-      );
-    } catch (error) {
-      throw new Error(`Could not perform CRUD operation ${command}`, {
-        cause: error
-      });
-    }
-  };
+    parameters?: Record<string, boolean | string | number>
+  ): Promise<T> =>
+    Transaction.crud<T>(this._session, this, language, command, parameters);
 }

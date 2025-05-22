@@ -5,7 +5,7 @@ import { SpriteHeaders } from './SpriteHeaders.js';
 import { SpriteBody, SpriteRestBody } from './SpriteBody.js';
 import { Routes as DatabaseRoutes } from '../database/routes.js';
 import { Routes as ServerRoutes } from '../server/routes.js';
-import { Session } from '@/session/Session.js';
+import { Session } from '../session/Session.js';
 
 type ApiRoutes = DatabaseRoutes | ServerRoutes | string;
 

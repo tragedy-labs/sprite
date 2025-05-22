@@ -3,7 +3,6 @@
   flex: 1;
   display: flex;
   max-height: 100%;
-  overflow: scroll;
   transition: opacity 125ms ease;
   flex-direction: column;
   align-content: flex-start;
@@ -23,7 +22,7 @@
 @media (max-width: 820px) {
   #content {
 
-    > div {
+    >div {
       max-width: 100%;
       margin: 0;
     }

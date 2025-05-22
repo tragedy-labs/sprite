@@ -1,5 +1,4 @@
 // Lib
-import { variables } from '@test/variables.js';
 import { testClient } from './testClient.js';
 
 const newDatabaseName = 'CreateDatabaseTestDatabase';

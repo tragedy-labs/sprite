@@ -5,11 +5,10 @@ title: Sprite — A typescript driver/client for ArcadeDB
 
 ### Documentation
 
-Sprite is a TypeScript (or JavaScript) driver/client for ArcadeDB. It supports working with data in document, and graph formats.
+Sprite is a TypeScript (or JavaScript) driver/client for ArcadeDB. It provides methods for issuing commands / queryies to a database, as well as server-level methods for administration.
 
 - No dependencies
 - Performant and Efficient
-- High and low-level methods
 - Typesafe
 - Modern
 - [MIT license](https://github.com/tragedy-labs/sprite/blob/main/LICENSE)
@@ -28,4 +27,4 @@ Available on [GitHub](https://www.github.com/tragedy-labs/sprite), and distribut
 
 #### License
 
-[MIT](https://github.com/valence-corp/sprite/blob/main/LICENSE)
+[MIT](https://github.com/tragedy-labs/sprite/blob/main/LICENSE)

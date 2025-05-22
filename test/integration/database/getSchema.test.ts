@@ -7,39 +7,35 @@ import {
 // Testing
 import { testClient as client } from './testClient.js';
 
-let schema: ArcadeGetSchemaResponse;
-
-beforeAll(async () => {
-  schema = await client.getSchema();
-});
-
 describe('SpriteDatabase.getSchema', () => {
+  let schema: ArcadeGetSchemaResponse;
+  beforeAll(async () => {
+    await client.command('sql', 'CREATE document TYPE GetSchemaTestType');
+    schema = await client.getSchema();
+  });
+  afterAll(async () => {
+    await client.command('sql', 'DROP TYPE GetSchemaTestType');
+  });
   it('returns the schema of the database as an array', () => {
-    console.log(schema);
     expect(Array.isArray(schema)).toBe(true);
   });
 
-  it('has the expected structure', () => {
+  it('has the expected structure', async () => {
     // {
-    //   name: 'Whisky',
+    //   name: 'Name',
     //   type: 'vertex',
     //   records: 72,
     //   buckets: [
-    //     'Whisky_0',
-    //     'Whisky_1',
-    //     'Whisky_2',
-    //     'Whisky_3',
-    //     'Whisky_4',
-    //     'Whisky_5',
-    //     'Whisky_6',
-    //     'Whisky_7'
+    //   ...
     //   ],
     //   bucketSelectionStrategy: 'round-robin',
     //   parentTypes: [],
     //   properties: [],
     //   indexes: [],
     //   custom: {}
-    // }
+    //
+
+    // Arrange
 
     const isArray = (property: Array<unknown>) => Array.isArray(property);
 

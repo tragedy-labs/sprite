@@ -4,13 +4,13 @@ import {
   DropType,
   InsertDocument
 } from '@/types/commands.js';
-import { Database } from '@/database/Database.js';
 import { TestDatabaseSession as SESSION } from '@test/variables.js';
 import { ArcadeDocument } from '@/types/queries.js';
 import { RID_REGEX } from '@/validation/regex/RID.js';
 
 // Testing
 import { testClient } from './testClient.js';
+import { Transaction } from '@/transaction/Transaction.js';
 
 interface RollbackTrxTextType {
   aProperty: string;
@@ -28,7 +28,7 @@ describe('Database.rollbackTransaction', () => {
   });
   afterAll(async () => {
     // Drop the test record type
-    const [thing] = await testClient.command<DropType<typeof typeName>>(
+    await testClient.command<DropType<typeof typeName>>(
       'sql',
       `DROP TYPE ${typeName} IF EXISTS`
     );
@@ -42,10 +42,7 @@ describe('Database.rollbackTransaction', () => {
     >('sql', `INSERT INTO ${typeName}`);
 
     // Rollback the transaction
-    const didRollBack = await Database.rollbackTransaction(
-      SESSION,
-      transaction
-    );
+    const didRollBack = await Transaction.rollback(SESSION, transaction);
 
     // Query to check if the document exists after the rollback
     const [queriedRecordAfterRollback] = await testClient.query<

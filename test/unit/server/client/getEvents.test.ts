@@ -3,7 +3,7 @@ import { Server, SpriteArcadeServerEvents } from '@/server/Server.js';
 
 // Test
 import { client as SpriteServer } from './testClient.js';
-import { TestServerSession as SESSION, variables } from '@test/variables.js';
+import { TestServerSession as SESSION } from '@test/variables.js';
 
 describe('SpriteServer.getEvents()', () => {
   beforeEach(() => {
@@ -27,7 +27,7 @@ describe('SpriteServer.getEvents()', () => {
 
   it('should return the output of the Server.getEvents() method', async () => {
     // Arrange
-    const spy = jest
+    jest
       .spyOn(Server, 'getEvents')
       .mockImplementationOnce(
         async () => ({ test: 'Data' }) as unknown as SpriteArcadeServerEvents

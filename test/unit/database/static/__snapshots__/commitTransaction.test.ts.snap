@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Database.commitTransaction() should error for a non-204 response 1`] = `[Error: Unable to commit transaction AS-0000000-0000-0000-0000-00000000000]`;
-
-exports[`Database.commitTransaction() should error if no transaction is provided 1`] = `[TypeError: Cannot read properties of undefined (reading 'id')]`;
-
-exports[`Database.commitTransaction() should forward errors from internal methods 1`] = `[Error: Unable to commit transaction AS-0000000-0000-0000-0000-00000000000]`;

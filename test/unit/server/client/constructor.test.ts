@@ -13,9 +13,7 @@ describe('SpriteServer.constructor()', () => {
     const serverInstance = new SpriteServer(SESSION);
     jest
       .spyOn(Server, 'command')
-      .mockImplementationOnce(
-        async (session: ServerSession, command: string) => session
-      );
+      .mockImplementationOnce(async (session: ServerSession) => session);
 
     const passedSession = await serverInstance.command(
       variables.nonEmptyString
@@ -38,9 +36,7 @@ describe('SpriteServer.constructor()', () => {
 
     jest
       .spyOn(Server, 'command')
-      .mockImplementationOnce(
-        async (session: ServerSession, command: string) => session
-      );
+      .mockImplementationOnce(async (session: ServerSession) => session);
 
     const createdSession = await serverInstance.command<ServerSession>(
       variables.nonEmptyString

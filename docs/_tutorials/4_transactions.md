@@ -14,13 +14,7 @@ ArcadeDB is a transactional database. This is preferred for applications that re
 
 There are a two different ways to conduct transactions in Sprite. This tutorial will demonstate these methods.
 
----
-
-###### Note:
-
-You don't need to run this code; it will be put into practice in the next tutorial.
-
----
+> **Note:** You don't need to run this code; it will be put into practice in the next tutorial.
 
 #### Overview
 
@@ -68,11 +62,14 @@ async function transactionHelperExample() {
 
     db.transaction(async (trx) => {
       // the `crud` method only exists on the SpriteTransaction
-      // class. It is the only method of conduction transactional
-      // operations in Sprite.
+      // class. It is the only method of conducting transactional
+      // operations (CRUD) in Sprite.
+
+      // Using parameterized commands to prevent SQL injection
       const [record] = await trx.crud(
         'sql',
-        `INSERT INTO aDocument CONTENT ${JSON.stringify(data)}`
+        'INSERT INTO aDocument SET aProperty = :aProperty',
+        { aProperty: 'aValue' }
       );
       console.log(record);
       // {
@@ -108,11 +105,13 @@ async function manualTransaction() {
     // ensure a type exists prior to
     // attemping to insert a document
     await db.command('sql', 'CREATE document TYPE aDocument');
-
     const trx = await db.newTransaction();
+
+    // Using parameterized commands to prevent SQL injection
     const [record] = await trx.crud(
       'sql',
-      `INSERT INTO aDocument CONTENT ${JSON.stringify(data)}`
+      'INSERT INTO aDocument SET aProperty = :aProperty',
+      { aProperty: 'aValue' }
     );
 
     console.log(record);

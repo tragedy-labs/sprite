@@ -1,6 +1,5 @@
 import { variables } from '@test/variables.js';
 import { SpriteDatabase } from '@/database/SpriteDatabase.js';
-import { SpriteTransaction } from '@/transaction/SpriteTransaction.js';
 
 export const SPRITE_DATABASE = new SpriteDatabase({
   username: process.env.ARCADE_TEST_DB_USERNAME || variables.username,
