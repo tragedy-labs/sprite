@@ -18,7 +18,7 @@ describe('SpriteServer.connectCluster()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `CONNECT CLUSTER ${variables.address}`
+        command: `connect cluster ${variables.address}`
       }),
       keepalive: true
     };

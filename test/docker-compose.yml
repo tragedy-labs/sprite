@@ -5,4 +5,4 @@ services:
     ports:
       - '2480:2480'
     environment:
-      - JAVA_OPTS=-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=SpriteIntegrationTesting[root]{import:https://github.com/tragedy-labs/sprite/raw/main/test/DefaultDB.zip}
+      - JAVA_OPTS=-Darcadedb.server.rootPassword=playwithdata -Darcadedb.server.defaultDatabases=Imported[root]{import:https://github.com/ArcadeData/arcadedb-datasets/raw/main/orientdb/OpenBeer.gz}

@@ -73,6 +73,10 @@ class Session {
         : `${prefix}/${route}`;
     });
 
+    if (suffix) {
+      endpoints.server = `${prefix}/${'server'}`;
+    }
+
     return endpoints;
   }
 }

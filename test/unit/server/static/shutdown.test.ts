@@ -18,7 +18,7 @@ describe('SpriteServer.shutdown()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `SHUTDOWN`
+        command: `shutdown`
       }),
       keepalive: true
     };

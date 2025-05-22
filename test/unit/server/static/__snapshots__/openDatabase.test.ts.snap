@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpriteServer.openDatabase() should propagate errors from internal methods 1`] = `[Error: Unabled to open database "SpriteIntegrationTesting]`;
+exports[`SpriteServer.openDatabase() should propagate errors from internal methods 1`] = `[Error: Unabled to open database "Imported]`;

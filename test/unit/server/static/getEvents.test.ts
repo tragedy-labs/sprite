@@ -18,7 +18,7 @@ describe('SpriteServer.getEvents()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: 'GET SERVER EVENTS'
+        command: 'get server events'
       }),
       keepalive: true
     };

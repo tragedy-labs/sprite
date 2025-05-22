@@ -8,5 +8,6 @@ export const testClient = new SpriteDatabase({
   username: variables.username,
   password: variables.password,
   address: variables.address,
-  databaseName: 'SpriteIntegrationTesting'
+  //databaseName: 'SpriteIntegrationTesting'
+  databaseName: 'Imported'
 });

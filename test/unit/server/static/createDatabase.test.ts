@@ -19,7 +19,7 @@ describe('SpriteServer.createDatabase()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `CREATE DATABASE ${variables.databaseName}`
+        command: `create database ${variables.databaseName}`
       }),
       keepalive: true
     };

@@ -18,7 +18,7 @@ describe('SpriteServer.openDatabase()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `OPEN DATABASE ${variables.databaseName}`
+        command: `open database ${variables.databaseName}`
       }),
       keepalive: true
     };

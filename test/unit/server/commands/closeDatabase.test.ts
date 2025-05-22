@@ -4,7 +4,7 @@ import { variables } from '@test/variables.js';
 describe('CLOSE_DATABASE', () => {
   it('given a databaseName (string) as an argument should return a string that is the command to close that database', async () => {
     // Arrange
-    const expected = `CLOSE DATABASE ${variables.databaseName}`;
+    const expected = `close database ${variables.databaseName}`;
     // Act
     const result = CLOSE_DATABASE(variables.databaseName);
     // Assert

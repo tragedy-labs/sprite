@@ -2,4 +2,4 @@
 
 exports[`SpriteServer.createUser should prevent dropped user from checking status 1`] = `[Error: Unable to check the server status.]`;
 
-exports[`SpriteServer.createUser should propagate errors from the database 1`] = `[Error: Could not create user createUsername. In database(s): SpriteIntegrationTesting]`;
+exports[`SpriteServer.createUser should propagate errors from the database 1`] = `[Error: Could not create user createUsername. In database(s): Imported]`;

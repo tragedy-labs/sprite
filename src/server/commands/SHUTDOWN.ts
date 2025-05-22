@@ -1,1 +1,1 @@
-export const SHUTDOWN = 'SHUTDOWN';
+export const SHUTDOWN = 'shutdown';

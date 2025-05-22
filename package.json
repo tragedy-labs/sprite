@@ -11,7 +11,7 @@
   "module": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch ./ --ext ts --exec 'rimraf ./dist && tsc && node ./dist/index.js'",
+    "dev": "nodemon --watch ./src --ext ts --exec 'rimraf ./dist && tsc && node ./dist/index.js'",
     "build": "rimraf ./dist && tsc -p ./tsconfig.build.json",
     "docs:api": "typedoc ./src/api.ts --out ./docs/api --darkHighlightTheme dracula --lightHighlightTheme github-light",
     "docs:json": "typedoc ./src/api.ts --json ./docs/_data/docs.json ",
@@ -57,7 +57,9 @@
     "dotenv": "^16.4.5",
     "eslint": "^9.8.0",
     "eslint-plugin-tsdoc": "^0.3.0",
+    "globals": "^16.1.0",
     "jest": "^29.7.0",
+<<<<<<< HEAD
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.4",
@@ -66,5 +68,17 @@
     "typedoc": "^0.26.5",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1"
+=======
+    "nodemon": "^3.1.10",
+    "prettier": "^3.3.2",
+    "rimraf": "^5.0.7",
+    "ts-jest": "^29.1.5",
+    "ts-jest-resolver": "^2.0.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
+    "typedoc": "^0.25.13",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
+>>>>>>> dev
   }
 }

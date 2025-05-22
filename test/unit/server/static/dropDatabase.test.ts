@@ -18,7 +18,7 @@ describe('Server.dropDatabase()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `DROP DATABASE ${variables.databaseName}`
+        command: `drop database ${variables.databaseName}`
       }),
       keepalive: true
     };

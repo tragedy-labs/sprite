@@ -18,7 +18,7 @@ describe('Server.disconnectCluster()', () => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        command: `DISCONNECT CLUSTER`
+        command: `disconnect cluster`
       }),
       keepalive: true
     };

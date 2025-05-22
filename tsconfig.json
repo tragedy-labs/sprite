@@ -44,8 +44,6 @@
     "**/node_modules",
     // Excludes 'dist' directory.
     "**/dist",
-    "**/docs",
-    "**/src_old",
-    "**/test_old"
+    "**/docs"
   ]
 }
