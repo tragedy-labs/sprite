@@ -4,6 +4,6 @@ exports[`SpriteServer.createDatabase() should throw an error if "databaseName" i
 
 exports[`SpriteServer.createDatabase() should throw an error if "databaseName" is an empty string 1`] = `[Error: Failed to create database "".]`;
 
-exports[`SpriteServer.createDatabase() should throw an error if fetch returns a non "ok" result property in the response object 1`] = `[Error: Failed to create database "SpriteIntegrationTesting".]`;
+exports[`SpriteServer.createDatabase() should throw an error if fetch returns a non "ok" result property in the response object 1`] = `[Error: Failed to create database "Imported".]`;
 
 exports[`SpriteServer.createDatabase() should throw an error if supplied "databaseName" is a number 1`] = `[Error: Failed to create database "9".]`;
