@@ -2,7 +2,7 @@
 
 ![Test workflow badge](https://github.com/tragedy-labs/sprite/actions/workflows/commit.yml/badge.svg?event=push)
 
-Sprite is a TypeScript driver for ArcadeDB.
+Sprite is a TypeScript driver for ArcadeDB. This branch is currently non-operational while preparing for a 1.0 release. Please use the `main` branch.
 
 [Read the documentation](https://sprite.tragedy.dev), or see the examples below.
 
