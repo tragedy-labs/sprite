@@ -3,7 +3,7 @@ import { DatabaseSession } from '../session/DatabaseSession.js';
 import { Auth } from './Auth.js';
 import { ServerSession } from '../session/ServerSession.js';
 import { ArcadeValidation } from '../validation/ArcadeValidation.js';
-import { IArcadeServerContext } from '@/context/ArcadeServerContext.js';
+import { ArcadeContextConfiguration } from '@/context/ArcadeContext.js';
 
 export enum HeaderKeys {
   ContentType = 'Content-Type',
@@ -11,20 +11,20 @@ export enum HeaderKeys {
   ArcadeSessionId = 'arcadedb-session-id'
 }
 
-export type SpriteBasicHeadersInit = HeadersInit & {
+export type ArcadeBasicHeadersInit = HeadersInit & {
   [HeaderKeys.Authorization]: string;
   [HeaderKeys.ContentType]: 'application/json';
 };
 
-export type SpriteHeadersInit = SpriteBasicHeadersInit & {
+export type ArcadeHeadersInit = ArcadeBasicHeadersInit & {
   [HeaderKeys.ArcadeSessionId]?: string;
 };
 
-class SpriteHeaders {
+class ArcadeHeaders {
   public static compose(
     session: DatabaseSession | ServerSession,
     transaction?: SpriteTransaction
-  ): SpriteHeadersInit {
+  ): ArcadeHeadersInit {
     try {
       if (transaction) {
         ArcadeValidation.transaction(transaction);
@@ -44,8 +44,8 @@ class SpriteHeaders {
     }
   }
   public static initialize = (
-    configuration: IArcadeServerContext
-  ): SpriteBasicHeadersInit => ({
+    configuration: ArcadeContextConfiguration
+  ): ArcadeBasicHeadersInit => ({
     [HeaderKeys.ContentType]: 'application/json',
     [HeaderKeys.Authorization]: Auth.basic(
       configuration.username,
@@ -54,4 +54,4 @@ class SpriteHeaders {
   });
 }
 
-export { SpriteHeaders };
+export { ArcadeHeaders };

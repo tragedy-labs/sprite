@@ -1,9 +1,7 @@
 /**
  * The parameters required to connect to the ArcadeDB server.
  */
-export interface ISpriteAuthParameters {
-  /** The URL (including port) of the database. (i.e. http://localhost:2480/) */
-  address: string;
+export interface ArcadeAuthParameters {
   /** The username to connect to the database. (i.e. "root") */
   username: string;
   /** The password to connect to the database. (i.e. "myPassword") */
