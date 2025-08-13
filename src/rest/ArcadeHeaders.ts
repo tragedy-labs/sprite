@@ -3,6 +3,7 @@ import { DatabaseSession } from '../session/DatabaseSession.js';
 import { Auth } from './Auth.js';
 import { ServerSession } from '../session/ServerSession.js';
 import { ArcadeValidation } from '../validation/ArcadeValidation.js';
+import { IArcadeServerContext } from '@/context/ArcadeServerContext.js';
 
 export enum HeaderKeys {
   ContentType = 'Content-Type',
@@ -43,11 +44,13 @@ class SpriteHeaders {
     }
   }
   public static initialize = (
-    username: string,
-    password: string
+    configuration: IArcadeServerContext
   ): SpriteBasicHeadersInit => ({
     [HeaderKeys.ContentType]: 'application/json',
-    [HeaderKeys.Authorization]: Auth.basic(username, password)
+    [HeaderKeys.Authorization]: Auth.basic(
+      configuration.username,
+      configuration.password
+    )
   });
 }
 
