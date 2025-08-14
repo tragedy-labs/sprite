@@ -1,7 +1,7 @@
 import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
 import { HttpClient } from './HttpClient.js';
 import { JsonResponse } from './JsonResponse.js';
-import { SpriteHeaders } from './SpriteHeaders.js';
+import { ArcadeHeaders } from './ArcadeHeaders.js';
 import { SpriteBody, SpriteRestBody } from './SpriteBody.js';
 import { Routes as DatabaseRoutes } from '../database/routes.js';
 import { Routes as ServerRoutes } from '../server/routes.js';
@@ -30,7 +30,7 @@ class Rest {
   ): Promise<Response> {
     return HttpClient.request(session.endpoints[route], {
       method: Method.GET,
-      headers: SpriteHeaders.compose(session),
+      headers: ArcadeHeaders.compose(session),
       keepalive: true
     });
   }
@@ -62,7 +62,7 @@ class Rest {
   ): Promise<Response> {
     return HttpClient.request(session.endpoints[route], {
       method: Method.POST,
-      headers: SpriteHeaders.compose(session, transaction),
+      headers: ArcadeHeaders.compose(session, transaction),
       body: body ? SpriteBody.compose(body) : null,
       keepalive: true
     });
