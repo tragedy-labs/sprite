@@ -5,7 +5,7 @@ import { ServerSession } from '../session/ServerSession.js';
 import { ArcadeValidation } from '../validation/ArcadeValidation.js';
 import { ArcadeContextConfiguration } from '@/context/ArcadeContext.js';
 
-export enum HeaderKeys {
+export const enum HeaderKeys {
   ContentType = 'Content-Type',
   Authorization = 'Authorization',
   ArcadeSessionId = 'arcadedb-session-id'
