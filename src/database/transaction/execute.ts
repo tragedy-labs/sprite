@@ -1,6 +1,5 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import { QueryLanguages } from '@/database/constants/languages.js';
-import { Routes } from '@/database/constants/routes.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
 import type {
   ArcadeQueryParameters,
@@ -17,7 +16,7 @@ import { Rest } from '@/rest/Rest.js';
  * @throws Error if the CRUD operation fails.
  */
 export async function execute<T>(
-  database: ArcadeDatabaseContext,
+  context: ArcadeDatabaseContext,
   transaction: Transaction,
   language: QueryLanguages,
   command: string,
@@ -25,9 +24,9 @@ export async function execute<T>(
 ): Promise<T> {
   try {
     return await Rest.postJson<T>(
-      Routes.COMMAND,
+      context.endpoints.command,
+      context.server.headers,
       { language, command, params },
-      database,
       transaction
     );
   } catch (error) {

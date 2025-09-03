@@ -1,5 +1,4 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
-import { Routes } from '@/database/constants/routes.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
 import type { ArcadeTransactionIsolationLevel } from '@/database/transaction/types.js';
 import { HeaderKeys } from '@/rest/ArcadeHeaders.js';
@@ -19,11 +18,11 @@ export async function beginTransaction(
     // 'READ_COMMITTED' is default in ARCADEDB,
     // so we don't bother sending that
     const response = await Rest.post(
-      Routes.BEGIN,
+      context.endpoints.begin,
+      context.server.headers,
       isolationLevel === 'REPEATABLE_READ'
         ? JSON.stringify({ isolationLevel })
-        : null,
-      context
+        : null
     );
 
     if (response.status !== 204) {

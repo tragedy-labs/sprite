@@ -1,5 +1,4 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
-import { Routes } from '@/database/constants/routes.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
 import { Rest } from '@/rest/Rest.js';
 
@@ -10,11 +9,16 @@ import { Rest } from '@/rest/Rest.js';
  * @returns `true` if the transaction was rolled back.
  */
 export async function rollbackTransaction(
-  session: ArcadeDatabaseContext,
+  context: ArcadeDatabaseContext,
   transaction: Transaction
 ) {
   try {
-    const result = await Rest.post(Routes.ROLLBACK, null, session, transaction);
+    const result = await Rest.post(
+      context.endpoints.rollback,
+      context.server.headers,
+      null,
+      transaction
+    );
     if (result.status === 204) {
       return true;
     } else {
