@@ -1,10 +1,15 @@
-import {
-  ArcadeContextBaseUrlFactory,
-  ArcadeContextBaseUrls
-} from './ArcadeContextBaseUrls.js';
-import { ArcadeAuthParameters } from '@/rest/Auth.js';
 import { ArcadeBasicHeadersInit, ArcadeHeaders } from '@/rest/ArcadeHeaders.js';
-import { ArcadeValidation } from '@/validation/ArcadeValidation.js';
+import { ArcadeAuthParameters } from '@/rest/Auth.js';
+import {
+    validateHostname,
+    validatePassword,
+    validatePort,
+    validateUsername
+} from '@/validation/ArcadeValidation.js';
+import {
+    ArcadeContextBaseUrlFactory,
+    ArcadeContextBaseUrls
+} from './ArcadeContextBaseUrls.js';
 
 /**
  * Configurable properties for creating an `ArcadeServerContext`.
@@ -37,7 +42,7 @@ class ArcadeContext {
   #headers: ArcadeBasicHeadersInit;
   #urls: ArcadeContextBaseUrls;
   constructor(configuration: ArcadeContextConfiguration) {
-    ArcadeContextValidation.configuration(configuration);
+    validateArcadeContextConfiguration(configuration);
     try {
       this.#headers = ArcadeHeaders.initialize(configuration);
       this.#urls = ArcadeContextBaseUrlFactory.initialize(configuration);
@@ -59,36 +64,34 @@ class ArcadeContext {
  * Static methods for performing validation on the
  * `ArcadeContextConfiguration` object
  */
-class ArcadeContextValidation {
-  static configuration(
-    configuration: ArcadeContextConfiguration
-  ): asserts configuration is ArcadeContextConfiguration {
-    try {
-      if (!ArcadeValidation.host(configuration.host)) {
-        throw new TypeError(
-          'ArcadeContextConfiguration.host is required and cannot be empty'
-        );
-      }
-
-      if (!ArcadeValidation.port(configuration.port)) {
-        throw new TypeError(
-          'ArcadeContextConfiguration.port must be a valid port number (1-65535)'
-        );
-      }
-
-      if (!ArcadeValidation.username(configuration.username)) {
-        throw new TypeError('ArcadeContextConfiguration.username is required');
-      }
-
-      if (!ArcadeValidation.password(configuration.password)) {
-        throw new TypeError('ArcadeContextConfiguration.password is required');
-      }
-    } catch (error) {
+function validateArcadeContextConfiguration(
+  configuration: ArcadeContextConfiguration
+): asserts configuration is ArcadeContextConfiguration {
+  try {
+    if (!validateHostname(configuration.host)) {
       throw new TypeError(
-        'Could not validate the supplied ArcadeContextConfiguration object.',
-        { cause: error }
+        'ArcadeContextConfiguration.host is required and cannot be empty'
       );
     }
+
+    if (!validatePort(configuration.port)) {
+      throw new TypeError(
+        'ArcadeContextConfiguration.port must be a valid port number (1-65535)'
+      );
+    }
+
+    if (!validateUsername(configuration.username)) {
+      throw new TypeError('ArcadeContextConfiguration.username is required');
+    }
+
+    if (!validatePassword(configuration.password)) {
+      throw new TypeError('ArcadeContextConfiguration.password is required');
+    }
+  } catch (error) {
+    throw new TypeError(
+      'Could not validate the supplied ArcadeContextConfiguration object.',
+      { cause: error }
+    );
   }
 }
 
