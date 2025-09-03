@@ -18,7 +18,7 @@ export async function adminCommand<T>(
       JSON.stringify({
         command
       }),
-      context
+      context.server.headers
     );
   } catch (error) {
     throw new Error(

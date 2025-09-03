@@ -1,6 +1,6 @@
 import type {
-  ArcadeServerInformation,
-  ArcadeServerInformationLevel
+    ArcadeServerInformation,
+    ArcadeServerInformationLevel
 } from '@/admin/types.js';
 import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
