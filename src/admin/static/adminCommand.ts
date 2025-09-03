@@ -15,10 +15,10 @@ export async function adminCommand<T>(
   try {
     return await Rest.postJson(
       context.endpoints.server,
+      context.server.headers,
       JSON.stringify({
         command
-      }),
-      context.server.headers
+      })
     );
   } catch (error) {
     throw new Error(
