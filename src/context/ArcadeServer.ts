@@ -14,7 +14,7 @@ import {
 /**
  * Configurable properties for creating an `ArcadeServerContext`.
  */
-interface ArcadeContextConfiguration extends ArcadeAuthParameters {
+export interface ArcadeServerConfiguration extends ArcadeAuthParameters {
   /**
    * The host address of the database to connect to.
    * @example `localhost`, `127.0.0.1`, or `www.tragedy.dev`
@@ -38,10 +38,10 @@ interface ArcadeContextConfiguration extends ArcadeAuthParameters {
  * Contextual information used to connect to an ArcadeDB server.
  * @param configuration - The properties for the context being constructed.
  */
-class ArcadeContext {
+export class ArcadeServer {
   #headers: ArcadeBasicHeadersInit;
   #urls: ArcadeContextBaseUrls;
-  constructor(configuration: ArcadeContextConfiguration) {
+  constructor(configuration: ArcadeServerConfiguration) {
     validateArcadeContextConfiguration(configuration);
     try {
       this.#headers = ArcadeHeaders.initialize(configuration);
@@ -65,8 +65,8 @@ class ArcadeContext {
  * `ArcadeContextConfiguration` object
  */
 function validateArcadeContextConfiguration(
-  configuration: ArcadeContextConfiguration
-): asserts configuration is ArcadeContextConfiguration {
+  configuration: ArcadeServerConfiguration
+): asserts configuration is ArcadeServerConfiguration {
   try {
     if (!validateHostname(configuration.host)) {
       throw new TypeError(
@@ -94,5 +94,3 @@ function validateArcadeContextConfiguration(
     );
   }
 }
-
-export { ArcadeContext, type ArcadeContextConfiguration };
