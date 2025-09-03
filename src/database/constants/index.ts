@@ -1,3 +1,2 @@
 export { QueryLanguages } from './languages.js';
-export { Routes } from './routes.js';
-
+export { DATABASE_ROUTES } from './routes.js';
