@@ -4,16 +4,7 @@ export interface ArcadeFetchErrorDescription {
 }
 
 /**
- * The error thrown when the fetch() method of the Sprite class encounters an error.
- * @class
- * @param description A detailed error message to display.
- * @param response The response from the fetch() method.
- * @extends Error
- * @example
- * const response = await sprite.fetch();
- * if (response.status !== 200 || response.status !== 204) {
- *   throw new ArcadeFetchError("It wasn't a 204 or 200", response);
- * }
+ * Details about HTTP errors.
  */
 const details: Record<number, ArcadeFetchErrorDescription> = {
   400: {
@@ -35,7 +26,7 @@ const details: Record<number, ArcadeFetchErrorDescription> = {
 };
 
 /**
- * The error thrown when the fetch() method of the Sprite class encounters an error.
+ * Custom `Error` extended to include specifics about HTTP errors.
  */
 export class ArcadeFetchError extends Error {
   detail: string;

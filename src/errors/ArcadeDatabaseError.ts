@@ -5,7 +5,7 @@ export type SpriteArcadeErrorResult = {
 };
 
 /**
- * Converts exceptions from the ArcadeDB into JavaScript errors
+ * Custom `Error` class extended to match errors returned by ArcadeDB server.
  */
 export class ArcadeDatabaseError extends Error {
   error: string;

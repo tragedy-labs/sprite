@@ -1,34 +1,18 @@
 /**
  * The parameters required to connect to the ArcadeDB server.
  */
-export interface ISpriteAuthParameters {
-  /** The URL (including port) of the database. (i.e. http://localhost:2480/) */
-  address: string;
+export interface ArcadeAuthParameters {
   /** The username to connect to the database. (i.e. "root") */
   username: string;
   /** The password to connect to the database. (i.e. "myPassword") */
   password: string;
 }
 
-/**
- * Stores the details of the server connection for use in
- * fetch requests with the ArcadeDB Server.
- */
-export interface ISpriteConnection {
-  /** The URL (including port) of the database. (i.e. http://localhost:2480/) */
-  address: string;
-  /** The headers of the Fetch request */
-  headers: {
-    'Content-Type': string;
-    Authorization: string;
-  };
-}
-
 export class Auth {
   /**
-   * Formats the connection parameters into a configuration object that can be used to interact with the ArcadeDB server.
-   * @param username The username
-   * @param password The password
+   * Formats credentials into a configuration used to interact with the ArcadeDB server.
+   * @param username - The username
+   * @param password - The password
    * @returns A base64 encoded auth string and additional formatting to use in request headers.
    * @throws `Error` if valid parameter types are not received, or something else causes an error when building the object.
    */
@@ -48,15 +32,15 @@ export class Auth {
   /**
    * Base64 Encodes the `username` and `password` for use in the `Authorization` header.
    * This is a cross-platform solution for nodejs, or browser apps.
-   * `btoa()` is marked as deprecated in nodejs, so this solution avoids deprecation
-   * warnings.
-   * @param username The string username to encode.
-   * @param password The string password to encode.
+   * @param username - The string username to encode.
+   * @param password - The string password to encode.
    * @returns The base64 encoded credentials.
    * @example
+   * ```typescript
    * const encoded = await this.encodeCredentials("root", "password");
    * console.log(encoded);
    * // "cm9vdDpwYXNzd29yZA=="
+   * ```
    */
   public static encodeCredentials = (
     username: string,

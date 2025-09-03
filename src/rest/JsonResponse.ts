@@ -1,4 +1,4 @@
-import { ArcadeDatabaseError } from '../errors/ArcadeDatabaseError.js';
+import { ArcadeDatabaseError } from '@/errors/ArcadeDatabaseError.js';
 
 /**
  * Return the JSON from a REST Response from ArcadeDB.
