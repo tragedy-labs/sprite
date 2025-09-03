@@ -1,5 +1,5 @@
-import { ArcadeFetchError } from '../errors/ArcadeFetchError.js';
-import { SpriteHeadersInit } from './SpriteHeaders.js';
+import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
+import { ArcadeBasicHeadersInit } from '@/rest/ArcadeHeaders.js';
 
 export interface DatabaseSession {
   address: string;
@@ -9,15 +9,8 @@ export interface DatabaseSession {
 }
 
 export interface SpriteRequestInit extends RequestInit {
-  headers: SpriteHeadersInit;
+  headers: ArcadeBasicHeadersInit;
 }
-
-/*
- * NOTE:
- * It seems a bit redundant to have this class, but it's a good way to encapsulate
- * the HTTP request logic in one place. Additionally, this likely a stub for a
- * more complex implementation.
- */
 
 /**
  * Utility class for making HTTP requests to the ArcadeDB server.
@@ -31,7 +24,7 @@ class HttpClient {
    * @returns
    */
   public static async request(
-    endpoint: string,
+    endpoint: string | URL,
     requestInit: SpriteRequestInit
   ): Promise<Response> {
     try {
