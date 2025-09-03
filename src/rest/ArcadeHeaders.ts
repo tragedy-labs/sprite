@@ -1,4 +1,4 @@
-import { ArcadeContextConfiguration } from '@/context/ArcadeContext.js';
+import { ArcadeServerConfiguration } from '@/context/ArcadeServer.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
 import { Auth } from '@/rest/Auth.js';
 import { validateTransaction } from '@/validation/ArcadeValidation.js';
@@ -42,7 +42,7 @@ class ArcadeHeaders {
     }
   }
   public static initialize = (
-    configuration: ArcadeContextConfiguration
+    configuration: ArcadeServerConfiguration
   ): ArcadeBasicHeadersInit => ({
     [HeaderKeys.ContentType]: 'application/json',
     [HeaderKeys.Authorization]: Auth.basic(
