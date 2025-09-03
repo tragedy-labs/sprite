@@ -51,8 +51,8 @@ class Rest {
    */
   public static async post(
     url: URL,
-    body: SpriteRestBody,
     headers: ArcadeBasicHeadersInit,
+    body: SpriteRestBody,
     transaction?: Transaction
   ): Promise<Response> {
     return HttpClient.request(url, {
@@ -72,12 +72,12 @@ class Rest {
    */
   public static async postJson<T>(
     url: URL,
-    body: SpriteRestBody,
     headers: ArcadeBasicHeadersInit,
+    body: SpriteRestBody,
     transaction?: Transaction
   ): Promise<T> {
     return JsonResponse.parse<T>(
-      await this.post(url, body, headers, transaction)
+      await this.post(url, headers, body, transaction)
     );
   }
 }
