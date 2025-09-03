@@ -1,9 +1,7 @@
-import { SpriteTransaction } from '../transaction/SpriteTransaction.js';
-import { DatabaseSession } from '../session/DatabaseSession.js';
-import { Auth } from './Auth.js';
-import { ServerSession } from '../session/ServerSession.js';
-import { ArcadeValidation } from '../validation/ArcadeValidation.js';
 import { ArcadeContextConfiguration } from '@/context/ArcadeContext.js';
+import { Transaction } from '@/database/transaction/Transaction.js';
+import { Auth } from '@/rest/Auth.js';
+import { validateTransaction } from '@/validation/ArcadeValidation.js';
 
 export const enum HeaderKeys {
   ContentType = 'Content-Type',
@@ -22,19 +20,19 @@ export type ArcadeHeadersInit = ArcadeBasicHeadersInit & {
 
 class ArcadeHeaders {
   public static compose(
-    session: DatabaseSession | ServerSession,
-    transaction?: SpriteTransaction
+    headers: ArcadeBasicHeadersInit,
+    transaction?: Transaction
   ): ArcadeHeadersInit {
     try {
       if (transaction) {
-        ArcadeValidation.transaction(transaction);
+        validateTransaction(transaction);
         return {
-          [HeaderKeys.ContentType]: session.headers[HeaderKeys.ContentType],
-          [HeaderKeys.Authorization]: session.headers[HeaderKeys.Authorization],
+          [HeaderKeys.ContentType]: headers[HeaderKeys.ContentType],
+          [HeaderKeys.Authorization]: headers[HeaderKeys.Authorization],
           [HeaderKeys.ArcadeSessionId]: transaction.id
         };
       } else {
-        return session.headers;
+        return headers;
       }
     } catch (error) {
       throw new Error(
