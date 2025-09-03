@@ -1,6 +1,6 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import { QueryLanguages } from '@/database/constants/languages.js';
-import { arcadeQuery } from '@/database/static/query.js';
+import { arcadeQuery } from '@/database/static/arcadeQuery.js';
 import { EXPLAIN } from '@/database/static/sql/EXPLAIN.js';
 import type { ArcadeSqlExplanation } from '@/types/database.js';
 

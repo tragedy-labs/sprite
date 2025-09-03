@@ -1,8 +1,7 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
-import { DATABASE_ROUTES } from '@/database/constants/routes.js';
 import type {
-    ArcadeQueryParameters,
-    ArcadeSupportedQueryLanguages
+  ArcadeQueryParameters,
+  ArcadeSupportedQueryLanguages
 } from '@/database/types.js';
 import { Rest } from '@/rest/Rest.js';
 
@@ -16,27 +15,24 @@ import { Rest } from '@/rest/Rest.js';
  * @returns The result of the command.
  */
 export async function arcadeCommand<RT, QP = ArcadeQueryParameters>(
-  databaseContext: ArcadeDatabaseContext,
+  context: ArcadeDatabaseContext,
   language: ArcadeSupportedQueryLanguages,
   command: string,
   parameters?: QP
 ): Promise<RT> {
   try {
     return await Rest.postJson(
-      DATABASE_ROUTES.COMMAND,
+      context.endpoints.command,
+      context.server.headers,
       {
         language,
         command,
         params: parameters
-      },
-      databaseContext
-    );
-  } catch (error) {
-    throw new Error(
-      `Could not perform command on database: ${databaseContext.name}`,
-      {
-        cause: error
       }
     );
+  } catch (error) {
+    throw new Error(`Could not perform command on database: ${context.name}`, {
+      cause: error
+    });
   }
 }

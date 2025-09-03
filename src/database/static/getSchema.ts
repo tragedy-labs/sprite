@@ -1,6 +1,6 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import { QueryLanguages } from '@/database/constants/languages.js';
-import { arcadeQuery } from '@/database/static/query.js';
+import { arcadeQuery } from '@/database/static/arcadeQuery.js';
 import { SELECT_SCHEMA } from '@/database/static/sql/SELECT_SCHEMA.js';
 import type { ArcadeGetSchemaResponse } from '@/types/database.js';
 
