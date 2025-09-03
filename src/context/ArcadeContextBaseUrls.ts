@@ -1,10 +1,10 @@
-import { ArcadeContextConfiguration } from './ArcadeContext.js';
+import { ArcadeServerConfiguration } from './ArcadeServer.js';
 
 /**
  * An object containing the base REST and WebSocket urls
  * for communicating with an ArcadeDB server.
  */
-interface ArcadeContextBaseUrls {
+export interface ArcadeServerBaseUrls {
   rest: URL;
   socket: URL;
 }
@@ -13,10 +13,10 @@ interface ArcadeContextBaseUrls {
  * Static class that contains methods for building `URL`'s
  * and string endpoints for ArcadeDB.
  */
-class ArcadeContextBaseUrlFactory {
+export class ArcadeServerBaseUrlFactory {
   static initialize(
-    configuration: ArcadeContextConfiguration
-  ): ArcadeContextBaseUrls {
+    configuration: ArcadeServerConfiguration
+  ): ArcadeServerBaseUrls {
     return {
       rest: this.rest(configuration),
       socket: this.websocket(configuration)
@@ -25,7 +25,7 @@ class ArcadeContextBaseUrlFactory {
   /**
    * Builds a base URL for the `http` endpoints of the ArcadeDB server.
    */
-  static rest(configuration: ArcadeContextConfiguration): URL {
+  static rest(configuration: ArcadeServerConfiguration): URL {
     return new URL(
       `/api/v1`,
       `${configuration.secure ? 'https' : 'http'}://${configuration.host}:${configuration.port}`
@@ -34,12 +34,10 @@ class ArcadeContextBaseUrlFactory {
   /**
    * Builds a URL for the `websocket` endpoint of the ArcadeDB server.
    */
-  static websocket(configuration: ArcadeContextConfiguration): URL {
+  static websocket(configuration: ArcadeServerConfiguration): URL {
     return new URL(
       '/ws',
       `${configuration.secure ? 'wss' : 'ws'}://${configuration.host}:${configuration.port}`
     );
   }
 }
-
-export { ArcadeContextBaseUrlFactory, ArcadeContextBaseUrls };
