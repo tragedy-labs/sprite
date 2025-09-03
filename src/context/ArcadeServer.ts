@@ -1,14 +1,14 @@
 import { ArcadeBasicHeadersInit, ArcadeHeaders } from '@/rest/ArcadeHeaders.js';
 import { ArcadeAuthParameters } from '@/rest/Auth.js';
 import {
-    validateHostname,
-    validatePassword,
-    validatePort,
-    validateUsername
+  validateHostname,
+  validatePassword,
+  validatePort,
+  validateUsername
 } from '@/validation/ArcadeValidation.js';
 import {
-    ArcadeContextBaseUrlFactory,
-    ArcadeContextBaseUrls
+  ArcadeServerBaseUrlFactory,
+  ArcadeServerBaseUrls
 } from './ArcadeContextBaseUrls.js';
 
 /**
@@ -40,14 +40,14 @@ export interface ArcadeServerConfiguration extends ArcadeAuthParameters {
  */
 export class ArcadeServer {
   #headers: ArcadeBasicHeadersInit;
-  #urls: ArcadeContextBaseUrls;
+  #urls: ArcadeServerBaseUrls;
   constructor(configuration: ArcadeServerConfiguration) {
-    validateArcadeContextConfiguration(configuration);
+    validateArcadeServerConfiguration(configuration);
     try {
       this.#headers = ArcadeHeaders.initialize(configuration);
-      this.#urls = ArcadeContextBaseUrlFactory.initialize(configuration);
+      this.#urls = ArcadeServerBaseUrlFactory.initialize(configuration);
     } catch (error) {
-      throw new Error('Failed to initialize ArcadeContext.', { cause: error });
+      throw new Error('Failed to initialize ArcadeServer.', { cause: error });
     }
   }
   /** The HTTP Header object for connecting to the ArcadeDB instance. */
@@ -62,34 +62,34 @@ export class ArcadeServer {
 
 /**
  * Static methods for performing validation on the
- * `ArcadeContextConfiguration` object
+ * `ArcadeServerConfiguration` object
  */
-function validateArcadeContextConfiguration(
+function validateArcadeServerConfiguration(
   configuration: ArcadeServerConfiguration
 ): asserts configuration is ArcadeServerConfiguration {
   try {
     if (!validateHostname(configuration.host)) {
       throw new TypeError(
-        'ArcadeContextConfiguration.host is required and cannot be empty'
+        'ArcadeServerConfiguration.host is required and cannot be empty'
       );
     }
 
     if (!validatePort(configuration.port)) {
       throw new TypeError(
-        'ArcadeContextConfiguration.port must be a valid port number (1-65535)'
+        'ArcadeServerConfiguration.port must be a valid port number (1-65535)'
       );
     }
 
     if (!validateUsername(configuration.username)) {
-      throw new TypeError('ArcadeContextConfiguration.username is required');
+      throw new TypeError('ArcadeServerConfiguration.username is required');
     }
 
     if (!validatePassword(configuration.password)) {
-      throw new TypeError('ArcadeContextConfiguration.password is required');
+      throw new TypeError('ArcadeServerConfiguration.password is required');
     }
   } catch (error) {
     throw new TypeError(
-      'Could not validate the supplied ArcadeContextConfiguration object.',
+      'Could not validate the supplied ArcadeServerConfiguration object.',
       { cause: error }
     );
   }
