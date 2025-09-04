@@ -9,10 +9,10 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if the cluster could not be disconnected.
  */
 export async function disconnectCluster(
-  adminContext: ArcadeAdminContext
+  context: ArcadeAdminContext
 ): Promise<boolean> {
   try {
-    return await booleanAdminCommand(adminContext, DISCONNECT_CLUSTER);
+    return await booleanAdminCommand(context, DISCONNECT_CLUSTER);
   } catch (error) {
     throw new Error(
       'There was an error when attempting to disconnect from the cluster.',
