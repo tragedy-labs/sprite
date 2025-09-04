@@ -12,13 +12,10 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if there was a problem fetching the event logs.
  */
 export async function getServerEvents(
-  adminContext: ArcadeAdminContext
+  context: ArcadeAdminContext
 ): Promise<ArcadeServerEvents> {
   try {
-    return await adminCommand<ArcadeServerEvents>(
-      adminContext,
-      GET_SERVER_EVENTS
-    );
+    return await adminCommand<ArcadeServerEvents>(context, GET_SERVER_EVENTS);
   } catch (error) {
     throw new Error(
       `There was an error when attempting to retrieve ArcadeDB server event logs.`,
