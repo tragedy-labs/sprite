@@ -12,10 +12,10 @@ import { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if the command could not be executed.
  */
 export async function booleanAdminCommand(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   command: string
 ): Promise<boolean> {
-  const response = await adminCommand(adminContext, command);
+  const response = await adminCommand(context, command);
   if (response === CommandResponse.OK) {
     return true;
   } else {
