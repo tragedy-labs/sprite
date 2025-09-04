@@ -10,11 +10,11 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if the cluster could not be connected.
  */
 export async function connectCluster(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   address: string
 ): Promise<boolean> {
   try {
-    return await booleanAdminCommand(adminContext, CONNECT_CLUSTER(address));
+    return await booleanAdminCommand(context, CONNECT_CLUSTER(address));
   } catch (error) {
     throw new Error(
       `There was an error attempting to connect cluster at: ${address}`,
