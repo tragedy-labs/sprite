@@ -14,7 +14,7 @@ export async function serverReady(
   try {
     const response = await Rest.get(
       context.endpoints.ready,
-      context.server.headers
+      context.arcade.headers
     );
     return response.status === 204;
   } catch (error) {

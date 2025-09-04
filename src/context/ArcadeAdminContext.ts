@@ -1,22 +1,22 @@
 import { ADMIN_ROUTES } from '@/admin/constants/routes.js';
-import { ArcadeServer } from '@/context/ArcadeServer.js';
+import { Arcade } from '@/context/Arcade.js';
 import type {
-  ArcadeClientContext,
-  ArcadeClientEndpoints
+    ArcadeClientContext,
+    ArcadeClientEndpoints
 } from '@/context/types.js';
 
 type AdminRoutes = typeof ADMIN_ROUTES;
 type AdminEndpoints = ArcadeClientEndpoints<AdminRoutes>;
 
 export class ArcadeAdminContext implements ArcadeClientContext<AdminRoutes> {
-  readonly #server: ArcadeServer;
+  readonly #arcade: Arcade;
   readonly #endpoints: AdminEndpoints;
-  constructor(server: ArcadeServer) {
-    this.#server = server;
-    this.#endpoints = ArcadeAdminContext.buildEndPoints(this.#server);
+  constructor(arcade: Arcade) {
+    this.#arcade = arcade;
+    this.#endpoints = ArcadeAdminContext.buildEndPoints(this.#arcade);
   }
-  get server() {
-    return this.#server;
+  get arcade() {
+    return this.#arcade;
   }
   get endpoints() {
     return this.#endpoints;
@@ -26,11 +26,11 @@ export class ArcadeAdminContext implements ArcadeClientContext<AdminRoutes> {
    * @param routes - The routes to build endpoints for.
    * @returns A record of the session's endpoints.
    */
-  protected static buildEndPoints(server: ArcadeServer): AdminEndpoints {
+  protected static buildEndPoints(arcade: Arcade): AdminEndpoints {
     const endpoints = {} as AdminEndpoints;
 
     Object.values(ADMIN_ROUTES).forEach((route) => {
-      endpoints[route] = new URL(`${server.urls.rest}/${route}`);
+      endpoints[route] = new URL(`${arcade.urls.rest}/${route}`);
     });
 
     return endpoints;

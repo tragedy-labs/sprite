@@ -7,18 +7,18 @@ import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
 
 /**
  * Returns the current configuration.
- * @param server The server to use to retrieve the configuration.
- * @param mode The level of informatio detail to return.
- * * `basic` returns minimal server information
- * * `default` returns full server configuration (default value when no parameter is given)
- * * `cluster` returns the cluster layout
+ * @param context - The context to use to retrieve the configuration.
+ * @param mode - The level of information detail to return.
+ * -`basic` returns minimal server information
+ * -`default` returns full server configuration (default value when no parameter is given)
+ * -`cluster` returns the cluster layout
  * @returns The server information.
  * @throws `Error` if the server information could not be retrieved.
  */
 export async function getServerInformation<
   IL extends ArcadeServerInformationLevel = 'default'
 >(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   mode?: IL
 ): Promise<ArcadeServerInformation<IL>> {
   try {
@@ -28,10 +28,10 @@ export async function getServerInformation<
     // TODO: The repetition of the RequestInit is less
     // than ideal
     const response = await fetch(
-      `${adminContext.server.urls.rest}/server?mode=${mode || 'default'}`,
+      `${context.arcade.urls.rest}/server?mode=${mode || 'default'}`,
       {
         method: 'GET',
-        headers: adminContext.server.headers,
+        headers: context.arcade.headers,
         keepalive: true
       }
     );

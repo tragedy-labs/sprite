@@ -1,4 +1,4 @@
-import { ArcadeServer } from '@/context/ArcadeServer.js';
+import { Arcade } from '@/context/Arcade.js';
 
 /**
  * @internal
@@ -12,6 +12,6 @@ export type ArcadeClientEndpoints<E extends Record<string, string>> = Record<
  * @internal
  */
 export interface ArcadeClientContext<E extends Record<string, string>> {
-  readonly server: ArcadeServer;
+  readonly arcade: Arcade;
   readonly endpoints: ArcadeClientEndpoints<E>;
 }

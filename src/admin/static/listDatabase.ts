@@ -13,7 +13,7 @@ export async function listDatabases(
   try {
     return await Rest.getJson(
       context.endpoints.databases,
-      context.server.headers
+      context.arcade.headers
     );
   } catch (error) {
     throw new Error(

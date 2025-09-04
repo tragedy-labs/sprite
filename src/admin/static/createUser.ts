@@ -24,7 +24,7 @@ export interface SpriteCreateArcadeUser {
 /**
  * Create a user. `username`, `password`, and access controls to multiple databases
  * can be established using the `databases` property of the input parameters.
- * @param server - The server to use to create the user.
+ * @param context - The context from which to create the user.
  * @param username - The `username` of the user to create.
  * @param password - The `password` of the user to create.
  * @param databases - An object of databases to add the user to, and their permissions (groups they belong to).
@@ -32,7 +32,7 @@ export interface SpriteCreateArcadeUser {
  * @throws `Error` if the user could not be created.
  */
 export async function createUser(
-  server: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   params: SpriteCreateArcadeUser
 ): Promise<boolean> {
   try {
@@ -73,7 +73,7 @@ export async function createUser(
       databases: params.databases
     };
 
-    return await booleanAdminCommand(server, CREATE_USER(expectedParameters));
+    return await booleanAdminCommand(context, CREATE_USER(expectedParameters));
   } catch (error) {
     const databaseListString = Object.keys(params.databases).join(', ');
     throw new Error(
