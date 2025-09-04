@@ -10,11 +10,11 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if the database could not be dropped.
  */
 export async function dropDatabase(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   databaseName: string
 ): Promise<boolean> {
   try {
-    return await booleanAdminCommand(adminContext, DROP_DATABASE(databaseName));
+    return await booleanAdminCommand(context, DROP_DATABASE(databaseName));
   } catch (error) {
     throw new Error(`Failed to drop database.`, {
       cause: error
