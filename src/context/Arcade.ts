@@ -1,10 +1,10 @@
 import { ArcadeBasicHeadersInit, ArcadeHeaders } from '@/rest/ArcadeHeaders.js';
 import { ArcadeAuthParameters } from '@/rest/Auth.js';
 import {
-  validateHostname,
-  validatePassword,
-  validatePort,
-  validateUsername
+    validateHostname,
+    validatePassword,
+    validatePort,
+    validateUsername
 } from '@/validation/ArcadeValidation.js';
 import { ArcadeBaseUrlFactory, ArcadeBaseUrls } from './ArcadeBaseUrls.js';
 
@@ -39,7 +39,7 @@ export class Arcade {
   #headers: ArcadeBasicHeadersInit;
   #urls: ArcadeBaseUrls;
   constructor(configuration: ArcadeConfiguration) {
-    validateArcadeConfiguration(configuration);
+    Arcade.validateConfiguration(configuration);
     try {
       this.#headers = ArcadeHeaders.initialize(configuration);
       this.#urls = ArcadeBaseUrlFactory.initialize(configuration);
@@ -55,39 +55,38 @@ export class Arcade {
   get urls() {
     return this.#urls;
   }
-}
+  /**
+   * Static method for performing validation on the `ArcadeConfiguration` object.
+   * @param configuration - The configuration to validate
+   */
+  static validateConfiguration(
+    configuration: ArcadeConfiguration
+  ): asserts configuration is ArcadeConfiguration {
+    try {
+      if (!validateHostname(configuration.host)) {
+        throw new TypeError(
+          'ArcadeConfiguration.host is required and cannot be empty'
+        );
+      }
 
-/**
- * Static methods for performing validation on the
- * `ArcadeConfiguration` object
- */
-function validateArcadeConfiguration(
-  configuration: ArcadeConfiguration
-): asserts configuration is ArcadeConfiguration {
-  try {
-    if (!validateHostname(configuration.host)) {
+      if (!validatePort(configuration.port)) {
+        throw new TypeError(
+          'ArcadeConfiguration.port must be a valid port number (1-65535)'
+        );
+      }
+
+      if (!validateUsername(configuration.username)) {
+        throw new TypeError('ArcadeConfiguration.username is required');
+      }
+
+      if (!validatePassword(configuration.password)) {
+        throw new TypeError('ArcadeConfiguration.password is required');
+      }
+    } catch (error) {
       throw new TypeError(
-        'ArcadeConfiguration.host is required and cannot be empty'
+        'Could not validate the supplied ArcadeConfiguration object.',
+        { cause: error }
       );
     }
-
-    if (!validatePort(configuration.port)) {
-      throw new TypeError(
-        'ArcadeConfiguration.port must be a valid port number (1-65535)'
-      );
-    }
-
-    if (!validateUsername(configuration.username)) {
-      throw new TypeError('ArcadeConfiguration.username is required');
-    }
-
-    if (!validatePassword(configuration.password)) {
-      throw new TypeError('ArcadeConfiguration.password is required');
-    }
-  } catch (error) {
-    throw new TypeError(
-      'Could not validate the supplied ArcadeConfiguration object.',
-      { cause: error }
-    );
   }
 }
