@@ -1,7 +1,7 @@
 import { booleanAdminCommand } from '@/admin/static/booleanAdminCommand.js';
 import {
-  CREATE_USER,
-  type ArcadeCreateUser
+    CREATE_USER,
+    type ArcadeCreateUser
 } from '@/admin/static/commands/CREATE_USER.js';
 import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 
@@ -24,7 +24,7 @@ export interface SpriteCreateArcadeUser {
 /**
  * Create a user. `username`, `password`, and access controls to multiple databases
  * can be established using the `databases` property of the input parameters.
- * @param server - The server to use to create the user.
+ * @param context - The context from which to create the user.
  * @param username - The `username` of the user to create.
  * @param password - The `password` of the user to create.
  * @param databases - An object of databases to add the user to, and their permissions (groups they belong to).
