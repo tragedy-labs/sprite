@@ -1,6 +1,6 @@
 import type {
-    ArcadeServerInformation,
-    ArcadeServerInformationLevel
+  ArcadeServerInformation,
+  ArcadeServerInformationLevel
 } from '@/admin/types.js';
 import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
@@ -18,7 +18,7 @@ import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
 export async function getServerInformation<
   IL extends ArcadeServerInformationLevel = 'default'
 >(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   mode?: IL
 ): Promise<ArcadeServerInformation<IL>> {
   try {
@@ -28,10 +28,10 @@ export async function getServerInformation<
     // TODO: The repetition of the RequestInit is less
     // than ideal
     const response = await fetch(
-      `${adminContext.server.urls.rest}/server?mode=${mode || 'default'}`,
+      `${context.arcade.urls.rest}/server?mode=${mode || 'default'}`,
       {
         method: 'GET',
-        headers: adminContext.server.headers,
+        headers: context.arcade.headers,
         keepalive: true
       }
     );
