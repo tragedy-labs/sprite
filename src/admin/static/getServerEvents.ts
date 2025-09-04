@@ -7,7 +7,7 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * Retrieves a list of server events, optionally a filename of the form
  * `server-event-log-yyyymmdd-HHMMSS.INDEX.jsonl` (where INDEX is a integer, i.e. 0)
  * can be given to retrieve older event logs.
- * @param server - The server to use to retrieve the server events.
+ * @param context - The context to use to retrieve the server events.
  * @returns An object containing he server events from the server, and filenames of the associated logs.
  * @throws `Error` if there was a problem fetching the event logs.
  */
