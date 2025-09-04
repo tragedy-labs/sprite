@@ -10,11 +10,11 @@ import type { ArcadeTransactionIsolationLevel } from '@/database/transaction/typ
  * @returns A touple containing result of the transaction, and a boolean indicating if the transaction was committed or rolled-back.
  */
 export async function manageTransaction<T = void>(
-  session: ArcadeDatabaseContext,
+  context: ArcadeDatabaseContext,
   callback: (trx: Transaction) => Promise<T>,
   isolationLevel?: ArcadeTransactionIsolationLevel
 ): Promise<[boolean, T]> {
-  const trx = await beginTransaction(session, isolationLevel);
+  const trx = await beginTransaction(context, isolationLevel);
   try {
     const result = await callback(trx);
     if (trx.rolledBack) {

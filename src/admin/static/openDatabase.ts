@@ -4,17 +4,17 @@ import { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 
 /**
  * Open a database on the ArcadeDB server
- * @param server - The server to use to open the database.
+ * @param context - The context used to use to open the database.
  * @param databaseName - The name of the database to open.
  * @returns `true` if the database was opened.
  * @throws `Error` if the database could not be opened.
  */
 export async function openDatabase(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   databaseName: string
 ): Promise<boolean> {
   try {
-    return await booleanAdminCommand(adminContext, OPEN_DATABASE(databaseName));
+    return await booleanAdminCommand(context, OPEN_DATABASE(databaseName));
   } catch (error) {
     throw new Error(`Unabled to open database "${databaseName}`, {
       cause: error

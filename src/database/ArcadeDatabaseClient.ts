@@ -1,20 +1,20 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import {
-  arcadeCommand,
-  arcadeQuery,
-  exists,
-  explain,
-  getSchema
+    arcadeCommand,
+    arcadeQuery,
+    exists,
+    explain,
+    getSchema
 } from '@/database/static/index.js';
 import {
-  beginTransaction,
-  manageTransaction,
-  Transaction
+    beginTransaction,
+    manageTransaction,
+    Transaction
 } from '@/database/transaction/index.js';
 import type { ArcadeTransactionIsolationLevel } from '@/database/transaction/types.js';
 import type {
-  ArcadeQueryParameters,
-  ArcadeSupportedQueryLanguages
+    ArcadeQueryParameters,
+    ArcadeSupportedQueryLanguages
 } from '@/database/types.js';
 
 /**
@@ -24,12 +24,15 @@ import type {
  * @returns An instance of SpriteDatabase.
  * @example
  * ```ts
- * const db = new DatabaseClient({
+ *
+ * const arcade = new Arcade({
  *   username: 'aUser',
- *   password: 'aPassword',
- *   address: 'http://localhost:2480',
- *   databaseName: 'aDatabase'
- * });
+ *   password: 'aPassowrd',
+ *   host: 'localhost',
+ *   port: 2480
+ * })
+ *
+ * const db = new Database('aDatabase', arcade);
  *
  * type DocumentTypes = {
  *   aDocument: {
