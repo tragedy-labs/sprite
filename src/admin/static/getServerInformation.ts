@@ -1,17 +1,17 @@
 import type {
-  ArcadeServerInformation,
-  ArcadeServerInformationLevel
+    ArcadeServerInformation,
+    ArcadeServerInformationLevel
 } from '@/admin/types.js';
 import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 import { ArcadeFetchError } from '@/errors/ArcadeFetchError.js';
 
 /**
  * Returns the current configuration.
- * @param server The server to use to retrieve the configuration.
- * @param mode The level of informatio detail to return.
- * * `basic` returns minimal server information
- * * `default` returns full server configuration (default value when no parameter is given)
- * * `cluster` returns the cluster layout
+ * @param context - The context to use to retrieve the configuration.
+ * @param mode - The level of information detail to return.
+ * -`basic` returns minimal server information
+ * -`default` returns full server configuration (default value when no parameter is given)
+ * -`cluster` returns the cluster layout
  * @returns The server information.
  * @throws `Error` if the server information could not be retrieved.
  */
