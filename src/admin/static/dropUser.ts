@@ -10,11 +10,11 @@ import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
  * @throws `Error` if the user could not be dropped.
  */
 export async function dropUser(
-  adminContext: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   username: string
 ): Promise<boolean> {
   try {
-    return await booleanAdminCommand(adminContext, DROP_USER(username));
+    return await booleanAdminCommand(context, DROP_USER(username));
   } catch (error) {
     throw new Error(`Could not drop user ${username}.`, { cause: error });
   }
