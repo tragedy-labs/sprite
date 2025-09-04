@@ -6,10 +6,7 @@ import {
   validatePort,
   validateUsername
 } from '@/validation/ArcadeValidation.js';
-import {
-  ArcadeServerBaseUrlFactory,
-  ArcadeServerBaseUrls
-} from './ArcadeContextBaseUrls.js';
+import { ArcadeBaseUrlFactory, ArcadeBaseUrls } from './ArcadeBaseUrls.js';
 
 /**
  * Configurable properties for creating an `ArcadeServerContext`.
@@ -40,12 +37,12 @@ export interface ArcadeConfiguration extends ArcadeAuthParameters {
  */
 export class Arcade {
   #headers: ArcadeBasicHeadersInit;
-  #urls: ArcadeServerBaseUrls;
+  #urls: ArcadeBaseUrls;
   constructor(configuration: ArcadeConfiguration) {
     validateArcadeConfiguration(configuration);
     try {
       this.#headers = ArcadeHeaders.initialize(configuration);
-      this.#urls = ArcadeServerBaseUrlFactory.initialize(configuration);
+      this.#urls = ArcadeBaseUrlFactory.initialize(configuration);
     } catch (error) {
       throw new Error('Failed to initialize ArcadeServer.', { cause: error });
     }
