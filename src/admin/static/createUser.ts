@@ -1,7 +1,7 @@
 import { booleanAdminCommand } from '@/admin/static/booleanAdminCommand.js';
 import {
-    CREATE_USER,
-    type ArcadeCreateUser
+  CREATE_USER,
+  type ArcadeCreateUser
 } from '@/admin/static/commands/CREATE_USER.js';
 import type { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
 
@@ -32,7 +32,7 @@ export interface SpriteCreateArcadeUser {
  * @throws `Error` if the user could not be created.
  */
 export async function createUser(
-  server: ArcadeAdminContext,
+  context: ArcadeAdminContext,
   params: SpriteCreateArcadeUser
 ): Promise<boolean> {
   try {
@@ -73,7 +73,7 @@ export async function createUser(
       databases: params.databases
     };
 
-    return await booleanAdminCommand(server, CREATE_USER(expectedParameters));
+    return await booleanAdminCommand(context, CREATE_USER(expectedParameters));
   } catch (error) {
     const databaseListString = Object.keys(params.databases).join(', ');
     throw new Error(
