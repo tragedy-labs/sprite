@@ -14,7 +14,7 @@ export async function serverShutdown(
   try {
     const response = await Rest.post(
       context.endpoints.server,
-      context.server.headers,
+      context.arcade.headers,
       { command: SHUTDOWN }
     );
     return response.status === 204;
