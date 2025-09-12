@@ -19,7 +19,7 @@ export async function beginTransaction(
     // so we don't bother sending that
     const response = await Rest.post(
       context.endpoints.begin,
-      context.server.headers,
+      context.arcade.headers,
       isolationLevel === 'REPEATABLE_READ'
         ? JSON.stringify({ isolationLevel })
         : null

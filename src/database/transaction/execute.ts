@@ -1,10 +1,7 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import { QueryLanguages } from '@/database/constants/languages.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
-import type {
-  ArcadeQueryParameters,
-  ArcadeSupportedQueryLanguages
-} from '@/database/types.js';
+import type { ArcadeQueryParameters } from '@/database/types.js';
 import { Rest } from '@/rest/Rest.js';
 
 /**
@@ -25,7 +22,7 @@ export async function execute<T>(
   try {
     return await Rest.postJson<T>(
       context.endpoints.command,
-      context.server.headers,
+      context.arcade.headers,
       { language, command, params },
       transaction
     );

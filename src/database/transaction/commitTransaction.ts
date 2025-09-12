@@ -15,7 +15,7 @@ export async function commitTransaction(
   try {
     const result = await Rest.post(
       context.endpoints.commit,
-      context.server.headers,
+      context.arcade.headers,
       null,
       transaction
     );
@@ -23,7 +23,7 @@ export async function commitTransaction(
       return true;
     } else {
       throw new Error(
-        `Unexpected response from the server when attemping to commit transaction ${transaction.id}`
+        `Unexpected response from the.arcade when attemping to commit transaction ${transaction.id}`
       );
     }
   } catch (error) {

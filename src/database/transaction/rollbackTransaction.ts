@@ -15,7 +15,7 @@ export async function rollbackTransaction(
   try {
     const result = await Rest.post(
       context.endpoints.rollback,
-      context.server.headers,
+      context.arcade.headers,
       null,
       transaction
     );
@@ -23,7 +23,7 @@ export async function rollbackTransaction(
       return true;
     } else {
       throw new Error(
-        `Unexpected response from the server when attemping to rollback transaction ${transaction.id}`
+        `Unexpected response from the.arcade when attemping to rollback transaction ${transaction.id}`
       );
     }
   } catch (error) {
