@@ -1,7 +1,7 @@
-import { ArcadeServerConfiguration } from '@/context/ArcadeServer.js';
+import { ArcadeConfiguration } from '@/context/Arcade.js';
 import { Transaction } from '@/database/transaction/Transaction.js';
 import { Auth } from '@/rest/Auth.js';
-import { validateTransaction } from '@/validation/ArcadeValidation.js';
+import { validateTransaction } from '@/validation/index.js';
 
 export const enum HeaderKeys {
   ContentType = 'Content-Type',
@@ -42,7 +42,7 @@ class ArcadeHeaders {
     }
   }
   public static initialize = (
-    configuration: ArcadeServerConfiguration
+    configuration: ArcadeConfiguration
   ): ArcadeBasicHeadersInit => ({
     [HeaderKeys.ContentType]: 'application/json',
     [HeaderKeys.Authorization]: Auth.basic(
