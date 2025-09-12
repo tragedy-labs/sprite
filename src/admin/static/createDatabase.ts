@@ -1,7 +1,7 @@
 import { booleanAdminCommand } from '@/admin/static/booleanAdminCommand.js';
 import { CREATE_DATABASE } from '@/admin/static/commands/CREATE_DATABASE.js';
 import { ArcadeAdminContext } from '@/context/ArcadeAdminContext.js';
-import { validateDatabaseName } from '@/validation/ArcadeValidation.js';
+import { validateDatabaseName } from '@/validation/index.js';
 
 /**
  * Create a database
