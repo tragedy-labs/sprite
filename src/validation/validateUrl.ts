@@ -14,7 +14,8 @@ export function validateUrl(variable: unknown): boolean {
     throw new TypeError(
       `The supplied argument could not be validated as properly formatted URL. ${getVariableDescription(
         variable
-      )}`
+      )}`,
+      { cause: error }
     );
   }
 }
