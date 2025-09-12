@@ -1,11 +1,11 @@
 import { ArcadeBasicHeadersInit, ArcadeHeaders } from '@/rest/ArcadeHeaders.js';
 import { ArcadeAuthParameters } from '@/rest/Auth.js';
 import {
-    validateHostname,
-    validatePassword,
-    validatePort,
-    validateUsername
-} from '@/validation/ArcadeValidation.js';
+  validateHostname,
+  validatePassword,
+  validatePort,
+  validateUsername
+} from '@/validation/index.js';
 import { ArcadeBaseUrlFactory, ArcadeBaseUrls } from './ArcadeBaseUrls.js';
 
 /**
@@ -59,9 +59,7 @@ export class Arcade {
    * Static method for performing validation on the `ArcadeConfiguration` object.
    * @param configuration - The configuration to validate
    */
-  static validateConfiguration(
-    configuration: ArcadeConfiguration
-  ): asserts configuration is ArcadeConfiguration {
+  static validateConfiguration(configuration: ArcadeConfiguration): any {
     try {
       if (!validateHostname(configuration.host)) {
         throw new TypeError(
