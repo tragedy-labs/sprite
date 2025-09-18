@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`arcadeQuery() > should handle a 400 response (invalid query language) by throwing an error 1`] = `[TypeError: response.json is not a function]`;
+
+exports[`arcadeQuery() > should handle a 500 response by throwing an error 1`] = `[ArcadeDatabaseError: Internal error. Database 'Imported' is not available.]`;
+
+exports[`arcadeQuery() > should handle an unexpected status code by throwing an error 1`] = `[TypeError: response.json is not a function]`;

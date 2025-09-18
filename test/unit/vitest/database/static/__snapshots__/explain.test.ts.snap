@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`explain() > should propagate errors from the server 1`] = `[Error: Could not retreive explanation for non-empty string.]`;
