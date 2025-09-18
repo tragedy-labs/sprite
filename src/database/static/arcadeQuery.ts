@@ -19,9 +19,9 @@ export async function arcadeQuery<RT, QP = ArcadeQueryParameters>(
   query: string,
   parameters?: QP
 ): Promise<RT[]> {
-  return Rest.postJson<RT[]>(context.endpoints.query, context.server.headers, {
+  return Rest.postJson<RT[]>(context.endpoints.query, context.arcade.headers, {
     language,
-    query,
+    command: query,
     params: parameters
   });
 }

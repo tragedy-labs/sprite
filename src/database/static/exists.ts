@@ -12,7 +12,7 @@ export async function exists(context: ArcadeDatabaseContext): Promise<boolean> {
   try {
     const response = await Rest.get(
       context.endpoints.exists,
-      context.server.headers
+      context.arcade.headers
     );
     switch (response.status) {
       case 200: {

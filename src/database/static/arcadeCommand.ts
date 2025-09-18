@@ -1,7 +1,7 @@
 import { ArcadeDatabaseContext } from '@/context/ArcadeDatabaseContext.js';
 import type {
-  ArcadeQueryParameters,
-  ArcadeSupportedQueryLanguages
+    ArcadeQueryParameters,
+    ArcadeSupportedQueryLanguages
 } from '@/database/types.js';
 import { Rest } from '@/rest/Rest.js';
 
@@ -23,7 +23,7 @@ export async function arcadeCommand<RT, QP = ArcadeQueryParameters>(
   try {
     return await Rest.postJson(
       context.endpoints.command,
-      context.server.headers,
+      context.arcade.headers,
       {
         language,
         command,
