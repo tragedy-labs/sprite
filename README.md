@@ -1,5 +1,11 @@
 # Sprite
 
+---
+
+This repository is no longer maintained. Please check the ArcadeDB docs for their TypeScript/Javascript solutions.
+
+---
+
 ![Test workflow badge](https://github.com/tragedy-labs/sprite/actions/workflows/commit.yml/badge.svg?event=push)
 
 Sprite is a TypeScript driver for ArcadeDB.
